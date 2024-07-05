@@ -1,0 +1,37 @@
+﻿@using Web.Application.ViewModels.Admin.Page
+@model IEnumerable<PageToViewModel>
+
+@{
+    ViewBag.Title = "Page";
+}
+
+<h2>Pages</h2>
+
+<a type="button" asp-controller="Page" asp-action="Create">Add Page</a>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+         
+            <th>Name</th>
+            <th>Tag</th>     
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+              
+                <td>@item.Name</td>
+                <td>@item.Tag</td>
+                <td>
+                    <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

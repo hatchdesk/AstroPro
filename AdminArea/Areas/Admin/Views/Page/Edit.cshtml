@@ -1,0 +1,54 @@
+﻿@using Web.Application.ViewModels.Admin.Page
+@model PageToEditViewModel
+
+@{
+    ViewBag.Title = "Edit Page";
+}
+
+<h2>Edit Page</h2>
+
+<form asp-controller="Page" asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Name">Page Name</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Tag">Tag</label>
+        <textarea asp-for="Tag" class="form-control"></textarea>
+        <span asp-validation-for="Tag" class="text-danger"></span>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model?.Contents != null)
+            {
+                foreach (var item in Model.Contents)
+                {
+                    <tr>
+                        <td>@item.Tag</td>
+                        <td>@item.Content</td>
+                        <td>
+                            <a asp-area="Admin" asp-controller="PageContent" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a asp-area="Admin" asp-controller="PageContent" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

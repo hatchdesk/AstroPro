@@ -1,0 +1,15 @@
+﻿
+<p>Welcome Admin</p>
+<ul class="d-flex justify-content-between align-items-center">
+    <li class="nav-item list-unstyled">
+        <a class="nav-link text-dark" asp-controller="Article" asp-action="List" asp-area="Admin">Article</a>
+       
+    </li>
+    <li>
+        <a class="nav-link text-dark" asp-area="Admin"  asp-controller="Page" asp-action="List">Page</a>
+    </li>
+    
+    <li >
+        <a type="button" asp-area="Admin" asp-controller="Account" asp-action="Logout">Log Out</a>
+    </li>
+</ul>

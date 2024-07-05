@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology Website</title>
+    <link rel="stylesheet" href="Style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+  <body style="background-image: url('/gradient-smooth-background_79603-1782.avif'); background-size: cover; background-position: center;">
+  <section class="Top" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%);">
+    <div class="container" style="padding-top: 18px;">
+      <div class="row justify-content-around">
+        <div class="col-md-3 col-sm-6 text-center mb-3">
+          <a class="abc" href="Horoscope.html">
+          <i class="fas fa-star fa-2x icon-style"></i>
+       <span class="d-block icon-text">General Horoscope</span>
+        </a>  
+        </div>
+          <div class="col-md-3 col-sm-6 text-center mb-3">
+            <a class="abc" href="MatchMaking.html">
+              <i class="fas fa-heart fa-2x icon-style"></i>
+             <span class="d-block icon-text">Match Making</span>
+            </a>
+            
+          </div>
+        </a>
+        <div class="col-md-3 col-sm-6 text-center mb-3">
+          <a class="abc" href="Muhurat.html">
+          <i class="fas fa-sun fa-2x icon-style"></i>
+           <span class="d-block icon-text">Muhurat</span>
+           </a>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center mb-3">
+          <a class="abc" href="CareerConsultation.html">
+          <i class="fa-solid fa-graduation-cap fa-2x icon-style"></i>
+           <span class="d-block icon-text">Career Consultation</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, red, yellow);">
+    <div class="container-fluid">
+        <!-- Navbar toggle button for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link custom-nav-link" href="webpage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-nav-link" href="AboutUs.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-nav-link" href="Consulation.html">Consultation</a>
+                </li>
+                <li class="nav-item">
+                    <form class="d-flex">
+                        <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn custom-search-btn" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="\service-bannner.jpg" class="d-block w-100 custom-height" alt="First Slide">
+      </div>
+      <div class="carousel-item">
+        <img src="\zodiac-sign-wheel-of-fortune-astrology-concept-power-of-the-moon-and-the-universe-free-photo.jpg" class="d-block w-100 custom-height" alt="Second Slide">
+      </div>
+      <div class="carousel-item">
+        <img src="pngtree-vastu-vedic-hindu-astrology-3-colorful-background-posters-with-ganesha-god-image_1110357.jpg" class="d-block w-100 custom-height" alt="Third Slide">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fas fa-star text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">General Horoscope</h5>
+                    <p class="card-text">Get personalized name suggestions as per numerological explanation.</p>
+                    <a href="Horoscope.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fas fa-heart text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">Match Making</h5>
+                    <p class="card-text">Numerology help you align with nature, & positivity into your life.</p>
+                    <a href="MatchMaking.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fas fa-sun text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">Muhurat</h5>
+                    <p class="card-text">Get personalized name suggestions as per numerological explanation.</p>
+                    <a href="Muhurat.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fa-solid fa-graduation-cap text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">Career Consultation</h5>
+                    <p class="card-text">Enroll in Live Online Astrology, Numerology & Vastu Shastra courses.</p>
+                    <a href="CareerConsultation.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </br>
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, yellow, red);">
+    <div class="collapse navbar-collapse justify-content-center" id="navbarAbout">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link font-weight-bold text-white" href="#">Latest Articles</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col-md-4">
+    <div class="card h-100 card-custom">
+      <a href="/Article.html" class="card-link">
+        <img src="astrology-dangerous-zodiac-signs-1-copy.webp" class="card-img-top img-custom" alt="Hollywood Sign on The Hill"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a longer card with supporting text below as a natural lead-in to
+          additional content. This content is a little bit longer.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 card-custom">
+      <a href="/Article.html" class="card-link">
+        <img src="depositphotos_3675385-stock-photo-zodiac-sephia.jpg" class="card-img-top img-custom" alt="Palm Springs Road"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a short card.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 card-custom">
+      <a href="/Article.html" class="card-link">
+        <img src="astrology-horoscope-magic-book-illustration-600nw-721102681.webp" class="card-img-top img-custom" alt="Los Angeles Skyscrapers"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="col-md-4">
+    <div class="card h-100 card-custom">
+      <a href="/Article.html" class="card-link">
+        <img src="zodiac-sign-wheel-of-fortune-astrology-concept-power-of-the-moon-and-the-universe-free-photo.jpg" class="card-img-top img-custom" alt="Skyscrapers"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a longer card with supporting text below as a natural lead-in to
+          additional content. This content is a little bit longer.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 card-custom">
+      <a href="/Article.html" class="card-link">
+        <img src="zodiac-sign-wheel-of-fortune-astrology-concept-power-of-the-moon-and-the-universe-free-photo.jpg" class="card-img-top img-custom" alt="Skyscrapers"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card h-100 card-custom">
+      <a href="/Article.html" class="card-link">
+        <img src="zodiac-sign-wheel-of-fortune-astrology-concept-power-of-the-moon-and-the-universe-free-photo.jpg" class="card-img-top img-custom" alt="Skyscrapers"/>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          This is a longer card with supporting text below as a natural lead-in to
+          additional content. This content is a little bit longer.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</br>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, yellow, red);">
+      <div class="container justify-content-center">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+        <footer class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <!-- Widget 1 content -->
+              </div>
+              <div class="col-md-4 text-center">
+                <ul class="nav">
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#!">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#!">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#!">Advertise</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#!">Terms</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="#!">Privacy</a>
+                  </li>
+                </ul>
+              </div>
+                <div class="mt-3 text-center">
+                  <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

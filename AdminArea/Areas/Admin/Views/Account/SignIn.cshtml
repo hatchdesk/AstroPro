@@ -1,0 +1,16 @@
+﻿@using Web.Application.ViewModels.Admin.Account
+@model LogInToCreateViewModel;
+
+
+<h1>Sign In</h1>
+
+<div class="login-form">
+    <h2>Login</h2>
+    <form method="post" asp-area="Admin" asp-controller="Account" asp-action="SignIn">
+        <label>Username</label>
+        <input type="text" asp-for="Username" >
+        <label >Password</label>
+        <input type="password"  asp-for="Password">
+        <button type="submit">Login</button>
+    </form>
+</div>

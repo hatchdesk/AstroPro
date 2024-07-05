@@ -1,0 +1,147 @@
+﻿
+.icon-style {
+    color: gold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.icon-style:hover {
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+
+.icon-text {
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgb(4, 0, 0);
+}
+
+.navbar-custom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+li a:hover{
+    color:black;
+}
+
+.custom-card {
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+    .custom-card:hover {
+        transform: scale(1);
+    }
+
+.custom-search-input {
+    color: #711604;
+    border: 2px solid #711604;
+}
+
+    .custom-search-input::placeholder {
+        color: #711604;
+    }
+
+.custom-search-btn {
+    background-color: #b11c1c;
+    color: rgb(10, 10, 10);
+    border: 2px solid #b11c1c;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .custom-search-btn:hover {
+        background-color: rgb(8, 2, 2);
+        color: #b11c1c;
+    }
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: 50%;
+    bottom: auto; /* Ensure bottom is not set */
+}
+
+.custom-height {
+    height: 450px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    border-radius: 50%; /* Circular shape */
+    padding: 10px; /* Padding around the icons */
+}
+
+
+.bg-orange {
+    background-color: orangered;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #343a40;
+    color: white;
+    position: relative;
+}
+
+.abc {
+    text-decoration: none;
+}
+
+.content {
+    padding: 20px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.header .btn {
+    position: absolute;
+    right: 20px;
+    top: 81%;
+    transform: translateY(-50%);
+    background-color: #de2e0a;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-body {
+    height: 100%;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-custom {
+    height: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .card-custom:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+.img-custom {
+    height: 200px;
+    object-fit: cover;
+}

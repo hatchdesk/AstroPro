@@ -1,0 +1,45 @@
+﻿@using Web.Application.ViewModels.Admin.Articles
+@using Web.Domian.Enums
+@model ArticleToViewModel;
+
+@{
+    ViewBag.Title = "Create Article";
+}
+
+<h2>Create Article</h2>
+
+<form asp-controller="Article" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" style="color:red" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Content"></label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" style="color:red" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="IsPublished"></label>
+        <input asp-for="IsPublished" type="checkbox" class="form-check-input" />
+        <span asp-validation-for="IsPublished" style="color:red" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Category"></label>
+        <select asp-for="Category" asp-items="Html.GetEnumSelectList<ArticleCategory>()">
+            <option selected="selected" value="">Please select</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span> 
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+}

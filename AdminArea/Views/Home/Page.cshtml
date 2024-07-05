@@ -1,0 +1,31 @@
+﻿@using Web.Application.ViewModels.Admin.Page
+@model PageToViewModel
+@if (Model?.Contents != null)
+{
+	@foreach (var content in Model.Contents)
+	{
+		if (content != null && content.Content != null)
+		{
+			<div class="container mt-5">
+				<div class="row mb-5">
+					<!-- Card Side -->
+					@if (content.Tag.Contains("Image"))
+					{
+						<div class="col-md-6">
+							<div class="card" style="height: 20rem;">
+								<img src="@content.Content" />
+							</div>
+						</div>
+					}
+					else
+					{
+						<div class="col-md-6">
+							<h2>@content.Tag</h2>
+							<p>@content.Content</p>
+						</div>
+					}
+				</div>
+			</div>
+		}
+	}
+}

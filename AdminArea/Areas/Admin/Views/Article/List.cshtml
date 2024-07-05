@@ -1,0 +1,42 @@
+﻿@using Web.Application.ViewModels.Admin.Articles
+@model IEnumerable<ArticleToViewModel>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<h2>Articles</h2>
+
+<a type="button" asp-controller="Article" asp-action="Create" >Add Article</a>
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Category</th>
+            <th>IsPublished </th>
+            <th>Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var article in Model)
+        {
+            <tr>
+                <td>@article.Id</td>
+                <td>@article.Title</td>
+                <td>@article.Content</td>
+                <td>@article.Category</td>
+                <td>@article.IsPublished</td>
+                <td>
+                    <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Edit" asp-route-id="@article.Id">Edit</a>
+                    <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-id="@article.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
