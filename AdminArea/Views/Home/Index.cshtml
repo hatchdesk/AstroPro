@@ -2,7 +2,7 @@
 @model List<ArticleToViewModel>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <!-- Carousel Section -->
@@ -30,25 +30,63 @@
 
 <br>
 
-<!-- Article Cards Section -->
 <div class="row justify-content-center">
-    @foreach (var article in Model)
-    {
-        <div class="col-sm-3 col-md-2 mb-3">
-            <div class="card h-100 custom-card">
-                <div class="card-body text-center d-flex flex-column justify-content-between" >
-                    <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                        <i class="fas fa-star text-white fa-lg"></i>
-                    </div>
-                    <div>
-                        <h5 class="card-title">@article.Category</h5>
-                        <p class="card-text">@article.Title</p>
-                        <a asp-controller="Home" asp-action="Category" asp-route-id="@article.Id" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
-                    </div>
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fas fa-star text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">General Horoscope</h5>
+                    <p class="card-text">Understand the language of planets</p>
+                    <a class="nav-link nav-link-container" asp-controller="Home" style="background-color: #711604;">Learn More</a>
                 </div>
             </div>
         </div>
-    }
+    </div>
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fas fa-heart text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">Match Making</h5>
+                    <p class="card-text">Perfect match is not an easy thing.</p>
+                    <a class="nav-link nav-link-container" asp-controller="Home" style="background-color: #711604;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fas fa-sun text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">Mahurat</h5>
+                    <p class="card-text">Let's plan auspicious.</p>
+                    <a class="nav-link nav-link-container" asp-controller="Home" style="background-color: #711604;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-2 mb-3">
+        <div class="card h-100 custom-card">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                    <i class="fa-solid fa-graduation-cap text-white fa-lg"></i>
+                </div>
+                <div>
+                    <h5 class="card-title">Career</h5>
+                    <p class="card-text">Consult for Career</p>
+                    <a class="nav-link nav-link-container" asp-controller="Home">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <!-- Navigation Bar -->
