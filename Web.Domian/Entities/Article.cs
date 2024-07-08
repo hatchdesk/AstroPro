@@ -11,8 +11,9 @@ namespace Web.Domian.Entities
         public string ? Content { get; set; }
         public bool IsPublished { get; set; }
         public ArticleCategory?  Category { get; set; }
+        public string? Image { get; set; }
 
-       
+
     }
 
 }

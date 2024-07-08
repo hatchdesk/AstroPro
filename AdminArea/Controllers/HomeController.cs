@@ -48,11 +48,7 @@ namespace AdminArea.Controllers
 			return View();
 		}
 
-        [HttpGet]
-        public IActionResult Consultation()
-        {
-            return View();
-        }
+      
 
         [HttpGet]
         public IActionResult Category()

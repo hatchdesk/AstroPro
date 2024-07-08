@@ -10,6 +10,7 @@ namespace Web.Application.Interfaces.Services
         Task<ArticleToViewModel?> AddArticleAsync(ArticleToCreateViewModel model);
         Task<ArticleToViewModel?> GetArticle(int Id);
 
+        Task<ArticleToCreateViewModel> UpdateImage(int id, string userProfileImage);
         Task<ArticleToViewModel?> UpdateArticleAsync(ArticleToEditViewModel model);
         Task<bool> DeleteArticleAsync(int  Id);
     }

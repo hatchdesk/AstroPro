@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Web.Application.Interfaces;
 using Web.Application.Interfaces.Repositories;
 using Web.Application.Interfaces.Services;
+using Web.Application.Options;
 using Web.Application.Services;
 using Web.Infrastructure;
 using Web.Infrastructure.Repositories;
@@ -18,11 +19,15 @@ builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IPageRepository, PageRepository>();
 builder.Services.AddScoped<IPageContentRepository, PageContentRepository>();
 
+builder.Services.AddScoped<IConsultationService, ConsultationService>();
 builder.Services.AddScoped<IPageContentService, PageContentService>();
 builder.Services.AddScoped<IPageService, PageService>();
 builder.Services.AddScoped<IArticleService , ArticleService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.Configure<EmailSettingsOption>(builder.Configuration.GetSection("EmailSettings"));
+
 var connectionString = builder.Configuration.GetConnectionString("WebPortal");
 builder.Services.AddDbContext<WebDbContext>(options => 
     {
