@@ -3,6 +3,9 @@ using Web.Application.Interfaces.Repositories;
 using Web.Application.Interfaces.Services;
 using Web.Application.ViewModels.Admin.Articles;
 using Web.Domian.Entities;
+using System.Threading.Tasks;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace Web.Application.Services
 {
@@ -10,6 +13,7 @@ namespace Web.Application.Services
     {
         private readonly IArticleRepository _articleRepository;
         private readonly IUnitOfWork _unitOfWork;
+
         public ArticleService(IArticleRepository articleRepository, IUnitOfWork unitOfWork)
         {
             _articleRepository = articleRepository;
@@ -23,17 +27,19 @@ namespace Web.Application.Services
                 Title = model.Title,
                 Content = model.Content,
                 IsPublished = model.IsPublished,
-                //Category = model.Category,
-
+                Image = model.ImageUrl,
+                // Category = model.Category, // Uncomment if Category is being used
             };
 
-           var addedArticle =  await _articleRepository.AddAsync(objarticle);
+            var addedArticle = await _articleRepository.AddAsync(objarticle);
             var savedArticle = await _unitOfWork.SaveChangesAsync();
-            if(savedArticle > 0)
+            if (savedArticle > 0)
+            {
                 return new ArticleToViewModel
                 {
                     Id = addedArticle.Id,
                 };
+            }
             return null;
         }
 
@@ -83,7 +89,7 @@ namespace Web.Application.Services
                 Title = data.Title,
                 Content = data.Content,
                 Category = data.Category.ToString(),
-                IsPublished = data.IsPublished, 
+                IsPublished = data.IsPublished,
             };
         }
 
@@ -95,9 +101,9 @@ namespace Web.Application.Services
                 return new ArticleToViewModel();
             }
             updatedArticle.Title = model.Title;
-            updatedArticle .Content = model.Content;
+            updatedArticle.Content = model.Content;
             updatedArticle.IsPublished = model.IsPublished;
-            //updatedArticle.Category = model.Category;
+            // updatedArticle.Category = model.Category; // Uncomment if Category is being used
 
             _articleRepository.UpdateAsync(updatedArticle);
             await _unitOfWork.SaveChangesAsync();
@@ -109,6 +115,27 @@ namespace Web.Application.Services
                 IsPublished = updatedArticle.IsPublished,
                 Category = updatedArticle.Category.ToString(),
             };
+        }
+
+        public async Task<ArticleToCreateViewModel> UpdateImage(int id, string userProfileImage)
+        {
+            var articleImage = await _articleRepository.GetAsync(id);
+            if (articleImage != null)
+            {
+                articleImage.Image = userProfileImage;
+                _articleRepository.UpdateAsync(articleImage);
+                await _unitOfWork.SaveChangesAsync();
+
+                return new ArticleToCreateViewModel()
+                {
+                    Title = articleImage.Title,
+                    Content = articleImage.Content,
+                    IsPublished = articleImage.IsPublished,
+                    Category = articleImage.Category.ToString(),
+                    ImageUrl = articleImage.Image,
+                };
+            }
+            return new ArticleToCreateViewModel();
         }
     }
 }

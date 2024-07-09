@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace Web.Application.ViewModels.Admin.Articles
 {
@@ -12,5 +13,11 @@ namespace Web.Application.ViewModels.Admin.Articles
         public string? Content { get; set; }
         public bool IsPublished { get; set; }
         public string? Category { get; set; }
+
+        public string? ImageUrl { get; set; }
+
+        [Required(ErrorMessage = "Please choose profile image")]
+        [Display(Name = "Profile Picture")]
+        public IFormFile? Image { get; set; }
     }
 }

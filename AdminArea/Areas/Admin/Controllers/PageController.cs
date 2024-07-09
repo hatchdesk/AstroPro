@@ -18,8 +18,8 @@ namespace AdminArea.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult>List()
         {
-            var articles = await _PageService.GetAllPagesAsync();
-            return View(articles);
+            var pages = await _PageService.GetAllPagesAsync();
+            return View(pages);
         }
 
         [HttpGet]

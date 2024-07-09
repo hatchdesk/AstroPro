@@ -1,6 +1,6 @@
 ﻿@using Web.Application.ViewModels.Admin.Articles
 @using Web.Domian.Enums
-@model ArticleToViewModel;
+@model ArticleToCreateViewModel
 
 @{
     ViewBag.Title = "Create Article";
@@ -8,7 +8,7 @@
 
 <h2>Create Article</h2>
 
-<form asp-controller="Article" asp-action="Create" method="post">
+<form asp-controller="Article" asp-action="Create" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" class="form-control" />
@@ -32,7 +32,13 @@
         <select asp-for="Category" asp-items="Html.GetEnumSelectList<ArticleCategory>()">
             <option selected="selected" value="">Please select</option>
         </select>
-        <span asp-validation-for="Category" class="text-danger"></span> 
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" class="form-control" />
+        <span asp-validation-for="Image" style="color:red" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -40,6 +46,5 @@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-	}
-
+    }
 }
