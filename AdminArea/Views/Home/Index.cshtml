@@ -101,13 +101,14 @@
 </nav>
 
 <!-- Latest Articles Section -->
+<!-- Latest Articles Section -->
 <div class="row row-cols-1 row-cols-md-2 g-4">
     @foreach (var article in Model)
     {
         <div class="col-md-4">
             <div class="card h-100 card-custom">
                 <a asp-controller="Home" asp-action="Detail" asp-route-id="@article.Id" class="card-link">
-                    <img src="@Url.Content("~/Image/astrology-dangerous-zodiac-signs-1-copy.webp")" class="card-img-top img-custom" alt="Hollywood Sign on The Hill" />
+                    <img src="~/Image/@article.ImageUrl" class="card-img-top img-custom" alt="@article.Title" />
                 </a>
                 <div class="card-body">
                     <h5 class="card-title text-dark">@article.Title</h5>

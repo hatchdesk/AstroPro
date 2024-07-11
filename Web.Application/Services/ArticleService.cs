@@ -65,16 +65,17 @@ namespace Web.Application.Services
             }).ToList();
         }
 
-        public async Task<List<ArticleToViewModel>> GetAllArticlesAsync()
+        public async Task<List<ArticleToCreateViewModel>> GetAllArticlesAsync()
         {
             var objarticle = await _articleRepository.GetAllAsync();
-            return objarticle.Select(e => new ArticleToViewModel
+            return objarticle.Select(e => new ArticleToCreateViewModel
             {
                 Id = e.Id,
                 Title = e.Title,
                 Content = e.Content,
                 Category = e.Category.ToString(),
-                IsPublished = e.IsPublished
+                IsPublished = e.IsPublished,
+                ImageUrl = e.Image 
             }).ToList();
         }
 

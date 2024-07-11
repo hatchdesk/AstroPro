@@ -1,5 +1,5 @@
 ﻿@using Web.Application.ViewModels.Admin.Articles
-@model IEnumerable<ArticleToViewModel>
+@model IEnumerable<ArticleToCreateViewModel>
 
 @{
     ViewBag.Title = "Articles";
@@ -7,9 +7,7 @@
 
 <h2>Articles</h2>
 
-<a type="button" asp-controller="Article" asp-action="Create" >Add Article</a>
-
-
+<a type="button" asp-controller="Article" asp-action="Create">Add Article</a>
 
 <table class="table table-striped">
     <thead>
@@ -18,8 +16,9 @@
             <th>Title</th>
             <th>Content</th>
             <th>Category</th>
-            <th>IsPublished </th>
-            <th>Action </th>
+            <th>IsPublished</th>
+            <th>Image</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +31,10 @@
                 <td>@article.Category</td>
                 <td>@article.IsPublished</td>
                 <td>
+                   
+                    <img src="/@article.ImageUrl" alt="Article Image" style="width: 100px; height: auto;" />
+                </td>
+                <td>
                     <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Edit" asp-route-id="@article.Id">Edit</a>
                     <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-id="@article.Id">Delete</a>
                 </td>
@@ -39,4 +42,3 @@
         }
     </tbody>
 </table>
-

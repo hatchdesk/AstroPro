@@ -5,7 +5,7 @@ namespace Web.Application.Interfaces.Services
 {
     public interface IArticleService
     {
-       Task<List<ArticleToViewModel>> GetAllArticlesAsync();
+       Task<List<ArticleToCreateViewModel>> GetAllArticlesAsync();
         Task<List<ArticleToViewModel>> GetActiveArticlesAsync();
         Task<ArticleToViewModel?> AddArticleAsync(ArticleToCreateViewModel model);
         Task<ArticleToViewModel?> GetArticle(int Id);

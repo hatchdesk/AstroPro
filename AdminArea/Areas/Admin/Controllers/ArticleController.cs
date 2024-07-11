@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Area("Admin")]
     public class ArticleController : Controller
     {
@@ -50,7 +50,7 @@ namespace AdminArea.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 string imageUrl = UploadedFile(model);
-                model.ImageUrl = imageUrl; // Setting the ImageUrl
+                model.ImageUrl = imageUrl;
                 var article = await _articleService.AddArticleAsync(model);
                 if (article != null)
                 {
@@ -92,7 +92,7 @@ namespace AdminArea.Areas.Admin.Controllers
 
         private string UploadedFile(ArticleToCreateViewModel model)
         {
-            string defaultImagePath = "~/images/default-profile.jpg";
+            string defaultImagePath = "~/Image/default-image.jpg";
             string uniqueFileName = defaultImagePath;
 
             if (model.Image != null)
@@ -104,14 +104,14 @@ namespace AdminArea.Areas.Admin.Controllers
                 {
                     if (size <= 1000000)
                     {
-                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images", "users");
+                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Image");
                         uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
                         string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
                             model.Image.CopyTo(fileStream);
                         }
-                        uniqueFileName = Path.Combine("images", "users", uniqueFileName);
+                        uniqueFileName = Path.Combine("Image", uniqueFileName);
                     }
                     else
                     {

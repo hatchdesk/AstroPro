@@ -3,111 +3,115 @@
 
 
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-8">
-            <div class="border p-4 rounded">
-                <form method="post"  asp-action="SendEmail">
-                     <div class="row">
-                        <div class="form-group mt-3 col-lg-6">
-                            <label for="Name">Name</label>
-                            <input type="text" asp-for="Name" class="form-control" placeholder="Enter Name">
-                            <span asp-validation-for="Name" style="color:red"></span>
-                        </div>
-                        <div class="form-group mt-3 col-lg-6">
-                            <label for="Name">Email</label>
-                            <input type="text" asp-for="Email" class="form-control" placeholder="Enter Your Email">
-                            <span asp-validation-for="Email" style="color:red"></span>
-                        </div>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="DateOfBirth">Phone</label>
-                        <input type="number" asp-for="Phone" class="form-control" placeholder="Enter Your Phone">
-                        <span asp-validation-for="Phone" style="color:red"></span>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="DateOfBirth">Date Of Birth</label>
-                        <input type="datetime-local" asp-for="DateOfBirth" class="form-control" placeholder="Enter Your Date Of Birth">
-                      @*   <span asp-validation-for="DateOfBirth" style="color:red"></span> *@
-                    </div>
+	<div class="row justify-content-center">
+		<div class="col-md-10 col-lg-8">
+			<div class="border p-4 rounded consult-container">
+				<form method="post" asp-action="SendEmail" >
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<label for="Name">Name</label>
+							<input type="text" asp-for="Name" class="form-control" placeholder="Enter Name">
+							<span asp-validation-for="Name" style="color:red"></span>
+						</div>
+					
+					</div>
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<label for="Email">Email</label>
+							<input type="text" asp-for="Email" class="form-control" placeholder="Enter Your Email">
+							<span asp-validation-for="Email" style="color:red"></span>
+						</div>
+						<div class="form-group mt-3 col-lg-6">
+							<label for="Phone">Phone</label>
+							<input type="text" asp-for="Phone" class="form-control" placeholder="Enter Your Phone">
+							<span asp-validation-for="Phone" style="color:red"></span>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<label for="DateOfBirth">Date Of Birth</label>
+							<input style="cursor:pointer" type="datetime-local" value="" asp-for="DateOfBirth" class="form-control" placeholder="Enter Your Date Of Birth">
+							<span asp-validation-for="DateOfBirth" style="color:red"></span>
+						</div>
 
-                    <div class="form-group mt-3">
-                        <label for="PlaceOfBirth">Place Of Birth</label>
-                        <input type="text" asp-for= "PlaceOfBirth" class="form-control" placeholder="Enter Your Place Of Birth">
-                        <span asp-validation-for="PlaceOfBirth" style="color:red"></span>
-                    </div>
+						<div class="form-group mt-3 col-lg-6">
+							<label for="PlaceOfBirth">Place Of Birth</label>
+							<input type="text" asp-for="PlaceOfBirth" class="form-control" placeholder="Enter Your Place Of Birth">
+							<span asp-validation-for="PlaceOfBirth" style="color:red"></span>
+						</div>
+					</div>
+					<div class="form-group mt-3">
+						<label for="exampleFormControlTextarea1">Any Information</label>
+						<textarea class="form-control" asp-for="AnyInformation" rows="5"></textarea>
+					</div>
+					<div class="d-flex justify-content-center mt-3">
+						<button type="submit" class="btn btn-outline-danger" style="background-color: #711604; color: white;">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row justify-content-center">
+		<div class="col-sm-3 col-md-3 mb-3">
+			<div class="card h-100 custom-card">
+				<div class="card-body text-center d-flex flex-column justify-content-between">
+					<div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+						<i class="fas fa-star text-white fa-lg"></i>
+					</div>
+					<div>
+						<h5 class="card-title">General Horoscope</h5>
+						<p class="card-text">Get personalized name suggestions as per numerological explanation.</p>
+						<a href="Horoscope.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-                    <div class="form-group mt-3">
-                        <label for="exampleFormControlTextarea1">Any Information</label>
-                        <textarea class="form-control" asp-for="AnyInformation" rows="3"></textarea>
-                      @*   <span asp-validation-for="AnyInformation" style="color:red"></span> *@
-                    </div> 
-                    <div class="d-flex justify-content-center mt-3">
-                        <button type="submit" class="btn btn-outline-danger" style="background-color: #711604; color: white;">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="row justify-content-center">
-        <div class="col-sm-3 col-md-3 mb-3">
-            <div class="card h-100 custom-card">
-                <div class="card-body text-center d-flex flex-column justify-content-between">
-                    <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                        <i class="fas fa-star text-white fa-lg"></i>
-                    </div>
-                    <div>
-                        <h5 class="card-title">General Horoscope</h5>
-                        <p class="card-text">Get personalized name suggestions as per numerological explanation.</p>
-                        <a href="Horoscope.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="col-sm-3 col-md-3 mb-3">
+			<div class="card h-100 custom-card">
+				<div class="card-body text-center d-flex flex-column justify-content-between">
+					<div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+						<i class="fas fa-heart text-white fa-lg"></i>
+					</div>
+					<div>
+						<h5 class="card-title">Match Making</h5>
+						<p class="card-text">Numerology help you align with nature, & positivity into your life.</p>
+						<a href="MatchMaking.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="col-sm-3 col-md-3 mb-3">
-            <div class="card h-100 custom-card">
-                <div class="card-body text-center d-flex flex-column justify-content-between">
-                    <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                        <i class="fas fa-heart text-white fa-lg"></i>
-                    </div>
-                    <div>
-                        <h5 class="card-title">Match Making</h5>
-                        <p class="card-text">Numerology help you align with nature, & positivity into your life.</p>
-                        <a href="MatchMaking.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div class="col-sm-3 col-md-3 mb-3">
+			<div class="card h-100 custom-card">
+				<div class="card-body text-center d-flex flex-column justify-content-between">
+					<div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+						<i class="fas fa-sun text-white fa-lg"></i>
+					</div>
+					<div>
+						<h5 class="card-title">Muhurat</h5>
+						<p class="card-text">Get personalized name suggestions as per numerological explanation.</p>
+						<a href="Muhurat.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <div class="col-sm-3 col-md-3 mb-3">
-            <div class="card h-100 custom-card">
-                <div class="card-body text-center d-flex flex-column justify-content-between">
-                    <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                        <i class="fas fa-sun text-white fa-lg"></i>
-                    </div>
-                    <div>
-                        <h5 class="card-title">Muhurat</h5>
-                        <p class="card-text">Get personalized name suggestions as per numerological explanation.</p>
-                        <a href="Muhurat.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-3 col-md-3 mb-3">
-            <div class="card h-100 custom-card">
-                <div class="card-body text-center d-flex flex-column justify-content-between">
-                    <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                        <i class="fa-solid fa-graduation-cap text-white fa-lg"></i>
-                    </div>
-                    <div>
-                        <h5 class="card-title">Career Consultation</h5>
-                        <p class="card-text">Enroll in Live Online Astrology, Numerology & Vastu Shastra courses.</p>
-                        <a href="CareerConsultation.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="col-sm-3 col-md-3 mb-3">
+			<div class="card h-100 custom-card">
+				<div class="card-body text-center d-flex flex-column justify-content-between">
+					<div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+						<i class="fa-solid fa-graduation-cap text-white fa-lg"></i>
+					</div>
+					<div>
+						<h5 class="card-title">Career Consultation</h5>
+						<p class="card-text">Enroll in Live Online Astrology, Numerology & Vastu Shastra courses.</p>
+						<a href="CareerConsultation.html" class="btn btn-danger" style="background-color: #711604;">Learn More</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

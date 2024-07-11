@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Http;
 
 namespace Web.Application.ViewModels.Admin.Articles
 {
-    public class ArticleToCreateViewModel
+    public class ArticleToCreateViewModel 
     {
+        public int Id { get; set; }
 
         [Required(ErrorMessage ="Title is Required")]
         public string Title { get; set; } = string.Empty;
