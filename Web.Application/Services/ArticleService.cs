@@ -6,6 +6,7 @@ using Web.Domian.Entities;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
+using Web.Domian.Enums;
 
 namespace Web.Application.Services
 {
@@ -22,13 +23,19 @@ namespace Web.Application.Services
 
         public async Task<ArticleToViewModel?> AddArticleAsync(ArticleToCreateViewModel model)
         {
+
+            if (!Enum.TryParse<ArticleCategory>(model.Category, out var articleCategory))
+            {
+                // Handle invalid category conversion
+                return null;
+            }
             var objarticle = new Article()
             {
                 Title = model.Title,
                 Content = model.Content,
                 IsPublished = model.IsPublished,
                 Image = model.ImageUrl,
-                // Category = model.Category, // Uncomment if Category is being used
+                Category = articleCategory,
             };
 
             var addedArticle = await _articleRepository.AddAsync(objarticle);
@@ -91,6 +98,7 @@ namespace Web.Application.Services
                 Content = data.Content,
                 Category = data.Category.ToString(),
                 IsPublished = data.IsPublished,
+               ImageUrl = data.Image
             };
         }
 

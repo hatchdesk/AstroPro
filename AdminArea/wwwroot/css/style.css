@@ -184,3 +184,44 @@ body {
     height: 200px;
     object-fit: cover;
 }
+.truncate {
+    width: 150px; /* Adjust the width as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
+    .table-fixed th, .table-fixed td {
+        height: 70px; 
+        text-align: center;
+        vertical-align: middle;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+        .table-fixed th.id-column, .table-fixed td.id-column {
+            width: 6%; 
+        }
+
+        .table-fixed th.other-column, .table-fixed td.other-column {
+            width: 24%; 
+        }
+
+
+/* Custom CSS for hover effect */
+.service-card {
+    transition: transform 0.3s ease;
+}
+
+    .service-card:hover {
+        transform: scale(1.05);
+    }

@@ -73,6 +73,7 @@ namespace AdminArea.Areas.Admin.Controllers
                     Content = articles.Content,
                     IsPublished = articles.IsPublished,
                     Category = articles.Category,
+                    ImageUrl = articles.ImageUrl
                 };
                 return View(updateArticle);
             }

@@ -24,6 +24,7 @@ namespace Web.Application.Services
                 {
                     Id = admin.Id,
                     Username = admin.Username,
+                    Password = admin.Password
                 };           
         }
     }
