@@ -1,6 +1,6 @@
 ﻿ @using Web.Application.ViewModels.Admin.Page
 @model PageToViewModel
-@if (Model?.Contents != null)
+@* @if (Model?.Contents != null)
 {
 	@foreach (var content in Model.Contents)
 	{
@@ -28,7 +28,113 @@
 			</div>
 		}
 	}
-}
+} *@
  
+<div class="container-fluid">
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-lg-8">
+                <h2 class="card-title border-bottom mb-3">
+                    @Model?.Contents?.Where(c => c.Tag == "AboutUs_Title1").Select(c => c.Content).FirstOrDefault()
+                </h2>
+                <div class="mt-3 fs-4" style="width: 100%; height: 250px;">
+                    <img src="@Model?.Contents?.Where(c => c.Tag == "AboutUs_Imag1").Select(c => c.Content).FirstOrDefault()" style="width: 100%; height: 100%;" />
+                </div>
+                <div class="mt-2">
+                    <p>
+                        @Model?.Contents?.Where(c => c.Tag == "AboutUs_SubTitle1").Select(c => c.Content).FirstOrDefault()
+                    </p>
+                    <p>
+                        @Model?.Contents?.Where(c => c.Tag == "AboutUs_SubTitle2").Select(c => c.Content).FirstOrDefault()
+                    </p>
+                </div>
+                <div class="mt-3">
+                    <h3>
+                        @Model?.Contents?.Where(c => c.Tag == "AboutUs_Title3").Select(c => c.Content).FirstOrDefault()
+                    </h3>
+                    <p>
+                        @Model?.Contents?.Where(c => c.Tag == "AboutUs_Subtitle3").Select(c => c.Content).FirstOrDefault()
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h2 class="card-title border-bottom mb-3">
+                    @Model?.Contents?.Where(c => c.Tag == "AboutUs_Title2").Select(c => c.Content).FirstOrDefault()
+                </h2>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <img width="54" height="54" alt="Customers" title="Customers" src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/happy_customers_56x56.png" />
+                    </div>
+                    <div class="col-lg-10 h4 top0 line27">
+                        <strong>3 Cr.</strong><br />
+                        <span class="GrayColor">Happy Customers</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-2">
+                        <img width="54" height="54" alt="Professionals" title="Professionals" src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/trusted_56x56.png" />
+                    </div>
+                    <div class="col-lg-10 h4 top0 line27">
+                        <strong>2000+</strong><br />
+                        <span class="GrayColor">Trusted Professionals</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        <img width="54" height="54" alt="Languages" title="Languages" src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/languages_56x56.png" />
+                    </div>
+                    <div class="col-md-10 h4 top0 line27">
+                        <strong>11+</strong><br />
+                        <span class="GrayColor">Languages</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        <img width="54" height="54" alt="Countries" title="Countries" src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/locations_56x56.png" />
+                    </div>
+                    <div class="col-md-10 h4 top0 line27">
+                        <strong>85</strong><br />
+                        <span class="GrayColor">Countries</span>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2">
+                        <img width="54" height="54" alt="Experience" title="Experience" src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/experience_56x56.png" />
+                    </div>
+                    <div class="col-md-10 h4 top0 line27">
+                        <strong>22 Years</strong><br />
+                        <span class="GrayColor">Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="card-title text-center border-bottom"> @Model?.Contents?.Where(c => c.Tag == "AboutUs_title4").Select(c => c.Content).FirstOrDefault()</h2>
+            </div>
+            <div class="d-flex justify-content-between align-items-center gap-4 mt-3">
+                <div class="card service-card" style="width: 20%; height: 200px;">
+                    <img src="@Model?.Contents?.Where(c => c.Tag == "AboutUs_OurServiceImg1").Select(c => c.Content).FirstOrDefault()" style="width: 100%; height: 100%;" />
+                </div>
+                <div class="card service-card" style="width: 20%; height: 200px;">
+                    <img src="@Model?.Contents?.Where(c => c.Tag == "AboutUs_OurServiceImg2").Select(c => c.Content).FirstOrDefault()" style="width: 100%; height: 100%;" />
+                </div>
+                <div class="card service-card" style="width: 20%; height: 200px;">
+                    <img src="@Model?.Contents?.Where(c => c.Tag == "AboutUs_OurServiceImg3").Select(c => c.Content).FirstOrDefault()" style="width: 100%; height: 100%;" />
+                </div>
+                <div class="card service-card" style="width: 20%; height: 200px;">
+                    <img src="@Model?.Contents?.Where(c => c.Tag == "AboutUs_OurServiceImg4").Select(c => c.Content).FirstOrDefault()" style="width: 100%; height: 100%;" />
+                </div>
+                <div class="card service-card" style="width: 20%; height: 200px;">
+                    <img src="@Model?.Contents?.Where(c => c.Tag == "AboutUs_OurServiceImg5").Select(c => c.Content).FirstOrDefault()" style="width: 100%; height: 100%;" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 

@@ -225,3 +225,42 @@ body {
     .service-card:hover {
         transform: scale(1.05);
     }
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures the card stretches to fill available space */
+    overflow: hidden; /* Prevents overflow */
+    border: 1px solid #ddd; /* Adds a light border */
+    border-radius: 0.5rem; /* Rounds the corners of the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+    border-radius:unset;
+}
+
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Increases shadow on hover */
+    }
+
+
+.card-truncate {
+    display: -webkit-box; /* For multi-line truncation */
+    -webkit-box-orient: vertical; /* Vertical box orientation */
+    -webkit-line-clamp: 3; /* Limits text to 3 lines */
+    overflow: hidden; /* Hides overflow content */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+    line-height: 1.5; /* Adjust line height for better spacing */
+}
+
+.cardTitle-truncate {
+    display: -webkit-box; /* For multi-line truncation */
+    -webkit-box-orient: vertical; /* Vertical box orientation */
+    -webkit-line-clamp: 2;
+    overflow: hidden; /* Hides overflow content */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+}
+
+.backGround-Color{
+    background-color:rgba(0, 0, 0, 0.1)
+}

@@ -26,7 +26,6 @@ namespace Web.Application.Services
 
             if (!Enum.TryParse<ArticleCategory>(model.Category, out var articleCategory))
             {
-                // Handle invalid category conversion
                 return null;
             }
             var objarticle = new Article()
