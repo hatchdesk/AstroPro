@@ -2,11 +2,11 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
-using Web.Application.Services;
+using Web.Application.ViewModels.Admin.Page;
+
 
 namespace AdminArea.Controllers
 {
-    //[Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -27,11 +27,21 @@ namespace AdminArea.Controllers
             return View(articles);
         }
 
+        public async Task<IActionResult> NavigationMenu()
+        {
+            var pages = await _pageService.GetAllPagesAsync();
+            var pageViewModels = pages.Select(page => new PageToViewModel
+            {
+                Name = page.Name,
+            }).ToList();
+
+            return PartialView("_NavigationMenu", pageViewModels);
+        }
+
         [HttpGet("/{name}")]
         public async Task<IActionResult> Page(string name)
         {
-            var pageViewModel = await _pageService.GetPageByTagAsync(name);
-
+            var pageViewModel = await _pageService.GetPageByNameAsync(name);
             if (pageViewModel == null)
             {
                 return NotFound();
@@ -47,8 +57,6 @@ namespace AdminArea.Controllers
 		{
 			return View();
 		}
-
-      
 
         [HttpGet]
         public IActionResult Category()

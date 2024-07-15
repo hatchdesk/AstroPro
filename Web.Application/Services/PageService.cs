@@ -109,7 +109,7 @@ namespace Web.Application.Services
             };
         }
 
-        public async Task<PageToViewModel?> GetPageByTagAsync(string name)
+        public async Task<PageToViewModel?> GetPageByNameAsync(string name)
         {
             var page = await _pageRepository.GetByNameAsync(name);
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
 using Web.Application.Services;
 using Web.Application.ViewModels.Admin.Page;
@@ -6,6 +7,7 @@ using Web.Application.ViewModels.Admin.PageContent;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
     public class PageController : Controller
     {

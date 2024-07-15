@@ -11,7 +11,7 @@ namespace Web.Application.Interfaces.Services
         
         Task<PageToViewModel?> UpdatePageAsync(PageToEditViewModel  model);
 
-        Task<PageToViewModel?> GetPageByTagAsync(string tag);
+        Task<PageToViewModel?> GetPageByNameAsync(string name);
 
         Task<bool> DeletePageAsync(int  Id);
     }

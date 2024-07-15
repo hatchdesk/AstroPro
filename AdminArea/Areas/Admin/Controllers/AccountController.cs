@@ -8,7 +8,7 @@ using Web.Application.ViewModels.Admin.Account;
 
 namespace Web.Area.Admin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Area("Admin")]
     public class AccountController : Controller
     {

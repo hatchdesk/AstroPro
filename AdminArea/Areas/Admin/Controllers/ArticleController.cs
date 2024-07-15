@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class ArticleController : Controller
     {
