@@ -8,5 +8,6 @@ namespace Web.Application.Interfaces.Repositories
     public interface IPageRepository : IRepository<Page>
     {
         Task<Page?> GetByNameAsync(string name);
+        Task<Page?> GetPageContentAsync();
     }
 }

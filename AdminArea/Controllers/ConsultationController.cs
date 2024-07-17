@@ -1,59 +1,59 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 using Web.Application.Interfaces.Services;
+using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Consultation;
+
 
 namespace Web.Controllers
 {
-    public class ConsultationController : Controller
-    {
-        private readonly IConsultationService _consultationService;
+	public class ConsultationController : Controller
+	{
+		private readonly IConsultationService _consultationService;
+		private readonly IServiceService _serviceService;
 
-        public ConsultationController(IConsultationService consultationService)
-        {
-            _consultationService = consultationService;
-        }
+		public ConsultationController(IConsultationService consultationService, IServiceService serviceService)
+		{
+			_consultationService = consultationService;
+			_serviceService = serviceService;
+		}
 
-        [HttpGet]
-        public IActionResult Consultation()
-        {
-            return View();
-        }
 
-        [HttpPost]
-        public async Task<IActionResult> SendEmail(ConsultationSendToViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                string subject = "Request Consultation";
-                string body = $@"
-                    <h3>Consultation Request Details</h3>
-                    <ul>
-                        <li><strong>Name:</strong> {model.Name}</li>
-                        <li><strong>Email:</strong> {model.Email}</li>
-                        <li><strong>Phone:</strong> {model.Phone}</li>
-                        <li><strong>Date of Birth:</strong> {model.DateOfBirth}</li>
-                        <li><strong>Place of Birth:</strong> {model.PlaceOfBirth}</li>
-                    </ul>
-                    <p><strong>Description:</strong><br/>{model.AnyInformation}</p>
-                ";
+		[HttpPost]
+		public async Task<IActionResult> SendEmail(PageParentModel pageParentModel)
+		{
+			var consultationModel = pageParentModel?.ConsultationToModel;
+			if(consultationModel != null)
+			{
+				string subject = "Request Consultation";
+				string body = $@"
+		            <h3>Consultation Request Details</h3>
+		            <ul>
+		                <li><strong>Name:</strong> {consultationModel.Name}</li>
+		                <li><strong>Email:</strong> {consultationModel.Email}</li>
+		                <li><strong>Phone:</strong> {consultationModel.Phone}</li>
+		                <li><strong>Date of Birth:</strong> {consultationModel.DateOfBirth}</li>
+		                <li><strong>Place of Birth:</strong> {consultationModel.PlaceOfBirth}</li>
+		            </ul>
+		            <p><strong>Description:</strong><br/>{consultationModel.AnyInformation}</p>
+		        ";
 
-                try
-                {
-                    await _consultationService.SendEmailAsync(model.Email, subject, body);
-                     return RedirectToAction("Consultation");
-                }
-                catch (Exception ex)
-                {
-                    TempData["ErrorMessage"] = $"Error sending consultation request: {ex.Message}";
-                }
+				try
+				{
+					await _consultationService.SendEmailAsync(consultationModel.Email, subject, body);
+					return RedirectToAction("Page","Home",new {name= "Consultation" });
+				}
+				catch (Exception ex)
+				{
+					TempData["ErrorMessage"] = $"Error sending consultation request: {ex.Message}";
+				}
+			}
+			TempData["ErrorMessage"] = $"Error sending consultation request, Please try again.";
+			return View("Consultation", consultationModel);
 
-            
-            }
-                return View("Consultation", model);
 
-          
-        }
-    }
+		}
+	}
 }
+
+
+

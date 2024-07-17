@@ -1,5 +1,6 @@
 ﻿
 using Web.Application.ViewModels.Admin.Articles;
+using Web.Application.ViewModels.Admin.Page;
 
 namespace Web.Application.Interfaces.Services
 {
@@ -13,5 +14,6 @@ namespace Web.Application.Interfaces.Services
         Task<ArticleToCreateViewModel> UpdateImage(int id, string userProfileImage);
         Task<ArticleToViewModel?> UpdateArticleAsync(ArticleToEditViewModel model);
         Task<bool> DeleteArticleAsync(int  Id);
+        Task<PageParentModel?> GetHomePage();
     }
 }

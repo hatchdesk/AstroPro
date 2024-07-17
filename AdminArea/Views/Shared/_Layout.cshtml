@@ -1,6 +1,4 @@
-﻿
- @* @using Web.Application.ViewModels.Admin.Page *@
-@* @model PageToViewModel *@
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,34 +17,22 @@
             <div class="d-flex justify-content-end">
                 <div class="p-2 bd-highlight me-auto">
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                        @* <h1 class="brand">@Model?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1> *@
-                        <h1 class="brand">Astro Pro</h1>
+                        <h1 class="brand">@Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1>
                     </a>
                 </div>
-                <div class="p-2 bd-highlight text-center icon-wrap">
+                @if(Model !=null && Model.ServiceToModel !=null)
+                {
+                  @foreach (var service in Model!.ServiceToModel)
+                   {
+                 <div class="p-2 bd-highlight text-center icon-wrap">
                     <a class="abc" href="Horoscope.html">
-                        <i class="fas fa-star fa-3x icon-style"></i>
-                        <span class="d-block icon-text">General Horoscope</span>
+                            @Html.Raw(service.Icon)
+                            <span class="d-block icon-text">@service.Title</span>
                     </a>
                 </div>
-                <div class="p-2 bd-highlight text-center icon-wrap">
-                    <a class="abc" href="MatchMaking.html">
-                        <i class="fas fa-heart fa-3x icon-style"></i>
-                        <span class="d-block icon-text">Match Making</span>
-                    </a>
-                </div>
-                <div class="p-2 bd-highlight text-center icon-wrap">
-                    <a class="abc" href="Muhurat.html">
-                        <i class="fas fa-sun fa-3x icon-style"></i>
-                        <span class="d-block icon-text">Muhurat</span>
-                    </a>
-                </div>
-                <div class="p-2 bd-highlight text-center icon-wrap">
-                    <a class="abc" href="CareerConsultation.html">
-                        <i class="fas fa-graduation-cap fa-3x icon-style"></i>
-                        <span class="d-block icon-text">Career Consultation</span>
-                    </a>
-                </div>
+               }
+                }
+               
             </div>
         </div>
     </section>
@@ -70,16 +56,8 @@
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="About us">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Consultation" asp-action="Consultation">Consultation</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Consultation</a>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Article" asp-action="List">Article</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Account" asp-action="SignIn">SignIn</a>
-                    </li>
-
                     <li class="nav-item">
                         <form class="d-flex">
                             <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">

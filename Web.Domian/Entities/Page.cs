@@ -7,5 +7,6 @@ namespace Web.Domian.Entities
         public string Name { get; set; } = string.Empty;
         public string Tag { get; set; }=string.Empty; //Tagline
         public virtual ICollection<PageContent>? Contents { get; set; }
+      
     }
 }

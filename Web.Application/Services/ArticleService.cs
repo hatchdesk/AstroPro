@@ -7,19 +7,29 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Collections.Generic;
 using Web.Domian.Enums;
+using Web.Application.ViewModels.Admin.Page;
+using System.Xml.Linq;
+using Web.Application.ViewModels.Admin.PageContent;
+using Web.Application.ViewModels.Admin.Service;
 
 namespace Web.Application.Services
 {
     public class ArticleService : IArticleService
     {
         private readonly IArticleRepository _articleRepository;
+            private readonly IPageRepository _pageRepository;
+        private readonly IServiceRepository _serviceRepository;
         private readonly IUnitOfWork _unitOfWork;
 
-        public ArticleService(IArticleRepository articleRepository, IUnitOfWork unitOfWork)
+        public ArticleService(IArticleRepository articleRepository, IUnitOfWork unitOfWork , IServiceRepository serviceRepository , IPageRepository pageRepository)
         {
             _articleRepository = articleRepository;
             _unitOfWork = unitOfWork;
+            _serviceRepository = serviceRepository;
+            _pageRepository = pageRepository;
+             
         }
+
 
         public async Task<ArticleToViewModel?> AddArticleAsync(ArticleToCreateViewModel model)
         {
@@ -97,7 +107,51 @@ namespace Web.Application.Services
                 Content = data.Content,
                 Category = data.Category.ToString(),
                 IsPublished = data.IsPublished,
-               ImageUrl = data.Image
+                ImageUrl = data.Image
+            };
+        }
+
+        public async Task<PageParentModel?> GetHomePage()
+        {
+            var page = await _pageRepository.GetPageContentAsync();
+            var pageToViewModel = page == null ? null : new PageToViewModel
+            {
+                Id = page.Id,
+                Name = page.Name,
+                Tag = page.Tag,
+                Contents = page.Contents?.Select(pc => new PageContentToViewModel
+                {
+                    Id = pc.Id,
+                    Tag = pc.Tag,
+                    Content = pc.Content,
+                    PageId = pc.PageId,
+                }).ToList() ?? new List<PageContentToViewModel>()
+            };
+
+            var services = await _serviceRepository.GetServicesAsync();
+            var serviceToViewModels = services?.Select(s => new ServiceToViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Icon = s.Icon,
+                Content = s.Content
+            }).ToList() ?? new List<ServiceToViewModel>();
+
+            var articles = await _articleRepository.GetArticlesAsync();
+            var Articles = articles?.Select(s => new ArticleToViewModel
+            {
+                Id = s.Id,
+                Title = s.Title,
+                Content = s.Content,
+                IsPublished = s.IsPublished,
+                ImageUrl = s.Image,
+            }).ToList() ?? new List<ArticleToViewModel>();
+
+            return new PageParentModel
+            {
+                ServiceToModel = serviceToViewModels,
+                ArticleToModel = Articles,
+                PageModel = pageToViewModel
             };
         }
 
@@ -145,5 +199,7 @@ namespace Web.Application.Services
             }
             return new ArticleToCreateViewModel();
         }
+
+
     }
 }

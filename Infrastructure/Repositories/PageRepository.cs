@@ -22,6 +22,15 @@ namespace Web.Infrastructure.Repositories
                 .Include(p => p.Contents)
                 .FirstOrDefaultAsync(p => p.Name == name);
         }
+
+        public  async Task<Page?> GetPageContentAsync()
+        {
+
+            return await _dbContext.Pages
+          .Include(p => p.Contents) 
+          .FirstOrDefaultAsync();
+
+        }
     }
 }
 

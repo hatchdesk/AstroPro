@@ -7,7 +7,7 @@ using Web.Application.ViewModels.Admin.PageContent;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Area("Admin")]
     public class PageController : Controller
     {
@@ -55,22 +55,14 @@ namespace AdminArea.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int Id)
         {
-
-            var isEdited = await _PageService.GetPageAsync(Id);
-            if(isEdited != null)
+            var pageWithServices = await _PageService.GetPageAsync(Id);
+            if (pageWithServices != null)
             {
-                var updatedData = new PageToEditViewModel()
-                {
-                    Tag = isEdited.Tag,
-                    Name = isEdited.Name,
-                    Contents = isEdited.Contents
-                };
-                return View(updatedData);
+                return View(pageWithServices);
             }
-            return View();
+            return View(new PageParentModel());
         }
 
-        
 
 
         [HttpPost]

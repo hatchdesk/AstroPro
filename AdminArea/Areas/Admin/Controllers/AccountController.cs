@@ -8,7 +8,7 @@ using Web.Application.ViewModels.Admin.Account;
 
 namespace Web.Area.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class AccountController : Controller
     {
@@ -36,7 +36,7 @@ namespace Web.Area.Admin.Controllers
                 if (admin != null)
                 {
                     await CreateAuthCookie(admin);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "AdminHome");
                 }
                 ModelState.AddModelError("", "Invalid username or password");
             }

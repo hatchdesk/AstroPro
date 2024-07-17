@@ -13,6 +13,7 @@ namespace Web.Infrastructure
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Page> Pages { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<PageContent> PageContents { get; set; }
 
     }

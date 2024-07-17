@@ -1,5 +1,4 @@
-﻿@using Web.Application.ViewModels.Admin.Articles
-@model List<ArticleToViewModel>
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
     ViewData["Title"] = "Home";
@@ -30,84 +29,34 @@
 
 <br>
 <div class="container-fluid mx-auto">
-        <div class="row ">
-            <!-- First Card -->
+    <div class="row ">
+        @foreach (var service in Model.ServiceToModel)
+        {
             <div class="col-sm-6 col-md-3 mb-3">
                 <div class="card h-100 custom-card">
                     <div class="card-body text-center d-flex flex-column justify-content-between">
                         <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                            <i class="fas fa-star text-white fa-lg"></i>
+                            @Html.Raw(service.Icon)
                         </div>
                         <div>
-                            <h5 class="card-title">General Horoscope</h5>
-                            <p class="card-text">Understand the language of planets</p>
-                           
+                            <h5 class="card-title">@service.Title</h5>
+                            <p class="card-text">@service.Content</p>
                             <a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
+        }
 
-            <!-- Second Card -->
-            <div class="col-sm-6 col-md-3 mb-3">
-                <div class="card h-100 custom-card">
-                    <div class="card-body text-center d-flex flex-column justify-content-between">
-                        <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                            <i class="fas fa-sun text-white fa-lg"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Mahurat</h5>
-                            <p class="card-text">Let's plan auspicious</p>
-                            <a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Third Card -->
-            <div class="col-sm-6 col-md-3 mb-3">
-                <div class="card h-100 custom-card">
-                    <div class="card-body text-center d-flex flex-column justify-content-between">
-                        <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                            <i class="fa-solid fa-graduation-cap text-white fa-lg"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">Career</h5>
-                            <p class="card-text">Consult for Career</p>
-                            <a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Fourth Card -->
-            <div class="col-sm-6 col-md-3 mb-3">
-                <div class="card h-100 custom-card">
-                    <div class="card-body text-center d-flex flex-column justify-content-between">
-                        <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                            <i class="fas fa-star text-white fa-lg"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title">General Horoscope</h5>
-                            <p class="card-text">Understand the language of planets</p>
-                            <a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</div>
-
+    </div>
 <br>
-
-
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <h3 class="mb-3 font-600">Astrology Article</h3>
             </div>
-            <div class="col-6 float-end">
+            <div class="col-6 text-right">
                 <a class="btn btn-danger mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
                     <i class="fa fa-arrow-left"></i>
                 </a>
@@ -118,17 +67,16 @@
             <div class="col-12">
                 <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        @for (int i = 0; i < Model.Count(); i += 3)
+                        @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
                         {
                             <div class="carousel-item @(i == 0 ? "active" : "")">
                                 <div class="row">
-                                    @for (int j = i; j < i + 3 && j < Model.Count(); j++)
+                                    @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
                                     {
-                                        var article = Model[j];
-                                        <div class="col-md-4 mb-3">
-                                             
-                                            <div class="card h-100">
-                                                    <img class="img-fluid" alt="100%x280" src="~/Image/Shubh-muhurat-750-min.jpg">
+                                        var article = Model.ArticleToModel[j];
+                                        <div class="col-md-4 mb-3">    
+                                            <div class="card h-75">
+                                                    <img class="img-fluid" alt="100%x280" src="@article.ImageUrl" style="width:100% , height:500px">
                                                     <div class="card-body">
                                                         <h4 class="card-title cardTitle-truncate">@article.Title</h4>
                                                         <p class="card-text card-truncate">@article.Content</p>

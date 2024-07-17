@@ -18,7 +18,10 @@ builder.Services.AddScoped<IArticleRepository , ArticleRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IPageRepository, PageRepository>();
 builder.Services.AddScoped<IPageContentRepository, PageContentRepository>();
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 
+
+builder.Services.AddScoped<IServiceService, ServiceService>();
 builder.Services.AddScoped<IConsultationService, ConsultationService>();
 builder.Services.AddScoped<IPageContentService, PageContentService>();
 builder.Services.AddScoped<IPageService, PageService>();

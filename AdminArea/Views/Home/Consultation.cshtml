@@ -1,0 +1,79 @@
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+@{
+
+	ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-10 col-lg-8">
+			<div class="border p-4 rounded consult-container">
+				<form method="post" asp-action="SendEmail" asp-controller="Consultation" >
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<label for="Name">Name</label>
+							<input type="text" asp-for="ConsultationToModel!.Name" class="form-control" placeholder="Enter Name">
+							<span asp-validation-for="ConsultationToModel!.Name" style="color:red"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<label for="Email">Email</label>
+							<input type="text" asp-for="ConsultationToModel!.Email" class="form-control" placeholder="Enter Your Email">
+							<span asp-validation-for="ConsultationToModel!.Email" style="color:red"></span>
+						</div>
+						<div class="form-group mt-3 col-lg-6">
+							<label for="Phone">Phone</label>
+							<input type="text" asp-for="ConsultationToModel!.Phone" class="form-control" placeholder="Enter Your Phone">
+							<span asp-validation-for="ConsultationToModel!.Phone" style="color:red"></span>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<label for="DateOfBirth">Date Of Birth</label>
+							<input style="cursor:pointer" type="datetime-local" value="" asp-for="ConsultationToModel!.DateOfBirth" class="form-control" placeholder="Enter Your Date Of Birth">
+							<span asp-validation-for="ConsultationToModel!.DateOfBirth" style="color:red"></span>
+						</div>
+
+						<div class="form-group mt-3 col-lg-6">
+							<label for="PlaceOfBirth">Place Of Birth</label>
+							<input type="text" asp-for="ConsultationToModel!.PlaceOfBirth" class="form-control" placeholder="Enter Your Place Of Birth">
+							<span asp-validation-for="ConsultationToModel!.PlaceOfBirth" style="color:red"></span>
+						</div>
+					</div>
+					<div class="form-group mt-3">
+						<label for="exampleFormControlTextarea1">Any Information</label>
+						<textarea class="form-control" asp-for="ConsultationToModel!.AnyInformation" rows="5"></textarea>
+					</div>
+					<div class="d-flex justify-content-center mt-3">
+						<button type="submit" class="btn btn-outline-danger" style="background-color: #711604; color: white;">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row ">
+
+		@foreach (var service in Model.ServiceToModel)
+		{
+			<div class="col-sm-6 col-md-3 mb-3">
+				<div class="card h-100 custom-card">
+					<div class="card-body text-center d-flex flex-column justify-content-between">
+						<div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+							@Html.Raw(service.Icon)
+						</div>
+						<div>
+							<h5 class="card-title">@service.Title</h5>
+							<p class="card-text">@service.Content</p>
+							<a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+
+	</div>
+</div>

@@ -20,5 +20,9 @@ namespace Web.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        public async Task<List<Article>> GetArticlesAsync()
+        {
+           return await _dbContext.Articles.ToListAsync();
+        }
     }
 }
