@@ -264,3 +264,12 @@ body {
 .backGround-Color{
     background-color:rgba(0, 0, 0, 0.1)
 }
+
+.card-image{
+    height:200px;
+    width:100%;
+}
+
+.carousel-icon{
+    text-align:right;
+}
