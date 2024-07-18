@@ -6,7 +6,7 @@ using Web.Application.ViewModels.Admin.Service;
 namespace Web.Areas.Admin.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class ServiceController : Controller
     {
@@ -34,12 +34,60 @@ namespace Web.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ServiceToCreateViewModel model)
         {
-            var createdService = await _serviceService.AddServicesAsync(model);
-            if (createdService != null)
+            if (ModelState.IsValid)
+            {
+                var createdService = await _serviceService.AddServicesAsync(model);
+                if (createdService != null)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var EditedService = await _serviceService.GetServiceAsync(id);
+            if (EditedService != null)
+            {
+                var updateddata = new ServiceToEditViewModel()
+                {
+                    Id = EditedService.Id,
+                    Title = EditedService.Title,
+                    Content = EditedService.Content,
+                    Icon = EditedService.Icon
+
+                };
+                return View(updateddata);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ServiceToEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var isEdited = await _serviceService.UpdateServiceAsync(model);
+                if (isEdited != null)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            return View();
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult>Delete(int id)
+        {
+            var isDeleted = await _serviceService.DeleteServiceAsync(id);
+            if (isDeleted)
             {
                 return RedirectToAction("List");
             }
-            return View(model);
+            return View();
         }
     }
 }

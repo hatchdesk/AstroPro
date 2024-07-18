@@ -12,6 +12,7 @@ using Web.Domian.Entities;
 
 namespace Web.Application.Services
 {
+   
     public class ServiceService : IServiceService
     {
         private readonly IServiceRepository _serviceRepository;
@@ -56,5 +57,58 @@ namespace Web.Application.Services
                 Content = x.Content,
             }).ToList();
         }
+
+        public async Task<ServiceToViewModel?> GetServiceAsync(int id)
+        {
+            var services = await _serviceRepository.GetAsync(id);
+            if (services == null)
+                return null;
+            return new ServiceToViewModel()
+            {
+                Id = services.Id,
+                Icon = services.Icon,
+                Title = services.Title,
+                Content = services.Content,
+            };
+        }
+
+        public async Task<bool> DeleteServiceAsync(int id)
+        {
+            var services = await _serviceRepository.DeleteAsync(id);
+            var savedServices = await _unitOfWork.SaveChangesAsync();
+            if(savedServices > 0)
+            {
+                return true;
+            }
+            return false;
+            
+        }
+
+        public async Task<ServiceToViewModel?> UpdateServiceAsync(ServiceToEditViewModel model)
+        {
+            var Updated = await _serviceRepository.GetAsync(model.Id);
+            if (Updated == null)
+            {
+                return new ServiceToViewModel();
+            }
+
+
+            Updated.Title = model.Title;
+            Updated.Content = model.Content;
+            Updated.Icon = model.Icon;
+
+              _serviceRepository.UpdateAsync(Updated);
+            await _unitOfWork.SaveChangesAsync();
+
+            return new ServiceToViewModel()
+            {
+                Id = Updated.Id,
+                Title = Updated.Title,
+                Content = Updated.Content,
+                Icon = Updated.Icon,
+            };
+        }
+
+     
     }
 }

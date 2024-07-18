@@ -7,7 +7,7 @@ namespace Web.Application.Interfaces.Services
     {
         Task<List<PageToViewModel>> GetAllPagesAsync();
         Task<PageToViewModel?> AddPagesAsync(PageToCreateViewModel model);
-        Task<PageParentModel?> GetPageAsync(int id);
+        Task<PageToEditViewModel?> GetPageAsync(int id);
         Task<PageToViewModel?> UpdatePageAsync(PageToEditViewModel model);
         Task<PageParentModel?> GetPageByNameAsync(string name);
         Task<bool> DeletePageAsync(int Id);

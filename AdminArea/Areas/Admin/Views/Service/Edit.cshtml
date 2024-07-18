@@ -1,9 +1,9 @@
-﻿@using Web.Application.ViewModels.Admin.Articles
-@using Web.Domian.Enums
-@model ArticleToEditViewModel;
+﻿@using Web.Application.ViewModels.Admin.Service
+
+@model ServiceToEditViewModel;
 
 @{
-    ViewBag.Title = "Create Article";
+    ViewBag.Title = "Create Service";
 }
 
 <!DOCTYPE html>
@@ -36,10 +36,6 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" asp-area="Admin" asp-controller="Page" asp-action="List">Page</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="Admin" asp-controller="Service" asp-action="List">Service</a>
-                    </li>
-
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -54,7 +50,7 @@
     <div class="row page-titles float-end mx-5 mt-2">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-controller="Article" asp-action="List">Article </a></li>
+                <li class="breadcrumb-item"><a asp-controller="Page" asp-action="List">Service </a></li>
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
             </ol>
         </div>
@@ -64,39 +60,29 @@
             <div class="col-lg-8 offset-2">
                 <div class="card mt-5">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Edit Article</h4>
+                        <h4 class="card-title text-center">Edit Service</h4>
                         <div class="basic-form">
-                            <form method="post" asp-controller="Article" asp-action="Edit" enctype="multipart/form-data">
+                            <form method="post" asp-controller="Service" asp-action="Edit">
                                 <div class="form-row">
                                     <div class="form-group mb-3">
-                                        <label class="form-label fw-bold">Title</label>
-                                        <input type="text" class="form-control" asp-for="Title" placeholder="Enter Your Title" />
+                                        <label class="form-label  fw-bold">Title</label>
+                                        <input type="text" class="form-control " asp-for="Title" placeholder="Enter Your Name" />
                                         <span asp-validation-for="Title" style="color:red"></span>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label class="form-label fw-bold">Content</label>
-                                        <input type="text" class="form-control" asp-for="Content" placeholder="Enter Your Content" />
-                                        <span asp-validation-for="Content" style="color:red"></span>
+                                        <label class="form-label  fw-bold" asp-for="Content">Content</label>
+                                        <textarea asp-for="Content" class="form-control" placeholder="Enter Your Tag Here"></textarea>
+                                        <span asp-validation-for="Content" class="text-danger"></span>
                                     </div>
+
+                                    <div class="form-group mb-3">
+                                        <label class="form-label  fw-bold" asp-for="Icon">Icon Url</label>
+                                        <textarea asp-for="Icon" class="form-control" placeholder="Enter Your IconUrl"></textarea>
+                                        <span asp-validation-for="Icon" class="text-danger"></span>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-dark">Save</button>
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label fw-bold">IsPublished</label>
-                                    <input asp-for="IsPublished" type="checkbox" class="form-check-input border-2" />
-                                    <span asp-validation-for="IsPublished" style="color:red" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label fw-bold">Category</label>
-                                    <select asp-for="Category" asp-items="Html.GetEnumSelectList<ArticleCategory>()">
-                                        <option selected="selected" value="">Please select</option>
-                                    </select>
-                                    <span asp-validation-for="Category" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label fw-bold">Image</label>
-                                    <input asp-for="Image" type="file" class="form-control" />
-                                    <span asp-validation-for="Image" style="color:red" class="text-danger"></span>
-                                </div>
-                                <button type="submit" class="btn btn-dark">Save</button>
                             </form>
                         </div>
                     </div>

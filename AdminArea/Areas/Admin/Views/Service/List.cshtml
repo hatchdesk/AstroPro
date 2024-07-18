@@ -79,9 +79,9 @@
                         <td class="other-column"><span class="truncate">@services.Content</span></td>
                         <td class="other-column">@services.Icon</td>
                         <td class="other-column">
-                            <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Edit" asp-route-id="@services.Id">Edit</a>
-                            <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Delete" asp-route-id="@services.Id">Delete</a>
-                            <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Detail" asp-route-id="@services.Id">Info</a>
+                            <a type="button" asp-area="Admin" asp-controller="Service" asp-action="Edit" asp-route-id="@services.Id">Edit</a>
+                            <a type="button" asp-area="Admin" asp-controller="Service" asp-action="Delete" asp-route-id="@services.Id">Delete</a>
+                        @*     <a type="button" asp-area="Admin" asp-controller="Service" asp-action="Detail" asp-route-id="@services.Id">Info</a> *@
                     </tr>
                 }
             </tbody>

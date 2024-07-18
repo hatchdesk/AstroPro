@@ -83,12 +83,16 @@ namespace AdminArea.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ArticleToEditViewModel model)
         {
-            var edited = await _articleService.UpdateArticleAsync(model);
-            if (edited != null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                var edited = await _articleService.UpdateArticleAsync(model);
+                if (edited != null)
+                {
+                    return RedirectToAction("List");
+                }
             }
-            return View();
+                return View();
+            
         }
 
         private string UploadedFile(ArticleToCreateViewModel model)

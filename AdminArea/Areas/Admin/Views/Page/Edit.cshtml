@@ -34,6 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-white" asp-area="Admin" asp-controller="Page" asp-action="List">Page</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" asp-area="Admin" asp-controller="Service" asp-action="List">Service</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -75,6 +78,7 @@
                                     <table class="table table-fixed table-striped table-bordered mt-4">
                                         <thead>
                                             <tr>
+                                                <th>Id</th>
                                                 <th>Tag</th>
                                                 <th>Content</th>
                                                 <th>Actions</th>
@@ -91,7 +95,7 @@
                                                         <td class="other-column"><span class="truncate">@item.Content</span></td>
                                                    
                                                     <td class="other-column">
-                                                            <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                                            <a type="button" asp-area="Admin" asp-controller="PageContent" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                                                             <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                                                             <a type="button" asp-area="Admin" asp-controller="Article" asp-action="Detail" asp-route-id="@item.Id">Info</a>
                                                     </td>
@@ -102,7 +106,7 @@
                                     </table>
                                     </div>
                                    
-                              <button type="submit" class="btn btn-dark">Save</button>
+                              <button type="submit" class="btn btn-dark text-center">Save</button>
                 </form>
             </div>
         </div>

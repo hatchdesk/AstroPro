@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.EntityFrameworkCore;
 using Web.Application.Interfaces;
 using Web.Application.Interfaces.Repositories;
 using Web.Application.Interfaces.Services;
@@ -7,6 +6,8 @@ using Web.Application.Options;
 using Web.Application.Services;
 using Web.Infrastructure;
 using Web.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,11 +32,21 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.Configure<EmailSettingsOption>(builder.Configuration.GetSection("EmailSettings"));
 
-var connectionString = builder.Configuration.GetConnectionString("WebPortal");
-builder.Services.AddDbContext<WebDbContext>(options => 
-    {
-        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-    });
+//var connectionString = builder.Configuration.GetConnectionString("WebPortal");
+//builder.Services.AddDbContext<WebDbContext>(options => 
+//    {
+//        options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+//    });
+
+
+builder.Services.AddDbContext<WebDbContext>(options =>
+    options.UseSqlServer(
+
+
+        builder.Configuration.GetConnectionString("astroPortal"),
+        b => b.MigrationsAssembly("Web.Infrastructure")
+    )
+);
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

@@ -94,8 +94,6 @@ namespace Web.Application.Services
 
         public async Task<PageParentModel?> GetPageByNameAsync(string name)
         {
-
-
             var page = await _pageRepository.GetByNameAsync(name);
 
             if (page == null)
@@ -141,7 +139,7 @@ namespace Web.Application.Services
                 ArticleToModel =  Articles
             };
         }
-        public async Task<PageParentModel?> GetPageAsync(int id)
+        public async Task<PageToEditViewModel?> GetPageAsync(int id)
         {
             var page = await _pageRepository.FindAsync(
                 x => x.Id == id,
@@ -159,25 +157,15 @@ namespace Web.Application.Services
                 PageId = x.PageId
             }).ToList();
 
-            var services = await _serviceRepository.GetAllAsync();
-            var serviceViewModels = services.Select(x => new ServiceToViewModel
-            {
-                Id = x.Id,
-                Icon = x.Icon,
-                Title = x.Title,
-                Content = x.Content
-            }).ToList();
+         
 
-            return new PageParentModel
+            return new PageToEditViewModel
             {
-                PageModel = new PageToViewModel
-                {
                     Id = page.Id,
                     Name = page.Name,
                     Tag = page.Tag,
                     Contents = pageContents ?? new List<PageContentToViewModel>()
-                },
-                ServiceToModel = serviceViewModels
+               
             };
         }
     }

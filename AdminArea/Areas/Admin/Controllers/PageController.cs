@@ -33,10 +33,13 @@ namespace AdminArea.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(PageToCreateViewModel model)
         {
-            var isAdded = await _PageService.AddPagesAsync(model);
-            if(isAdded != null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+                var isAdded = await _PageService.AddPagesAsync(model);
+                if (isAdded != null)
+                {
+                    return RedirectToAction("List");
+                }
             }
             return View(model);
         }
@@ -60,7 +63,7 @@ namespace AdminArea.Areas.Admin.Controllers
             {
                 return View(pageWithServices);
             }
-            return View(new PageParentModel());
+            return View();
         }
 
 
@@ -68,11 +71,14 @@ namespace AdminArea.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(PageToEditViewModel model)
         {
-
-            var edited = await _PageService.UpdatePageAsync(model);
-            if (edited != null)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("List");
+
+                var edited = await _PageService.UpdatePageAsync(model);
+                if (edited != null)
+                {
+                    return RedirectToAction("List");
+                }
             }
             return View();
 
