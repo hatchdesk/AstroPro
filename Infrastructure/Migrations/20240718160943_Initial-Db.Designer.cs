@@ -12,8 +12,8 @@ using Web.Infrastructure;
 namespace Web.Infrastructure.Migrations
 {
     [DbContext(typeof(WebDbContext))]
-    [Migration("20240718054029_Initial")]
-    partial class Initial
+    [Migration("20240718160943_Initial-Db")]
+    partial class InitialDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
