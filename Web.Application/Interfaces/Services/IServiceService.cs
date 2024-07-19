@@ -1,4 +1,5 @@
-﻿using Web.Application.ViewModels.Admin.Service;
+﻿using Microsoft.AspNetCore.Mvc;
+using Web.Application.ViewModels.Admin.Service;
 
 namespace Web.Application.Interfaces.Services
 {

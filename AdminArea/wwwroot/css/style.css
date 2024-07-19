@@ -60,12 +60,13 @@
     text-shadow: 1px 1px 2px rgb(4, 0, 0);
 }
 
+
 .navbar-custom {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-li a:hover {
-    color: black;
+.navbar-menu li a:hover {
+    color: White;
 }
 
 .custom-card {
@@ -273,4 +274,8 @@ body {
 
 .carousel-icon{
     text-align:right;
+}
+
+.footer-menu{
+    text-decoration:none;
 }

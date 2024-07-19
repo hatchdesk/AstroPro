@@ -28,6 +28,8 @@ namespace Web.Area.Admin.Controllers
 
         [AllowAnonymous]
         [HttpPost]
+        [Route("Admin/logIn")]
+
         public async Task<IActionResult> SignIn(LogInToCreateViewModel model)
         {
             if (ModelState.IsValid)

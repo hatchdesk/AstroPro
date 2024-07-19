@@ -1,0 +1,87 @@
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Detail";
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    @foreach(var service in Model.ServiceToModel)
+    {
+        <div class="header" style="background-image: linear-gradient(45deg, red, yellow);">
+            <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" class="btn btn-danger"> Book Consultation</a>
+            <h1>@service.Title</h1>
+            <p>@service.Content</p>
+        </div>
+
+        <div class="horoscope-info">
+            <div class="container">
+                <h2 class="mt-3">What is @service.Title ?</h2>
+                <p>The @service.Title is a chart or diagram representing the positions of the Sun, Moon, planets, astrological aspects, and sensitive angles at the time of an event, such as a person's birth. It is used in astrology to forecast events and interpret personality traits and characteristics based on celestial positions.</p>
+                <p>@service.Title are often personalized based on an individual's birth date, time, and place, and they provide insights into various aspects of life, including relationships, career, health, and finances.</p>
+                <h3>Aries @service.Title 2024</h3>
+
+                <p>Ganesha says your strong will and courageous qualities are going to be very useful to you in the year 2024. Whatever you decide, you will try to complete it with your willpower. Whenever you feel that you need the people around you, do not hesitate to talk. Mars will help you a lot this year, but remember that you have to fall a few times before reaching your destination. There is definitely success somewhere in failure, definitely try to find it. This year will be mixed with some sweet and some bitter memories for you. If you are a student, then in the new year you will get many opportunities to prove your talent in the field of education. It is up to you how you utilize these opportunities.</p>
+
+                <h3>Taurus @service.Title 2024</h3>
+
+                <p>Ganesha says people with the Taurus zodiac sign like to live peacefully. You also do not like frequent changes in life. Living in a changing environment can also prove harmful to your nature. By your nature you win the hearts of the people around you very quickly, this is your great strength. In the year 2024, you will benefit from this nature of yours. This year, if you do some social work, then people will look at you with respect. This year will be financially beneficial for you.</p>
+
+                <h3> Gemini @service.Title 2024</h3>
+
+                <p>Ganesha says Gemini people have a large number of friends and admirers. Your generous nature and gentleness are going to be very useful to you in the year 2024. It is said that destruction is the opposite of black intelligence. This year this may prove to be true for you. Seeing Mercury being the eighth lord and seeing the Marak house cannot be considered an auspicious sign. This year you are going to be troubled by your changing plans again and again. If you are employed then you will be looking for new work. In the first week of January, when the Sun will be in Scorpio, this time can be full of problems for you. People with the Gemini zodiac sign will remain mentally disturbed during this time. If you have been thinking about your business for some time now, then do not think about it in the first half of the year 2024.</p>
+                <p>Consulting horoscopes is believed to help individuals make informed decisions, understand their strengths and weaknesses, and navigate life's challenges with greater awareness.</p>
+            </div>
+        </div>
+    }
+  
+
+
+
+   <footer class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-3">
+                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
+                        <li>
+                            <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
+                        </li>
+                        <li >
+                            <a class=" text-white" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Contact</a>
+                        </li>
+                        <li >
+                            <a class="text-white" href="#!">Advertise</a>
+                        </li>
+                        <li>
+                            <a class=" text-white" href="#!">Terms</a>
+                        </li>
+                        <li>
+                            <a class=" text-white" href="#!">Privacy</a>
+                        </li>
+                    </ul>
+                  
+            </div>
+            <div class="row">
+                    <div class="col-lg-6 offset-4">
+                        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+                    </div>
+            </div>
+              </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -68,7 +68,8 @@
 						<div>
 							<h5 class="card-title">@service.Title</h5>
 							<p class="card-text">@service.Content</p>
-							<a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
+							<a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-primary">Learn More</a>
+
 						</div>
 					</div>
 				</div>
