@@ -41,7 +41,7 @@
                         <div>
                             <h5 class="card-title">@service.Title</h5>
                             <p class="card-text">@service.Content</p>
-                            <a type="button" asp-controller="Home" class="btn btn-outline-primary">Learn More</a>
+                            <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-primary">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                                                     <div class="card-body">
                                                         <h4 class="card-title cardTitle-truncate">@article.Title</h4>
                                                         <p class="card-text card-truncate">@article.Content</p>
-                                                        <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-primary">Read More</a>
+                                                        <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-primary">Read More</a>
                                                     </div>
                                             </div>
                                              

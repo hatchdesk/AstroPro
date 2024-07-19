@@ -12,7 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <section class="top-section"> --
+    <section class="top-section">
         <div class="container-fluid">
             <div class="d-flex justify-content-end">
                 <div class="p-2 bd-highlight me-auto">
@@ -25,7 +25,7 @@
                   @foreach (var service in Model!.ServiceToModel)
                    {
                  <div class="p-2 bd-highlight text-center icon-wrap">
-                    <a class="abc" href="Horoscope.html">
+                    <a class="abc" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
                             @Html.Raw(service.Icon)
                             <span class="d-block icon-text">@service.Title</span>
                     </a>
@@ -46,7 +46,7 @@
 
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto navbar-menu">
                     @* @Html.Action("NavigationMenu", "Home") *@
 
                     <li class="nav-item">
@@ -57,11 +57,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Consultation</a>
-                    </li>
-
-               
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="Admin" asp-controller="Account" asp-action="SignIn">SignIn</a>
                     </li>
                     <li class="nav-item">
                         <form class="d-flex">
@@ -81,12 +76,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-3">
-                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none">
+                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
                         <li>
-                            <a class="text-white" href="#!">About</a>
+                            <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
                         </li>
                         <li >
-                            <a class=" text-white" href="#!">Contact</a>
+                            <a class=" text-white" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Contact</a>
                         </li>
                         <li >
                             <a class="text-white" href="#!">Advertise</a>

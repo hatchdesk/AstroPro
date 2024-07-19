@@ -106,7 +106,16 @@ namespace Web.Application.Services
                 Content = x.Content,
                 PageId = x.PageId
             }).ToList();
+            var homePage = await _pageRepository.GetByNameAsync("Home");
+            var homeContents = homePage?.Contents?.Select(x => new PageContentToViewModel
+            {
+                Id = x.Id,
+                Tag = x.Tag,
+                Content = x.Content,
+                PageId = x.PageId
+            }).ToList();
 
+            pageContents?.AddRange(homeContents!);
             var services = await _serviceRepository.GetServicesAsync();
             var serviceToViewModels = services?.Select(s => new ServiceToViewModel
             {

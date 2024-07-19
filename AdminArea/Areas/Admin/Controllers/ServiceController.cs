@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
+using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Admin.Service;
 
 namespace Web.Areas.Admin.Controllers
@@ -89,5 +90,9 @@ namespace Web.Areas.Admin.Controllers
             }
             return View();
         }
+
+
+      
+
     }
 }

@@ -28,8 +28,6 @@ namespace AdminArea.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            
-            //var  articles = await _articleService.GetActiveArticlesAsync();
             var pageViewModel = await _articleService.GetHomePage();
 
             var HomeView = new PageParentModel()
@@ -60,15 +58,18 @@ namespace AdminArea.Controllers
             if (name == "Consultation")
             {
 				var services = await _serviceService.GetAllServiceAsync();
-				var consultationModel = new PageParentModel
+                var page = await _pageService.GetPageByNameAsync(name);
+
+                if(page == null)
                 {
-                    ConsultationToModel = new ConsultationSendToViewModel(),
-                    ServiceToModel = services
-				};
-                return View("Consultation", consultationModel);
+                    return NotFound();   
+                }
+
+                page.ConsultationToModel = new ConsultationSendToViewModel();
+                page.ServiceToModel = services;
+               
+                return View("Consultation", page);
             }
-
-
             var pageViewModel = await _pageService.GetPageByNameAsync(name);
             if (pageViewModel == null)
             {
@@ -86,10 +87,24 @@ namespace AdminArea.Controllers
 			return View();
 		}
 
+
         [HttpGet]
-        public IActionResult Category()
+        [Route("/Service/Detail/{id}")]
+        public async Task<IActionResult> ServiceDetail(int id)
         {
-            return View();
+            var service = await _serviceService.GetServiceAsync(id);
+
+            if (service == null)
+            {
+                return NotFound();
+            }
+
+            var model = new PageParentModel()
+            {
+                ServiceToModel = new List<ServiceToViewModel> { service }
+            };
+
+            return View(model);
         }
 
 
