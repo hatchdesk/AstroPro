@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Astro Pro</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -23,15 +23,13 @@
                     </a>
                 </div>
                 <div class="col-lg-8 col-md-10 col-sm-none">
-                    <!-- Check for screen size to show services -->
                     @if (Model != null && Model.ServiceToModel != null)
                     {
-                        // Show services only on medium (md) and larger screens (lg and xl)
                         <div class="d-none d-sm-flex justify-content-end align-items-center flex-wrap">
                             @foreach (var service in Model.ServiceToModel)
                             {
                                 <div class="p-2 bd-highlight text-center icon-wrap">
-                                    <a class="abc" class="service-icon asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
+                                    <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
                                         @Html.Raw(service.Icon)
                                         <span class="d-block icon-text service-title">@service.Title</span>
                                     </a>
@@ -84,7 +82,7 @@
     <footer class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offset-3">
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
                         <li>
                             <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
@@ -97,7 +95,7 @@
                   
             </div>
             <div class="row">
-                    <div class="col-lg-6 offset-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                         <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
                     </div>
             </div>

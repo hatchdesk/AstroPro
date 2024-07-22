@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="header" style="background-image: linear-gradient(45deg, red, yellow);">
-                            <a asp-controller="Home" asp-action="page" asp-route-name="Consultation" class="atricle btn btn-danger"> Book Consultation</a>
+                        <a asp-controller="Home" asp-action="page" asp-route-name="Consultation" class="atricle btn btn-danger consultation-btn"> Book Consultation</a>
                             <h1>Article of @article.Category</h1>
                             <p class="lead">@article.Title</p>
                         </div>
@@ -53,32 +53,22 @@
         </div>
         
     }
- 
+
     <footer class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 offset-3">
-                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
                         <li>
-                            <a class="text-white" href="#!">About</a>
+                            <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
                         </li>
                         <li>
-                            <a class=" text-white" href="#!">Contact</a>
-                        </li>
-                        <li>
-                            <a class="text-white" href="#!">Advertise</a>
-                        </li>
-                        <li>
-                            <a class=" text-white" href="#!">Terms</a>
-                        </li>
-                        <li>
-                            <a class=" text-white" href="#!">Privacy</a>
+                            <a class=" text-white" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Contact</a>
                         </li>
                     </ul>
-
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 offset-4">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                         <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
                     </div>
                 </div>
@@ -87,4 +77,4 @@
     </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
-</html>
+</html> 
