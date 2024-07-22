@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Areas.Admin.Controllers
-{
-    [Authorize]
+{ 
+   
     [Area("Admin")]
-    public class AdminHomeController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {

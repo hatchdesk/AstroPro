@@ -7,7 +7,7 @@ using Web.Application.ViewModels.Admin.PageContent;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class PageController : Controller
     {

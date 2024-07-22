@@ -111,6 +111,7 @@ namespace Web.Application.Services
             };
         }
 
+
         public async Task<PageParentModel?> GetHomePage()
         {
             var page = await _pageRepository.GetPageContentAsync();

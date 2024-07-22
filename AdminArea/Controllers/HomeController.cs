@@ -4,9 +4,11 @@ using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
 using Web.Application.Services;
+using Web.Application.ViewModels.Admin.Articles;
 using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Admin.Service;
 using Web.Application.ViewModels.Consultation;
+using Web.Domian.Entities;
 
 
 namespace AdminArea.Controllers
@@ -82,10 +84,22 @@ namespace AdminArea.Controllers
 
 		[HttpGet]
         [Route("/Article/Detail/{id}")]
-		public IActionResult Detail()
+		public async Task<IActionResult> Detail(int id)
 		{
-			return View();
-		}
+            var article = await _articleService.GetArticle(id);
+
+            if (article == null)
+            {
+                return NotFound();
+            }
+
+            var model = new PageParentModel()
+            {
+                ArticleToModel = new List<ArticleToViewModel> { article }
+            };
+
+            return View(model);
+        }
 
 
         [HttpGet]

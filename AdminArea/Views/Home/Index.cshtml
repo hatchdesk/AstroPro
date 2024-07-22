@@ -54,7 +54,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h3 class="mb-3 font-monospace">Astrology Article</h3>
+                <h3 class="mb-3 font-monospace">Latest Article</h3>
             </div>
             <div class="col-6 carousel-icon">
                 <a class="btn btn-danger mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -78,8 +78,8 @@
                                             <div class="card">
                                                     <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl" >
                                                     <div class="card-body">
-                                                        <h4 class="card-title cardTitle-truncate">@article.Title</h4>
-                                                        <p class="card-text card-truncate">@article.Content</p>
+                                                        <h4 class="card-title cardTitle-truncate ">@article.Title</h4>
+                                                        <p class="card-text card-truncate"> @article.Content</p>
                                                         <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-primary">Read More</a>
                                                     </div>
                                             </div>

@@ -12,30 +12,39 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+
     <section class="top-section">
         <div class="container-fluid">
-            <div class="d-flex justify-content-end">
-                <div class="p-2 bd-highlight me-auto">
+            <div class="row align-items-center d-flex flex-wrap">
+                <div class="col-lg-4 col-md-2 col-sm-12">
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
                         <h1 class="brand">@Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1>
                     </a>
                 </div>
-                @if(Model !=null && Model.ServiceToModel !=null)
-                {
-                  @foreach (var service in Model!.ServiceToModel)
-                   {
-                 <div class="p-2 bd-highlight text-center icon-wrap">
-                    <a class="abc" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
-                            @Html.Raw(service.Icon)
-                            <span class="d-block icon-text">@service.Title</span>
-                    </a>
+                <div class="col-lg-8 col-md-10 col-sm-none">
+                    <!-- Check for screen size to show services -->
+                    @if (Model != null && Model.ServiceToModel != null)
+                    {
+                        // Show services only on medium (md) and larger screens (lg and xl)
+                        <div class="d-none d-sm-flex justify-content-end align-items-center flex-wrap">
+                            @foreach (var service in Model.ServiceToModel)
+                            {
+                                <div class="p-2 bd-highlight text-center icon-wrap">
+                                    <a class="abc" class="service-icon asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
+                                        @Html.Raw(service.Icon)
+                                        <span class="d-block icon-text service-title">@service.Title</span>
+                                    </a>
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
-               }
-                }
-               
             </div>
         </div>
     </section>
+
+
 
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, red, yellow);">
         <div class="container-fluid">
@@ -68,7 +77,7 @@
             </div>
         </div>
     </nav>
-    <div role="main" class="h-100">
+    <div role="main">
         @RenderBody()
     </div>
 
@@ -83,15 +92,7 @@
                         <li >
                             <a class=" text-white" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Contact</a>
                         </li>
-                        <li >
-                            <a class="text-white" href="#!">Advertise</a>
-                        </li>
-                        <li>
-                            <a class=" text-white" href="#!">Terms</a>
-                        </li>
-                        <li>
-                            <a class=" text-white" href="#!">Privacy</a>
-                        </li>
+                        
                     </ul>
                   
             </div>

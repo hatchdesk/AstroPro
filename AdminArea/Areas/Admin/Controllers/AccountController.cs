@@ -21,15 +21,14 @@ namespace Web.Area.Admin.Controllers
         }
 
         [AllowAnonymous]
+        [Route("Admin/login")]
         public IActionResult SignIn()
         {
             return View();
         }
 
-        [AllowAnonymous]
         [HttpPost]
-        [Route("Admin/logIn")]
-
+        [AllowAnonymous]
         public async Task<IActionResult> SignIn(LogInToCreateViewModel model)
         {
             if (ModelState.IsValid)
@@ -38,7 +37,7 @@ namespace Web.Area.Admin.Controllers
                 if (admin != null)
                 {
                     await CreateAuthCookie(admin);
-                    return RedirectToAction("Index", "AdminHome");
+                    return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Invalid username or password");
             }

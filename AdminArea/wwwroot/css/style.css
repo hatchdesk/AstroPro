@@ -4,9 +4,7 @@
     background-position: center;
 }
 
-.consult-container {
-    background: #fbed8a;
-}
+
 .nav-link-container {
     border: 1px solid !important;
     background: none !important;
@@ -251,7 +249,8 @@ body {
     -webkit-line-clamp: 3; /* Limits text to 3 lines */
     overflow: hidden; /* Hides overflow content */
     text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
-    line-height: 1.5; /* Adjust line height for better spacing */
+    line-height: 1.5;
+    min-height:60px;/* Adjust line height for better spacing */
 }
 
 .cardTitle-truncate {
@@ -259,7 +258,9 @@ body {
     -webkit-box-orient: vertical; /* Vertical box orientation */
     -webkit-line-clamp: 2;
     overflow: hidden; /* Hides overflow content */
-    text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+    text-overflow: ellipsis; 
+    /* Adds ellipsis (...) for overflowing text */
+    min-height:50px;
 }
 
 .backGround-Color{
@@ -277,4 +278,41 @@ body {
 
 .footer-menu{
     text-decoration:none;
+}
+
+.consult-bg{
+    background:linear-gradient(270deg , yellow, red);
+}
+
+
+.text-content{
+    text-align:justify;
+}
+
+
+
+@media (min-width: 576px) {
+    .service-icon {
+        font-size: 24px; 
+    }
+}
+
+@media (min-width: 768px) {
+    .service-icon {
+        font-size: 32px; 
+    }
+}
+
+
+
+@media (min-width: 576px) {
+    .service-title {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .service-title {
+        font-size: 16px; 
+    }
 }

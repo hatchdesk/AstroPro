@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class ArticleController : Controller
     {
@@ -43,6 +43,17 @@ namespace AdminArea.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public async Task <IActionResult> Detail(int id)
+        {
+            var article = await _articleService.GetArticle(id);
+			if (article == null)
+			{
+				return NotFound();
+			}
+            return View(article);
+		}
 
         [HttpPost]
         public async Task<IActionResult> Create(ArticleToCreateViewModel model)

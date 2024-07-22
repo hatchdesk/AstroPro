@@ -2,7 +2,13 @@
 
 <div class="container-fluid">
     <div class="container mt-3">
-        <div class="row">
+        <div class=" row float-end">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item list-unstyled text-decoration-none"><a asp-controller="Home" asp-action="index">Home</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">About Us</a></li>
+            </ol>
+        </div>
+        <div class="row mt-5">
             <div class="col-lg-8">
                 <h2 class="card-title border-bottom mb-3">
                     @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Title1").Select(c => c.Content).FirstOrDefault()
