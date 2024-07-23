@@ -4,10 +4,10 @@ using Web.Application.Interfaces.Services;
 using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Admin.Service;
 
-namespace Web.Areas.Admin.Controllers
+namespace AdminArea.Areas.Admin.Controllers
 {
 
-    [Authorize]
+    //[Authorize]
     [Area("Admin")]
     public class ServiceController : Controller
     {

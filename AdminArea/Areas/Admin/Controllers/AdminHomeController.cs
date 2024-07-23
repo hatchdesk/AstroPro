@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Web.Areas.Admin.Controllers
-{ 
-   
+namespace AdminArea.Areas.Admin.Controllers
+{
     [Area("Admin")]
-    public class HomeController : Controller
+    [AllowAnonymous]
+    public class AdminHomeController : Controller
     {
         public IActionResult Index()
         {

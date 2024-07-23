@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
 using Web.Application.ViewModels.Admin.PageContent;
 
-namespace Web.Area.Admin.Controllers
+namespace AdminArea.Areas.Admin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Area("Admin")]
     public class PageContentController : Controller
     {

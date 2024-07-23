@@ -1,0 +1,60 @@
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+<section class="top-section">
+    <div class="container-fluid">
+        <div class="row align-items-center d-flex flex-wrap">
+            <div class="col-lg-4 col-md-2 col-sm-12">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+                    <h1 class="brand">@Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1>
+                </a>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-none">
+                @if (Model != null && Model.ServiceToModel != null)
+                {
+                    <div class="d-none d-sm-flex justify-content-end align-items-center flex-wrap">
+                        @foreach (var service in Model.ServiceToModel)
+                        {
+                            <div class="p-2 bd-highlight text-center icon-wrap">
+                                <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
+                                    @Html.Raw(service.Icon)
+                                    <span class="d-block icon-text service-title">@service.Title</span>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, red, yellow);">
+    <div class="container-fluid">
+        <!-- Navbar toggle button for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto navbar-menu">
+                @* @Html.Action("NavigationMenu", "Home") *@
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="About us">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Consultation</a>
+                </li>
+                <li class="nav-item">
+                    <form class="d-flex">
+                        <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-light custom-search-btn" type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

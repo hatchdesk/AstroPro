@@ -1,0 +1,99 @@
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+@{
+
+	ViewData["Title"] = "Home";
+}
+<div class="Container-fluid">
+	<div class="container mt-5">
+		<div class=" row float-end">
+			<div class="col-lg-12">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item list-unstyled text-decoration-none"><a asp-controller="Home" asp-action="index">Home</a></li>
+					<li class="breadcrumb-item active"><a href="javascript:void(0)">Consultation</a></li>
+				</ol>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="text-center fw-bold">Contact Us</h1>
+				<p class="text-center mt-3 fw-lighter">Any question or remarks? Just write us a message!</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<form method="post" asp-action="SendEmail" asp-controller="Consultation">
+					<div class="row">
+						<div class="form-group mt-3">
+							<input type="text" asp-for="ConsultationToModel!.Name" class="form-control corner-radius" placeholder="Enter Name">
+							<span asp-validation-for="ConsultationToModel!.Name" style="color:red"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<input type="text" asp-for="ConsultationToModel!.Email" class="form-control rounded-4 p-3" placeholder="Enter Your Email">
+							<span asp-validation-for="ConsultationToModel!.Email" style="color:red"></span>
+						</div>
+						<div class="form-group mt-3 col-lg-6">
+							<input type="text" asp-for="ConsultationToModel!.Phone" class="form-control rounded-4 p-3" placeholder="Enter Your Phone">
+							<span asp-validation-for="ConsultationToModel!.Phone" style="color:red"></span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group mt-3 col-lg-6">
+							<input style="cursor:pointer" type="datetime-local" value="" asp-for="ConsultationToModel!.DateOfBirth" class="form-control rounded-4 p-3" placeholder="Enter Your Date Of Birth">
+							<span asp-validation-for="ConsultationToModel!.DateOfBirth" style="color:red"></span>
+						</div>
+
+						<div class="form-group mt-3 col-lg-6">
+							<input type="text" asp-for="ConsultationToModel!.PlaceOfBirth" class="form-control rounded-4 p-3" placeholder="Enter Your Place Of Birth">
+							<span asp-validation-for="ConsultationToModel!.PlaceOfBirth" style="color:red"></span>
+						</div>
+					</div>
+					<div class="form-group mt-3">
+						<textarea class="form-control rounded-4 p-3" asp-for="ConsultationToModel!.AnyInformation" rows="5"></textarea>
+					</div>
+					<div class="mt-3">
+						<button type="submit" class="btn btn-outline-danger mb-3" style="background-color: #711604; color: white;">Send Message</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-6">
+				<div class="rounded p-5 consult-bg mb-3">
+					<div class="writeus color size">
+						<h1 style="font-size: 28px; font-weight: bold" class="text-white">Write to us:</h1>
+						<p class="text-white" style="font-size: 18px; color: black; margin-top: 15px">
+							For Sales, Advertisement, affiliations &
+							Alliances:sales@starstell.com
+						</p>
+					</div>
+					<div class="phone mt-4">
+						<a class=" text-decoration-none text-white" href="tel:+91- 8588 00 9900"><i class="fa-solid fa-phone fs-4 me-4"></i>+91- 8588 00 9900</a>
+					</div>
+					<div class="mail mt-4">
+						<a class="text-decoration-none text-white" href="support@starstell.com"><i class="fa-solid fa-envelope fs-4 me-4"></i>support@starstell.com</a>
+					</div>
+					<div class="address mt-4">
+						<p style="font-weight: 500" class="text-decoration-none text-white">
+							<i class="fa-sharp fa-solid fa-location-dot fs-4 me-4 "></i>
+							D-100 2nd floor Okhla industrial area Phase-1 Delhi-110020
+						</p>
+					</div>
+					<div class="socials d-flex justify-content-start align-items-center">
+						<div class="twitter fs-3">
+							<a class="text-white" href="https://twitter.com/YourStarsTell"><i class="fa-brands fa-x-twitter"></i></a>
+						</div>
+						<div class="facebook ms-5 fs-3">
+							<a class="text-white" href="https://www.facebook.com/StarsTell"><i class="fa-brands fa-facebook"></i></a>
+						</div>
+						<div class="instagram ms-5 fs-3">
+							<a class="text-white" href="https://www.instagram.com/yourstarstell/"><i class="fa-brands fa-instagram"></i></a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

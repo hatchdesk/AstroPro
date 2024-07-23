@@ -6,10 +6,11 @@
 }
 
 
-    <div class="row page-titles mx-5  mt-2 float-end">
-        <div class="col p-md-0">
+    <div class="row page-titles mx-5  mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="index">Pages</a></li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Home" asp-action="Index">Home</a></li>
+             
                 <li class="breadcrumb-item active"><a href="javascript:void(0)">List</a></li>
             </ol>
         </div>
@@ -39,7 +40,7 @@
                         <td class="other-column">
                             <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Edit" asp-route-id="@pages.Id">Edit</a>
                             <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Delete" asp-route-id="@pages.Id">Delete</a>
-                            <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Detail" asp-route-id="@pages.Id">Info</a>
+                            @* <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Detail" asp-route-id="@pages.Id">Info</a> *@
                     </tr>
                 }
             </tbody>

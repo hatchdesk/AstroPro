@@ -1,4 +1,4 @@
-﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+﻿
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,111 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Astro Pro</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> 
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
-
-    <section class="top-section">
-        <div class="container-fluid">
-            <div class="row align-items-center d-flex flex-wrap">
-                <div class="col-lg-4 col-md-2 col-sm-12">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-                        <h1 class="brand">@Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1>
-                    </a>
-                </div>
-                <div class="col-lg-8 col-md-10 col-sm-none">
-                    @if (Model != null && Model.ServiceToModel != null)
-                    {
-                        <div class="d-none d-sm-flex justify-content-end align-items-center flex-wrap">
-                            @foreach (var service in Model.ServiceToModel)
-                            {
-                                <div class="p-2 bd-highlight text-center icon-wrap">
-                                    <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
-                                        @Html.Raw(service.Icon)
-                                        <span class="d-block icon-text service-title">@service.Title</span>
-                                    </a>
-                                </div>
-                            }
-                        </div>
-                    }
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, red, yellow);">
-        <div class="container-fluid">
-            <!-- Navbar toggle button for mobile -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Navbar links -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto navbar-menu">
-                    @* @Html.Action("NavigationMenu", "Home") *@
-
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="About us">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Consultation</a>
-                    </li>
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-light custom-search-btn" type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    @{
+        await Html.RenderPartialAsync("_NavBar");
+    }
+  
     <div role="main">
         @RenderBody()
     </div>
 
-    <footer class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
-                        <li>
-                            <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
-                        </li>
-                        <li >
-                            <a class=" text-white" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Contact</a>
-                        </li>
-                        
-                    </ul>
-                  
-            </div>
-            <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
-                    </div>
-            </div>
-              </div>
-        </div>
-    </footer>
 
+    @{
+        await Html.RenderPartialAsync("_Footer");
+    }
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script type="text/javascript"
-            src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script  src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

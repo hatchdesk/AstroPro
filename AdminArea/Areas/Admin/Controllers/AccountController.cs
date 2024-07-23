@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
 using Web.Application.ViewModels.Admin.Account;
 
-namespace Web.Area.Admin.Controllers
+namespace AdminArea.Areas.Admin.Controllers
 {
     [Authorize]
     [Area("Admin")]
@@ -21,7 +21,7 @@ namespace Web.Area.Admin.Controllers
         }
 
         [AllowAnonymous]
-        [Route("Admin/login")]
+       
         public IActionResult SignIn()
         {
             return View();
@@ -37,7 +37,8 @@ namespace Web.Area.Admin.Controllers
                 if (admin != null)
                 {
                     await CreateAuthCookie(admin);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "AdminHome" );
+
                 }
                 ModelState.AddModelError("", "Invalid username or password");
             }

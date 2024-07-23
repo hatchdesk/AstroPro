@@ -1,5 +1,4 @@
-﻿
-@using Web.Application.ViewModels.Admin.Articles
+﻿@using Web.Application.ViewModels.Admin.Articles
 @using Web.Domian.Enums
 @model ArticleToCreateViewModel
 
@@ -7,70 +6,61 @@
     ViewBag.Title = "Create Article";
 }
 
-
-   <div class="row page-titles float-end mx-5 mt-2">
-    <div class="col p-md-0">
+<div class="row page-titles mx-5 mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-controller="Article" asp-action="List">Article </a></li>
+            <li class="breadcrumb-item"><a asp-area= "Admin" asp-controller="Article" asp-action="List">Article </a></li>
             <li class="breadcrumb-item active"><a href="javascript:void(0)">Create</a></li>
         </ol>
     </div>
 </div>
-    <div class="container-fluid mt-5">
-    <div class="row">
-<div class="col-lg-8 offset-2">
-    <div class="card mt-5">
-        <div class="card-body">
-            <h4 class="card-title text-center">Add Article</h4>
-            <div class="basic-form">
-                            <form method="post" asp-controller="Article" asp-action="Create" enctype="multipart/form-data">
-                                <div class="form-row">
-                                    <div class="form-group mb-3">
-                                        <label class="form-label fw-bold">Title</label>
-                                        <input type="text" class="form-control" asp-for="Title" placeholder="Enter Your Title" />
-                                        <span asp-validation-for="Title" style="color:red"></span>
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="form-label fw-bold">Content</label>
-                                        <textarea class="form-control" asp-for="Content" placeholder="Enter Your Content" rows="5"></textarea>
-                                        <span asp-validation-for="Content" style="color:red"></span>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label fw-bold">IsPublished</label>
-                                    <input asp-for="IsPublished" type="checkbox" class="form-check-input border-2" />
-                                    <span asp-validation-for="IsPublished" style="color:red" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label fw-bold">Category</label>
-                                    <select asp-for="Category" asp-items="Html.GetEnumSelectList<ArticleCategory>()">
-                                        <option selected="selected" value="">Please select</option>
-                                    </select>
-                                    <span asp-validation-for="Category" class="text-danger"></span>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label fw-bold">Image</label>
-                                    <input asp-for="Image" type="file" class="form-control" />
-                                    <span asp-validation-for="Image" style="color:red" class="text-danger"></span>
-                                </div>
-                                <button type="submit" class="btn btn-dark">Add</button>
-                            </form>
 
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center">Add Article</h4>
+                    <div class="basic-form">
+                        <form method="post" asp-controller="Article" asp-action="Create" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="form-label fw-bold">Title</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Enter Your Title" />
+                                <span asp-validation-for="Title" style="color:red"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label fw-bold">Content</label>
+                                <textarea class="form-control" asp-for="Content" placeholder="Enter Your Content" rows="5"></textarea>
+                                <span asp-validation-for="Content" style="color:red"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label fw-bold">IsPublished</label>
+                                <input asp-for="IsPublished" type="checkbox" class="form-check-input border-2" />
+                                <span asp-validation-for="IsPublished" style="color:red" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label fw-bold">Category</label>
+                                <select asp-for="Category" asp-items="Html.GetEnumSelectList<ArticleCategory>()">
+                                    <option selected="selected" value="">Please select</option>
+                                </select>
+                                <span asp-validation-for="Category" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label fw-bold">Image</label>
+                                <input asp-for="Image" type="file" class="form-control" />
+                                <span asp-validation-for="Image" style="color:red" class="text-danger"></span>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Add</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
-	}
+    }
 }
-
-
-
-
-
-

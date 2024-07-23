@@ -158,6 +158,11 @@ namespace Web.Application.Services
 
         public async Task<ArticleToViewModel?> UpdateArticleAsync(ArticleToEditViewModel model)
         {
+
+            if (!Enum.TryParse<ArticleCategory>(model.Category, out var articleCategory))
+            {
+                return null;
+            }
             var updatedArticle = await _articleRepository.GetAsync(model.Id);
             if (updatedArticle == null)
             {
@@ -166,7 +171,9 @@ namespace Web.Application.Services
             updatedArticle.Title = model.Title;
             updatedArticle.Content = model.Content;
             updatedArticle.IsPublished = model.IsPublished;
-            // updatedArticle.Category = model.Category; // Uncomment if Category is being used
+            updatedArticle.Category = articleCategory;
+            updatedArticle.Image = model.ImageUrl;
+           
 
             _articleRepository.UpdateAsync(updatedArticle);
             await _unitOfWork.SaveChangesAsync();
@@ -177,6 +184,7 @@ namespace Web.Application.Services
                 Content = updatedArticle.Content,
                 IsPublished = updatedArticle.IsPublished,
                 Category = updatedArticle.Category.ToString(),
+                ImageUrl = updatedArticle.Image
             };
         }
 

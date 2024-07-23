@@ -7,7 +7,7 @@ using System.IO;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Area("Admin")]
     public class ArticleController : Controller
     {
@@ -84,7 +84,7 @@ namespace AdminArea.Areas.Admin.Controllers
                     Content = articles.Content,
                     IsPublished = articles.IsPublished,
                     Category = articles.Category,
-                    ImageUrl = articles.ImageUrl
+                      ImageUrl = articles.ImageUrl,
                 };
                 return View(updateArticle);
             }
@@ -96,6 +96,11 @@ namespace AdminArea.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.Image != null)
+                {   
+                    string imageUrl = UploadedFile(model);
+                    model.ImageUrl = imageUrl;
+                }
                 var edited = await _articleService.UpdateArticleAsync(model);
                 if (edited != null)
                 {
@@ -127,7 +132,45 @@ namespace AdminArea.Areas.Admin.Controllers
                         {
                             model.Image.CopyTo(fileStream);
                         }
-                        uniqueFileName = Path.Combine("Image", uniqueFileName);
+                        uniqueFileName = "Image/" + uniqueFileName;
+                    }
+                    else
+                    {
+                        TempData["SizeError"] = "Image must be less than 1MB";
+                        uniqueFileName = defaultImagePath;
+                    }
+                }
+                else
+                {
+                    TempData["ExtError"] = "Only jpg, jpeg and png images are allowed";
+                    uniqueFileName = defaultImagePath;
+                }
+            }
+            return uniqueFileName;
+        }
+
+        private string UploadedFile(ArticleToEditViewModel model)
+        {
+            string defaultImagePath = "~/Image/default-image.jpg";
+            string uniqueFileName = defaultImagePath;
+
+            if (model.Image != null)
+            {
+                var ext = Path.GetExtension(model.Image.FileName).ToLowerInvariant();
+                var size = model.Image.Length;
+
+                if (ext == ".png" || ext == ".jpg" || ext == ".jpeg")
+                {
+                    if (size <= 1000000)
+                    {
+                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Image");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.Image.CopyTo(fileStream);
+                        }
+                        uniqueFileName = "Image/" + uniqueFileName;
                     }
                     else
                     {
