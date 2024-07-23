@@ -7,7 +7,7 @@ using Web.Application.ViewModels.Admin.Service;
 namespace AdminArea.Areas.Admin.Controllers
 {
 
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class ServiceController : Controller
     {

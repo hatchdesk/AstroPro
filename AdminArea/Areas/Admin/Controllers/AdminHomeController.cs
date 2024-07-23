@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace AdminArea.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+    [Authorize]
     public class AdminHomeController : Controller
     {
         public IActionResult Index()

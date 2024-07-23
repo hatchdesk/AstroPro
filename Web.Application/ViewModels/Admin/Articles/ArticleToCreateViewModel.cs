@@ -13,6 +13,8 @@ namespace Web.Application.ViewModels.Admin.Articles
         [Required(ErrorMessage = "Content is Required")]
         public string? Content { get; set; }
         public bool IsPublished { get; set; }
+
+        [Required(ErrorMessage = "Category is Required")]
         public string? Category { get; set; }
 
         public string? ImageUrl { get; set; }

@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
 using Web.Application.ViewModels.Admin.Articles;
 using System.IO;
+using Web.Domian.Enums;
 
 namespace AdminArea.Areas.Admin.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Area("Admin")]
     public class ArticleController : Controller
     {
@@ -83,8 +84,8 @@ namespace AdminArea.Areas.Admin.Controllers
                     Title = articles.Title,
                     Content = articles.Content,
                     IsPublished = articles.IsPublished,
-                    Category = articles.Category,
-                      ImageUrl = articles.ImageUrl,
+                    Category = ((int)Enum.Parse(typeof(ArticleCategory),articles.Category!)).ToString(),
+                    ImageUrl = articles.ImageUrl,
                 };
                 return View(updateArticle);
             }

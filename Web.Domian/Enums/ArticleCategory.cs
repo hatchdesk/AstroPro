@@ -7,6 +7,5 @@
         kundli = 3,
         Muhurat = 4,
         CareerConsultation = 5
-
     }
 }
