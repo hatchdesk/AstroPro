@@ -27,7 +27,7 @@ namespace Web.Application.Services
             return false;
         }
 
-        public async Task<PageContentToViewModel?> GetPageContentAsync(int id)
+        public async Task<PageContentEditToViewModel?> GetPageContentAsync(int id)
         {
             var contents = await _pageContentRepository.GetAsync(id);
             if (contents == null)
@@ -38,7 +38,7 @@ namespace Web.Application.Services
                 Id = contents.Id,
                 Tag = contents.Tag,
                 Content = contents.Content,
-                //BackgroundColor = contents.BackgroundColor,
+               
                 PageId = contents.PageId,
 
             };

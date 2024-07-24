@@ -3,7 +3,7 @@
 <section class="top-section">
     <div class="container-fluid">
         <div class="row align-items-center d-flex flex-wrap">
-            <div class="col-lg-4 col-md-2 col-sm-12">
+            <div class="col-lg-4 col-md-2 col-sm-12 text-start">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
                     <h1 class="brand">@Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1>
                 </a>

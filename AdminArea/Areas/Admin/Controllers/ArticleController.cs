@@ -101,6 +101,13 @@ namespace AdminArea.Areas.Admin.Controllers
                 {   
                     string imageUrl = UploadedFile(model);
                     model.ImageUrl = imageUrl;
+                } else
+                {
+                    var existingArticle = await _articleService.GetArticle(model.Id);
+                    if (existingArticle != null)
+                    {
+                        model.ImageUrl = existingArticle.ImageUrl;
+                    }
                 }
                 var edited = await _articleService.UpdateArticleAsync(model);
                 if (edited != null)
@@ -108,13 +115,13 @@ namespace AdminArea.Areas.Admin.Controllers
                     return RedirectToAction("List");
                 }
             }
-                return View();
+                return View(model);
             
         }
 
         private string UploadedFile(ArticleToCreateViewModel model)
         {
-            string defaultImagePath = "~/Image/default-image.jpg";
+            string defaultImagePath = "default-image.jpg";
             string uniqueFileName = defaultImagePath;
 
             if (model.Image != null)
@@ -152,7 +159,7 @@ namespace AdminArea.Areas.Admin.Controllers
 
         private string UploadedFile(ArticleToEditViewModel model)
         {
-            string defaultImagePath = "~/Image/default-image.jpg";
+            string defaultImagePath = "default-image.jpg";
             string uniqueFileName = defaultImagePath;
 
             if (model.Image != null)

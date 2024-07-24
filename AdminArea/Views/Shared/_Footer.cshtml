@@ -1,8 +1,10 @@
-﻿<footer class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+<footer  class="footer" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
+                <ul class="d-flex justify-content-center align-items-center gap-4 list-unstyled text-decoration-none mt-3 footer-menu">
                     <li>
                         <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
                     </li>
@@ -15,7 +17,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                    <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+                <p>&copy; 2024 @Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault(). All rights reserved.</p>
                 </div>
             </div>
         </div>

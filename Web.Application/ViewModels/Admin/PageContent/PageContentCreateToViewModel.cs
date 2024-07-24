@@ -2,7 +2,7 @@
 
 namespace Web.Application.ViewModels.Admin.PageContent
 {
-    public class PageContentCreateToViewModelcs
+    public class PageContentCreateToViewModel
     {
         [Required(ErrorMessage ="Tag is Required")]
         public string Tag { get; set; } = string.Empty;

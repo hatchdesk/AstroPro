@@ -1,6 +1,6 @@
 ﻿<nav class="navbar navbar-expand-lg navbar-light" style="background-image: linear-gradient(90deg, red, yellow);">
     <div class="container-fluid">
-        <a class="navbar-brand text-white fw-bold" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
+        <a class="navbar-brand text-white fw-bold" asp-area="Admin" asp-controller="AdminHome" asp-action="Index">Admin</a>
 
         <!-- Menu burger icon for mobile and tablet -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,13 +23,13 @@
                 @if (User!.Identity!.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        <a type="button" class=" btn btn-primary text-center " asp-area="Admin" asp-controller="Account" asp-action="Logout">Log Out</a>
+                        <a type="button" class=" btn btn-danger text-center " asp-area="Admin" asp-controller="Account" asp-action="Logout">Log Out</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav-item">
-                        <a type="button" class="  btn btn-primary text-center" asp-area="Admin" asp-controller="Account" asp-action="SignIn">Log In</a>
+                        <a type="button" class="  btn btn-danger text-center" asp-area="Admin" asp-controller="Account" asp-action="SignIn">Log In</a>
 
                     </li>
                 }

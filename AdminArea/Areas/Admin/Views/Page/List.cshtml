@@ -38,9 +38,49 @@
                         <td class="other-column">@pages.Name</td>
                         <td class="other-column"><span class="truncate">@pages.Tag</span></td>
                         <td class="other-column">
-                            <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Edit" asp-route-id="@pages.Id">Edit</a>
-                            <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Delete" asp-route-id="@pages.Id">Delete</a>
-                            @* <a type="button" asp-area="Admin" asp-controller="Page" asp-action="Detail" asp-route-id="@pages.Id">Info</a> *@
+                        <!-- Button trigger for Edit modal -->
+                        <a data-bs-toggle="modal" data-bs-target="#editModal@(pages.Id)" title="Edit" class="ms-2">
+                            <i class="fa fa-pencil color-muted m-r-5"></i>
+                        </a>
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="editModal@(pages.Id)" tabindex="-1" aria-labelledby="editModalLabel@(pages.Id)" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-start">Are you sure you want to Edit this data?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a role="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+                                        <a role="button" class="btn btn-primary" asp-route-id="@pages.Id" asp-controller="Page" asp-action="Edit">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button trigger for Delete modal -->
+                        <a data-bs-toggle="modal" data-bs-target="#deleteModal@(pages.Id)" title="Delete" class="ms-2">
+                            <i class="fa fa-close color-muted mr-2"></i>
+                        </a>
+                        <!-- Delete Modal -->
+                        <div class="modal fade" id="deleteModal@(pages.Id)" tabindex="-1" aria-labelledby="deleteModalLabel@(pages.Id)" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-start">Are you sure you want to delete this data?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a role="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+                                        <a role="button" class="btn btn-primary" asp-route-id="@pages.Id" asp-controller="Page" asp-action="Delete">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </tr>
                 }
             </tbody>

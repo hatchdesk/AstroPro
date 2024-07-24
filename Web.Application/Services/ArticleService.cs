@@ -156,7 +156,7 @@ namespace Web.Application.Services
             };
         }
 
-        public async Task<ArticleToViewModel?> UpdateArticleAsync(ArticleToEditViewModel model)
+        public async Task<ArticleToCreateViewModel?> UpdateArticleAsync(ArticleToEditViewModel model)
         {
 
             if (!Enum.TryParse<ArticleCategory>(model.Category, out var articleCategory))
@@ -166,7 +166,7 @@ namespace Web.Application.Services
             var updatedArticle = await _articleRepository.GetAsync(model.Id);
             if (updatedArticle == null)
             {
-                return new ArticleToViewModel();
+                return new ArticleToCreateViewModel();
             }
             updatedArticle.Title = model.Title;
             updatedArticle.Content = model.Content;
@@ -178,7 +178,7 @@ namespace Web.Application.Services
             _articleRepository.UpdateAsync(updatedArticle);
             await _unitOfWork.SaveChangesAsync();
 
-            return new ArticleToViewModel()
+            return new ArticleToCreateViewModel()
             {
                 Title = updatedArticle.Title,
                 Content = updatedArticle.Content,

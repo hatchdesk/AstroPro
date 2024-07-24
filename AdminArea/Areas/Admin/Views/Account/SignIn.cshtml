@@ -33,7 +33,7 @@
                         <div class="card-body p-5 ">
 
                             <h3 class="mb-5 text-center">Sign in</h3>
-                           <form method="post" >
+                           <form method="post" asp-controller="Account" asp-action="SignIn" asp-area="Admin" >
                             <div class="form-outline mb-4">
                                     <label class="form-label" for="typeEmailX">Username</label>
                                     <input type="text" class="form-control form-control-lg" asp-for="Username" />

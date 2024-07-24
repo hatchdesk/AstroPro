@@ -1,7 +1,6 @@
 ﻿@using Web.Application.ViewModels.Admin.Articles
 @model ArticleToViewModel
 
-<div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div class="header" style="background-image: linear-gradient(45deg, red, yellow);">
@@ -9,9 +8,11 @@
                 <h1>Article of @Model.Category</h1>
                 <p class="lead">@Model.Title</p>
             </div>
+</div>
+</div>
             <div class="container mt-5">
                 <div class="row">
-                    <div class="col-lg-12 float-lg-end">
+                    <div class="col-lg-12 ">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item list-unstyled text-decoration-none">
                                 <a asp-area="Admin" asp-controller="Home" asp-action="index">Article</a>
@@ -39,6 +40,4 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+  

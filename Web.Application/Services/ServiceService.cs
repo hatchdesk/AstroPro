@@ -85,12 +85,12 @@ namespace Web.Application.Services
             
         }
 
-        public async Task<ServiceToViewModel?> UpdateServiceAsync(ServiceToEditViewModel model)
+        public async Task<ServiceToCreateViewModel?> UpdateServiceAsync(ServiceToEditViewModel model)
         {
             var Updated = await _serviceRepository.GetAsync(model.Id);
             if (Updated == null)
             {
-                return new ServiceToViewModel();
+                return new ServiceToCreateViewModel();
             }
 
 
@@ -101,9 +101,9 @@ namespace Web.Application.Services
               _serviceRepository.UpdateAsync(Updated);
             await _unitOfWork.SaveChangesAsync();
 
-            return new ServiceToViewModel()
+            return new ServiceToCreateViewModel()
             {
-                Id = Updated.Id,
+               
                 Title = Updated.Title,
                 Content = Updated.Content,
                 Icon = Updated.Icon,

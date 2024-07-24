@@ -1,4 +1,6 @@
-﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+﻿
+
+@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
     ViewData["Title"] = "Home";
@@ -29,7 +31,7 @@
 
 <br>
 <div class="container-fluid mx-auto">
-    <div class="row ">
+    <div class="row">
         @foreach (var service in Model.ServiceToModel)
         {
             <div class="col-sm-6 col-md-3 mb-3">
@@ -41,65 +43,64 @@
                         <div>
                             <h5 class="card-title">@service.Title</h5>
                             <p class="card-text">@service.Content</p>
-                            <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-primary">Learn More</a>
+                            <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger">Learn More</a>
                         </div>
                     </div>
                 </div>
             </div>
         }
-
     </div>
-<br>
-<section class="pt-5 pb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h3 class="mb-3 font-monospace">Latest Article</h3>
-            </div>
-            <div class="col-6 carousel-icon">
-                <a class="btn btn-danger mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-danger mb-3" href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
-                        {
-                            <div class="carousel-item @(i == 0 ? "active" : "")">
-                                <div class="row">
-                                    @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
-                                    {
-                                        var article = Model.ArticleToModel[j];
-                                        <div class="col-md-4 mb-3">    
-                                            <div class="card">
-                                                    <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl" >
-                                                    <div class="card-body">
-                                                        <h4 class="card-title cardTitle-truncate ">@article.Title</h4>
-                                                        <p class="card-text card-truncate"> @article.Content</p>
-                                                        <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-primary">Read More</a>
+    <br>
+    <section class="pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="mb-3 font-monospace">Latest Articles</h3>
+                </div>
+                <div class="col-6 carousel-icon">
+                    <a class="btn btn-danger mb-3 me-1" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                    <a class="btn btn-danger mb-3" href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+                        <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="col-12">
+                    <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
+                            {
+                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                    <div class="row">
+                                        @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
+                                        {
+                                            var article = Model.ArticleToModel[j];
+                                            <div class="col-md-4 mb-3">
+                                                <div class="card">
+                                                    <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl" style="width:100%; max-height:250px">
+                                                    <div class="card-body ">
+                                                        <h4 class="card-title cardTitle-truncate">@article.Title</h4>
+                                                        <p class="card-text card-truncate">@article.Content</p>
+                                                        <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger">Read More</a>
                                                     </div>
+                                                </div>
                                             </div>
-                                             
-                                        </div>
-                                    }
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        }
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-
-
-
-  
-
-
+    </section>
 

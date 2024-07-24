@@ -20,6 +20,7 @@ namespace AdminArea.Areas.Admin.Controllers
             
         }
 
+        [HttpGet]
         [AllowAnonymous]
        
         public IActionResult SignIn()
@@ -29,6 +30,7 @@ namespace AdminArea.Areas.Admin.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+
         public async Task<IActionResult> SignIn(LogInToCreateViewModel model)
         {
             if (ModelState.IsValid)
