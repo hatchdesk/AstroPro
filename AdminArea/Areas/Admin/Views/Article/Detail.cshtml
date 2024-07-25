@@ -4,7 +4,6 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="header" style="background-image: linear-gradient(45deg, red, yellow);">
-                <a href="Consultation.html" class="article btn btn-danger">Book Consultation</a>
                 <h1>Article of @Model.Category</h1>
                 <p class="lead">@Model.Title</p>
             </div>
@@ -15,26 +14,26 @@
                     <div class="col-lg-12 ">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item list-unstyled text-decoration-none">
-                                <a asp-area="Admin" asp-controller="Home" asp-action="index">Article</a>
+                    <a asp-area="Admin" asp-controller="Home" asp-action="index" style="color:darkRed">Article</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                <a asp-area="Admin" asp-controller="Article" asp-action="List">List</a>
+                    <a asp-area="Admin" asp-controller="Article" asp-action="List" style="color:darkRed">List</a>
                             </li>
                             <li class="breadcrumb-item active">
-                                <a href="javascript:void(0)">Detail</a>
+                    <a href="javascript:void(0)" style="color:darkRed">Detail</a>
                             </li>
                         </ol>
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-lg-12">
+                    <div class="col-lg-8 offset-lg-2">
                         <img src="~/@Model.ImageUrl" alt="Article Image" class="img-fluid mb-3" style="width: 100%; height: 250px">
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-lg-12">
                         <h3>What is @Model.Category</h3>
-                        <p>
+            <p class="text-content">
                             @Model.Content
                         </p>
                     </div>

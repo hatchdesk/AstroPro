@@ -121,8 +121,8 @@ namespace AdminArea.Areas.Admin.Controllers
 
         private string UploadedFile(ArticleToCreateViewModel model)
         {
-            string defaultImagePath = "default-image.jpg";
-            string uniqueFileName = defaultImagePath;
+    
+            string uniqueFileName = "Image/default-image.jpg";
 
             if (model.Image != null)
             {
@@ -145,13 +145,13 @@ namespace AdminArea.Areas.Admin.Controllers
                     else
                     {
                         TempData["SizeError"] = "Image must be less than 1MB";
-                        uniqueFileName = defaultImagePath;
+                        uniqueFileName = "default-image.jpg";
                     }
                 }
                 else
                 {
                     TempData["ExtError"] = "Only jpg, jpeg and png images are allowed";
-                    uniqueFileName = defaultImagePath;
+                    uniqueFileName = "default-image.jpg";
                 }
             }
             return uniqueFileName;

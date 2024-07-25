@@ -10,8 +10,8 @@
         <div class="row page-titles mx-5 mt-2">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a asp-controller="Page" asp-action="List">Page </a></li>
-            <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Page" asp-action="List" style="color:darkRed">Page </a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)" style="color:darkRed">Edit</a></li>
         </ol>
     </div>
 </div>
@@ -20,7 +20,7 @@
 <div class="col-lg-8 offset-2">
     <div class="card my-5 ">
         <div class="card-body">
-            <h4 class="card-title text-center">Edit Page</h4>
+                    <h4 class="card-title text-center" style="color:darkRed">Edit Page</h4>
             <div class="basic-form">
                 <form method="post" asp-controller="Page" asp-action="Edit" >
                                 <div class="form-row">
@@ -104,8 +104,8 @@
                                         </tbody>
                                     </table>
                                     </div>
-                                   
-                              <button type="submit" class="btn btn-dark text-center mt-2">Save</button>
+
+                            <button type="submit" class="btn btn-dark text-center mt-2" style="background-color:darkRed">Save</button>
                 </form>
             </div>
         </div>

@@ -65,13 +65,13 @@
     color: White;
 }
 
-..custom-card {
+.custom-card {
     border-radius: 15px;
     transition: transform 0.3s ease-in-out;
 }
 
 .custom-card:hover {
-    transform: scale(1);
+    transform: scale(1.1);
 }
 
 .custom-search-input {
@@ -243,14 +243,14 @@ body {
     border: 1px solid #ddd; /* Adds a light border */
     border-radius: 0.5rem; /* Rounds the corners of the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for shadow on hover */
     border-radius:unset;
 }
 
-   
 
 
 
+  
 .card-truncate {
     display: -webkit-box; /* For multi-line truncation */
     -webkit-box-orient: vertical; /* Vertical box orientation */

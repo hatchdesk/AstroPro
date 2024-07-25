@@ -138,7 +138,7 @@ namespace Web.Application.Services
                 Content = s.Content
             }).ToList() ?? new List<ServiceToViewModel>();
 
-            var articles = await _articleRepository.GetArticlesAsync();
+            var articles = await _articleRepository.GetActiveArticlesAsync();
             var Articles = articles?.Select(s => new ArticleToViewModel
             {
                 Id = s.Id,

@@ -19,8 +19,6 @@ namespace Web.Application.ViewModels.Admin.Articles
 
         public string? ImageUrl { get; set; }
 
-        [Required(ErrorMessage = "Please choose profile image")]
-        [Display(Name = "Profile Picture")]
         public IFormFile? Image { get; set; }
     }
 }

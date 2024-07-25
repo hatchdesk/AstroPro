@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Web.Domian.Entities.Base;
 
 namespace Web.Application.ViewModels.Admin.Articles
 {
-    public class ArticleToViewModel
+    public class ArticleToViewModel 
     {
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;

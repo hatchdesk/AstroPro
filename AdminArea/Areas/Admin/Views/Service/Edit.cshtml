@@ -9,8 +9,8 @@
     <div class="row page-titles  mx-5 mt-2">
         <div class="col p-md-0">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a asp-controller="Page" asp-action="List">Service </a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Edit</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Page" asp-action="List" style="color:darkRed">Service </a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)" style="color:darkRed">Edit</a></li>
             </ol>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-12">
                 <div class="card my-5">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Edit Service</h4>
+                    <h4 class="card-title text-center" style="color:darkRed">Edit Service</h4>
                         <div class="basic-form">
                             <form method="post" asp-controller="Service" asp-action="Edit">
                                 <div class="form-row">
@@ -40,7 +40,7 @@
                                         <span asp-validation-for="Icon" class="text-danger"></span>
                                     </div>
 
-                                    <button type="submit" class="btn btn-dark mt-2">Save</button>
+                                <button type="submit" class="btn btn-dark mt-2" style="backgorund-color:darkRed">Save</button>
                                 </div>
                             </form>
                         </div>

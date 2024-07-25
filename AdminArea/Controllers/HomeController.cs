@@ -29,12 +29,11 @@ namespace AdminArea.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Index()
-        {
+        {   
             var pageViewModel = await _articleService.GetHomePage();
-
             var HomeView = new PageParentModel()
             {
-              ArticleToModel = pageViewModel!.ArticleToModel,
+                ArticleToModel = pageViewModel!.ArticleToModel,
               ServiceToModel = pageViewModel!.ServiceToModel,
               PageModel = pageViewModel.PageModel,
               ConsultationToModel = pageViewModel.ConsultationToModel,
