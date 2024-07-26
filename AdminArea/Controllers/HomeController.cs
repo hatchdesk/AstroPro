@@ -1,14 +1,9 @@
-
-
-using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
-using Web.Application.Services;
 using Web.Application.ViewModels.Admin.Articles;
 using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Admin.Service;
 using Web.Application.ViewModels.Consultation;
-using Web.Domian.Entities;
 
 
 namespace AdminArea.Controllers
@@ -52,11 +47,14 @@ namespace AdminArea.Controllers
             return PartialView("_NavigationMenu", pageViewModels);
         }
 
-        [HttpGet("/{name}")]
+        [HttpGet("Home/{name}")]
         public async Task<IActionResult> Page(string name)
         {
-
-            if (name == "Consultation")
+            if(name.ToLower() == "index")
+            {
+                return RedirectToAction("Index");
+            }
+            else if (name.ToLower() == "consultation")
             {
 				var services = await _serviceService.GetAllServiceAsync();
                 var page = await _pageService.GetPageByNameAsync(name);
@@ -119,7 +117,5 @@ namespace AdminArea.Controllers
 
             return View(model);
         }
-
-
     }
 }

@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
+ using Microsoft.AspNetCore.Authentication.Cookies;
 using Web.Application.Interfaces;
 using Web.Application.Interfaces.Repositories;
 using Web.Application.Interfaces.Services;
@@ -78,7 +78,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllerRoute(
    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area:exists}/{controller=AdminHome}/{action=Index}/{id?}");
 
 
 app.MapControllerRoute(

@@ -23,13 +23,13 @@
                 @if (User!.Identity!.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        <a type="button" class="text-center " asp-area="Admin" asp-controller="Account" asp-action="Logout" style="color:darkRed">Log Out</a>
+                        <a type="button" class="text-center text-decoration-none" asp-area="Admin" asp-controller="Account" asp-action="Logout" style="color:darkred">Log Out</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav-item">
-                        <a type="button" class="text-center" asp-area="Admin" asp-controller="Account" asp-action="SignIn" style="color:darkRed">Log In</a>
+                        <a type="button" class="text-center text-decoration-none" asp-area="Admin" asp-controller="Account" asp-action="SignIn" style="color:darkred">Log In</a>
 
                     </li>
                 }

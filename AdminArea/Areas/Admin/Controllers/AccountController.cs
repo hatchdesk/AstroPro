@@ -10,7 +10,7 @@ namespace AdminArea.Areas.Admin.Controllers
 {
     [Authorize]
     [Area("Admin")]
-    public class AccountController : Controller
+	public class AccountController : Controller
     {
       
         private readonly IAccountService _accountService;
@@ -22,15 +22,14 @@ namespace AdminArea.Areas.Admin.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-       
-        public IActionResult SignIn()
+		public IActionResult SignIn()
         {
             return View();
         }
 
         [HttpPost]
+        [Route("Admin/login")]
         [AllowAnonymous]
-
         public async Task<IActionResult> SignIn(LogInToCreateViewModel model)
         {
             if (ModelState.IsValid)

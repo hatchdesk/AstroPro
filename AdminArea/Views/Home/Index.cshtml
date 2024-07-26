@@ -1,5 +1,4 @@
 ﻿
-
 @model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
@@ -10,14 +9,15 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="@Url.Content("~/Image/service-bannner.jpg")" class="d-block w-100 custom-height" alt="First Slide">
+            <img src="@Model.PageModel?.Contents?.Where(c=> c.Tag == "Home_Banner1").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="First Slide">
         </div>
         <div class="carousel-item">
-            <img src="@Url.Content("~/Image/zodiac-sign-wheel-of-fortune-astrology-concept-power-of-the-moon-and-the-universe-free-photo.jpg")" class="d-block w-100 custom-height" alt="Second Slide">
+            <img src="@Model.PageModel?.Contents?.Where(c=> c.Tag == "Home_Banner2").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Second Slide">
         </div>
-        <div class="carousel-item">
-            <img src="@Url.Content("~/Image/pngtree-vastu-vedic-hindu-astrology-3-colorful-background-posters-with-ganesha-god-image_1110357.jpg")" class="d-block w-100 custom-height" alt="Third Slide">
+           <div class="carousel-item">
+            <img src="@Model.PageModel?.Contents?.Where(c=> c.Tag == "Home_Banner3").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Second Slide">
         </div>
+       
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -55,7 +55,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6">
-                    <h3 class="mb-3 font-monospace">Latest Articles</h3>
+                    <h3 class="mb-3 font-monospace">@Model.PageModel?.Contents?.Where(c => c.Tag == "Home_ArticleHeading").Select(c => c.Content).FirstOrDefault()</h3>
                 </div>
                 <div class="col-6 carousel-icon">
                     <a class="btn btn-danger mb-3 me-1" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
@@ -103,4 +103,5 @@
             </div>
         </div>
     </section>
+   </div>
 

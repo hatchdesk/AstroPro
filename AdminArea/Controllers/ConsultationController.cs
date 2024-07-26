@@ -34,6 +34,7 @@ namespace Web.Controllers
                     <li><strong>Email:</strong> {consultationModel.Email}</li>
                     <li><strong>Phone:</strong> {consultationModel.Phone}</li>
                     <li><strong>Date of Birth:</strong> {consultationModel.DateOfBirth}</li>
+                    <li><strong>Time of Birth:</strong> {consultationModel.TimeOfBirth}</li>
                     <li><strong>Place of Birth:</strong> {consultationModel.PlaceOfBirth}</li>
                 </ul>
                 <p><strong>Description:</strong><br/>{consultationModel.AnyInformation}</p>

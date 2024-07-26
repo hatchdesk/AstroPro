@@ -17,9 +17,13 @@ namespace Web.Application.ViewModels.Consultation
 
         [Required(ErrorMessage = "Date of Birth is Required")]
         [DataType(DataType.Date)]
-        public DateTime DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
 
-        [Required(ErrorMessage = "Place of Birth is Required")]
+		[Required(ErrorMessage = "Time of Birth is Required")]
+		[DataType(DataType.Time)]
+		public TimeOnly TimeOfBirth { get; set; }
+
+		[Required(ErrorMessage = "Place of Birth is Required")]
         public string PlaceOfBirth { get; set; } = string.Empty;
 
         public string ? AnyInformation { get; set; }

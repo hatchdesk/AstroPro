@@ -7,7 +7,7 @@ namespace AdminArea.Areas.Admin.Controllers
     [Authorize]
     public class AdminHomeController : Controller
     {
-        public IActionResult Index()
+		public IActionResult Index()
         {
             return View();
         }
