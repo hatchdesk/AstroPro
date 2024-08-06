@@ -10,6 +10,7 @@
     background: none !important;
 }
 
+
 .font-600 {
     font-weight: 600 !important;
     color: rgb(83 9 3) !important;
@@ -341,8 +342,63 @@ body {
     }
 
 
+.carousel {
+    position: relative; 
+}
+
+.consultation-btn {
+    position:fixed;
+    right: 20px; 
+    top:90%;
+    transform: translateY(-50%);
+    z-index: 10; 
+    padding: 10px 20px;
+    background-color: #dc3545; 
+    color: #fff; 
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s; 
+}
+
+    .consultation-btn:hover {
+        background-color: #c82333; 
+    }
 
 
+
+.carousel-item{
+    position:relative;
+    height:70vh;
+}
+
+
+.text-container {
+    position: absolute;
+    top: 25%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: red; 
+    z-index: 10; 
+}
+.custom-height {
+    height: 100%;
+    object-fit: cover;
+}
+
+.text-link1 {
+    text-decoration: none;
+    color: white;
+    font-size:60px;
+}
+
+.text-link{
+   text-decoration:none;
+   color:white
+}
+
+  
 
 @media (min-width: 576px) {
     .service-icon {

@@ -2,29 +2,33 @@
 
 <section class="top-section">
     <div class="container-fluid">
-        <div class="row align-items-center d-flex flex-wrap">
+        
+         <div class="row align-items-center d-flex flex-wrap">
             <div class="col-lg-4 col-md-2 col-sm-12 text-start">
                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
                     <h1 class="brand">@Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()</h1>
                 </a>
             </div>
-            <div class="col-lg-8 col-md-10 col-sm-none">
-                @if (Model != null && Model.ServiceToModel != null)
-                {
-                    <div class="d-none d-sm-flex justify-content-end align-items-center flex-wrap">
-                        @foreach (var service in Model.ServiceToModel)
-                        {
-                            <div class="p-2 bd-highlight text-center icon-wrap">
-                                <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
-                                    @Html.Raw(service.Icon)
-                                    <span class="d-block icon-text service-title">@service.Title</span>
-                                </a>
-                            </div>
-                        }
-                    </div>
-                }
-            </div>
-        </div>
+			<div class="col-lg-8 col-md-10 col-sm-none">
+
+				@if (Model != null && Model.ServiceToModel != null)
+				{
+					<div class="d-none d-sm-flex justify-content-end align-items-center flex-wrap">
+						@foreach (var service in Model.ServiceToModel)
+						{
+							<div class="p-2 bd-highlight text-center icon-wrap">
+								<a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
+									@Html.Raw(service.Icon)
+								</a>
+								<span class="d-block icon-text service-title">@service.Title</span>
+							</div>
+						}
+					</div>
+				}
+			</div> 
+        
+        </div> 
+    
     </div>
 </section>
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, red, yellow);">

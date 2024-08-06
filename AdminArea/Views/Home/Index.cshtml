@@ -6,18 +6,48 @@
 }
 
 <!-- Carousel Section -->
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+@* <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="@Model.PageModel?.Contents?.Where(c=> c.Tag == "Home_Banner1").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="First Slide">
+            <img src="@Model.PageModel?.Contents?.Where(c => c.Tag == "Home_Banner1").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="First Slide">
+            <div class="text-container">
+                <a href="@Url.Action("ServiceDetail", "Home")" class="text-decoration-none">
+                    <h3 class="fs-1 fw-bold text-link">General Horoscope</h3>
+                    <h6 class="fs-4 fw-bold text-link">This is Testing Only</h6>
+                </a>
+            </div>
+        </div>
+     
+        <div class="carousel-item">
+                <img src="@Model.PageModel?.Contents?.Where(c => c.Tag == "Home_Banner2").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Second Slide">
+            <div class="text-container">
+                <a href="@Url.Action("ServiceDetail", "Home")" class="text-decoration-none">
+                    <h3 class="fs-1 fw-bold text-link">Muhrat</h3>
+                    <h6 class="fs-4 fw-bold text-link">This is Testing Only</h6>
+                </a>
+
+            </div>
         </div>
         <div class="carousel-item">
-            <img src="@Model.PageModel?.Contents?.Where(c=> c.Tag == "Home_Banner2").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Second Slide">
+                <img src="@Model.PageModel?.Contents?.Where(c => c.Tag == "Home_Banner3").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Third Slide">
+            <div class="text-container">
+                <a href="@Url.Action("ServiceDetail", "Home")" class="text-decoration-none">
+                    <h3 class="fs-1 fw-bold text-link">Career</h3>
+                    <h6 class="fs-4 fw-bold text-link">This is Testing Only</h6>
+                </a>
+            </div>
+
         </div>
-           <div class="carousel-item">
-            <img src="@Model.PageModel?.Contents?.Where(c=> c.Tag == "Home_Banner3").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Second Slide">
+        <div class="carousel-item">  
+            <img src="@Model.PageModel?.Contents?.Where(c => c.Tag == "Home_Banner4").Select(c => c.Content).FirstOrDefault()" class="d-block w-100 custom-height" alt="Third Slide">
+            <div class="text-container">
+                <a href="@Url.Action("ServiceDetail", "Home")" class="text-decoration-none">
+                    <h3 class="fs-1 fw-bold text-link">Astrology</h3>
+                    <h6 class="fs-4 fw-bold text-link">This is Testing Only</h6>
+                </a>
+            </div>
+
         </div>
-       
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,7 +57,49 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </button>
+    <!-- Book Consultation Button -->
+    <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" class="btn btn-danger consultation-btn">Book Consultation</a>
+</div>  *@
+
+
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @{
+            int index =0;
+        }
+        @foreach (var pageContent in Model.PageModel!.Contents!.Where(c => c.Tag.StartsWith("Home_Banner")))
+        {
+            var service = Model.ServiceToModel[index];
+            index++;
+            <div class="carousel-item @(pageContent.Tag == "Home_Banner1" ? "active" : "")">
+                <img src="@pageContent.Content" class="d-block w-100 custom-height" alt="Slide">
+                <div class="text-container">
+                    @if (service != null)
+                    {
+                        <a asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="text-decoration-none">
+                            <h3 class=" fw-bold text-link1 text-lg-start">@service.Title</h3>
+                            <h6 class="fs-5 fw-bold text-link text-lg-start">@service.Content</h6>
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+    <!-- Book Consultation Button -->
+    <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" class="btn btn-danger consultation-btn">Book Consultation</a>
 </div>
+
+
+
 
 <br>
 <div class="container-fluid mx-auto">

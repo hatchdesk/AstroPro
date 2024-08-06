@@ -14,7 +14,7 @@ using Web.Application.ViewModels.Admin.Service;
 
 namespace Web.Application.Services
 {
-    public class ArticleService : IArticleService
+    public class ArticleService : IArticleService 
     {
         private readonly IArticleRepository _articleRepository;
             private readonly IPageRepository _pageRepository;
