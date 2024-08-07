@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Web.Domian.Entities;
 
 namespace Web.Application.ViewModels.Consultation
 {
@@ -26,6 +28,11 @@ namespace Web.Application.ViewModels.Consultation
 		[Required(ErrorMessage = "Place of Birth is Required")]
         public string PlaceOfBirth { get; set; } = string.Empty;
 
-        public string ? AnyInformation { get; set; }
+		public int ServiceId { get; set; }
+		public string ServiceName { get; set; } = string.Empty;
+
+		[ForeignKey("ServiceId")]
+		public virtual Service? Service { get; set; }
+		public string ? AnyInformation { get; set; }
     }
 }

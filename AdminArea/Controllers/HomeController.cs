@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Web.Application.Interfaces.Services;
 using Web.Application.ViewModels.Admin.Articles;
 using Web.Application.ViewModels.Admin.Page;
@@ -57,7 +58,12 @@ namespace AdminArea.Controllers
             else if (name.ToLower() == "consultation")
             {
 				var services = await _serviceService.GetAllServiceAsync();
-                var page = await _pageService.GetPageByNameAsync(name);
+				ViewBag.Services = services.Select(d => new SelectListItem()
+				{
+					Text = d.Title,
+					Value = d.Id.ToString()
+				});
+				var page = await _pageService.GetPageByNameAsync(name);
 
                 if(page == null)
                 {

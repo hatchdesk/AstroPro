@@ -7,6 +7,7 @@ using Web.Application.Services;
 using Web.Infrastructure;
 using Web.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using DNTCaptcha.Core;
 
 
 
@@ -44,6 +45,13 @@ builder.Services.AddDbContext<WebDbContext>(options =>
         b => b.MigrationsAssembly("Web.Infrastructure")
     )
 );
+
+builder.Services.AddDNTCaptcha(options =>
+{
+    options.UseCookieStorageProvider().ShowThousandsSeparators(false);
+    options.WithEncryptionKey("abcgdfhftyuuytnbvn45678123456776");
+
+});
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

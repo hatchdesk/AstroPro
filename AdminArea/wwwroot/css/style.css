@@ -376,11 +376,12 @@ body {
 .text-container {
     position: absolute;
     top: 25%;
-    left: 23%;
+    left: 20%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: red; 
-    z-index: 10; 
+    color: red;
+    z-index: 10;
+    min-width: 470px;
 }
 .custom-height {
     height: 100%;
