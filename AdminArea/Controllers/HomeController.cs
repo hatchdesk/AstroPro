@@ -15,13 +15,17 @@ namespace AdminArea.Controllers
         private readonly IArticleService _articleService;
         private readonly IServiceService _serviceService;
         private readonly IPageService _pageService;
-        public HomeController(ILogger<HomeController> logger , IArticleService articleService , IPageService pageService , IServiceService serviceService)
+        private readonly HttpClient _httpClient;
+        public HomeController(ILogger<HomeController> logger , IArticleService articleService , IPageService pageService , IServiceService serviceService , HttpClient httpClient)
         {
             _logger = logger;
             this._articleService = articleService;
             _pageService = pageService;
             _serviceService = serviceService;
+            _httpClient = httpClient;
         }
+
+     
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -67,7 +71,7 @@ namespace AdminArea.Controllers
 
                 if(page == null)
                 {
-                    return NotFound();   
+                    return NotFound();    
                 }
 
                 page.ConsultationToModel = new ConsultationSendToViewModel();

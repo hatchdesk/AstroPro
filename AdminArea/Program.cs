@@ -15,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient();
 
 builder.Services.AddScoped<IArticleRepository , ArticleRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
@@ -46,11 +47,15 @@ builder.Services.AddDbContext<WebDbContext>(options =>
     )
 );
 
-builder.Services.AddDNTCaptcha(options =>
+builder.Services.AddCors(options =>
 {
-    options.UseCookieStorageProvider().ShowThousandsSeparators(false);
-    options.WithEncryptionKey("abcgdfhftyuuytnbvn45678123456776");
-
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -71,6 +76,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseCookiePolicy();
 app.UseStaticFiles();
 

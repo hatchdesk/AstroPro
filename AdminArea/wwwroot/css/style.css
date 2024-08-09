@@ -24,6 +24,8 @@
     font-weight: bolder;
     font-size: 50px;
     cursor: pointer;
+    margin:unset;
+    padding:unset;
 }
 
 .top-section {
@@ -348,17 +350,18 @@ body {
 
 .consultation-btn {
     position:fixed;
-    right: 20px; 
-    top:90%;
+    right: -30px; 
+    top:80%;
     transform: translateY(-50%);
     z-index: 10; 
-    padding: 10px 20px;
+    padding: 5px 10px;
     background-color: #dc3545; 
     color: #fff; 
     border: none;
-    border-radius: 4px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    transition: background-color 0.3s; 
+    border-radius:50px;
+    transition: background-color 0.6s; 
+    transform:rotate(90deg)
 }
 
     .consultation-btn:hover {
