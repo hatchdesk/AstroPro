@@ -16,7 +16,29 @@ namespace Web.Application.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> DeletePageContentAsync(int id)
+		public async Task<PageContentToViewModel?> AddPageContentAsync(PageContentCreateToViewModel model)
+		{
+            var pageContents = new PageContent()
+            {
+                Tag = model.Tag,
+                Content = model.Content,
+                PageId = model.PageId,
+            
+            };
+
+             var added = await   _pageContentRepository.AddAsync(pageContents);
+            var savedrecords = await _unitOfWork.SaveChangesAsync();
+            if(savedrecords >0)
+            {
+                return new PageContentToViewModel
+                {
+                    Id = pageContents.Id,
+                };
+            }
+            return null;
+		}
+
+		public async Task<bool> DeletePageContentAsync(int id)
         {
             var isDeleted = await _pageContentRepository.DeleteAsync(id);
             var savedRecored = await _unitOfWork.SaveChangesAsync();
@@ -27,7 +49,20 @@ namespace Web.Application.Services
             return false;
         }
 
-        public async Task<PageContentEditToViewModel?> GetPageContentAsync(int id)
+		public async Task<List<PageContentToViewModel>> GetAllPageContentAsync()
+		{
+			var pageContents = await _pageContentRepository.GetAllAsync();
+            return pageContents.Select(x => new PageContentToViewModel()
+            {
+                Id = x.Id,
+                Content = x.Content,
+                Tag = x.Tag,
+                 PageId = x.PageId, 
+            }).ToList();
+           
+		}
+
+		public async Task<PageContentEditToViewModel?> GetPageContentAsync(int id)
         {
             var contents = await _pageContentRepository.GetAsync(id);
             if (contents == null)
@@ -38,7 +73,6 @@ namespace Web.Application.Services
                 Id = contents.Id,
                 Tag = contents.Tag,
                 Content = contents.Content,
-               
                 PageId = contents.PageId,
 
             };
@@ -63,7 +97,6 @@ namespace Web.Application.Services
                 Id = edited.Id,
                 Tag = edited.Tag,
                 Content = edited.Content,
-                //BackgroundColor = edited.BackgroundColor,
                 PageId = edited.PageId,
             };
         }

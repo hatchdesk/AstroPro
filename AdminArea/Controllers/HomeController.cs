@@ -11,7 +11,7 @@ namespace AdminArea.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> _logger; 
         private readonly IArticleService _articleService;
         private readonly IServiceService _serviceService;
         private readonly IPageService _pageService;
@@ -24,8 +24,6 @@ namespace AdminArea.Controllers
             _serviceService = serviceService;
             _httpClient = httpClient;
         }
-
-     
 
         [HttpGet]
         public async Task<IActionResult> Index()
@@ -41,19 +39,9 @@ namespace AdminArea.Controllers
             return View(HomeView);
         }
 
-        public async Task<IActionResult> NavigationMenu()
-        {
-            var pages = await _pageService.GetAllPagesAsync();
-            var pageViewModels = pages.Select(page => new PageToViewModel
-            {
-                Name = page.Name,
-            }).ToList();
-
-            return PartialView("_NavigationMenu", pageViewModels);
-        }
 
         [HttpGet("Home/{name}")]
-        public async Task<IActionResult> Page(string name)
+        public async Task<IActionResult> Page(string name , string selectedService)
         {
             if(name.ToLower() == "index")
             {
@@ -67,6 +55,11 @@ namespace AdminArea.Controllers
 					Text = d.Title,
 					Value = d.Id.ToString()
 				});
+
+				if(selectedService != null)
+                {
+					ViewBag.selectedService = selectedService;
+				}
 				var page = await _pageService.GetPageByNameAsync(name);
 
                 if(page == null)

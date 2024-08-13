@@ -49,7 +49,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Article", b =>
@@ -80,15 +80,15 @@ namespace Web.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<DateTime>("UpdatedOn")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Page", b =>
@@ -118,7 +118,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pages");
+                    b.ToTable("Pages", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.PageContent", b =>
@@ -152,7 +152,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasIndex("PageId");
 
-                    b.ToTable("PageContents");
+                    b.ToTable("PageContents", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Service", b =>
@@ -186,7 +186,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services");
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.PageContent", b =>

@@ -22,7 +22,7 @@
     {
         <div class="row">
             <div class="header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, red, yellow);">
-                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" class="btn btn-danger consultation-btn "> Book Consultation</a>
+                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService ="@service.Title.Replace(" ","")" class="btn btn-danger consultation-btn2 "> Book Consultation</a>
                 <h1>@service.Title</h1>
                 <p>@service.Content</p>
             </div>

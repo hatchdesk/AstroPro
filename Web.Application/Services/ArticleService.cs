@@ -181,7 +181,7 @@ namespace Web.Application.Services
             return new ArticleToCreateViewModel()
             {
                 Title = updatedArticle.Title,
-                Content = updatedArticle.Content,
+                Content = updatedArticle.Content, 
                 IsPublished = updatedArticle.IsPublished,
                 Category = updatedArticle.Category.ToString(),
                 ImageUrl = updatedArticle.Image

@@ -1,4 +1,4 @@
-﻿using Web.Application.Interfaces.Repositories;
+﻿ using Web.Application.Interfaces.Repositories;
 using Web.Domian.Entities;
 using Web.Infrastructure.Repositories.Base;
 

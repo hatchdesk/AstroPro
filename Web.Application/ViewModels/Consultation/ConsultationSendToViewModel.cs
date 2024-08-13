@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.VisualBasic;
 using Web.Domian.Entities;
 
 namespace Web.Application.ViewModels.Consultation
@@ -19,7 +21,7 @@ namespace Web.Application.ViewModels.Consultation
 
         [Required(ErrorMessage = "Date of Birth is Required")]
         [DataType(DataType.Date)]
-        public DateOnly DateOfBirth { get; set; }
+        public DateFormat DateOfBirth { get; set; }
 
 		[Required(ErrorMessage = "Time of Birth is Required")]
 		[DataType(DataType.Time)]
@@ -34,5 +36,7 @@ namespace Web.Application.ViewModels.Consultation
 		[ForeignKey("ServiceId")]
 		public virtual Service? Service { get; set; }
 		public string ? AnyInformation { get; set; }
-    }
+
+		
+	}
 }

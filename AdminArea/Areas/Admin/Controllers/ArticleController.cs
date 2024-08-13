@@ -35,7 +35,7 @@ namespace AdminArea.Areas.Admin.Controllers
             if (isDeleted)
             {
                 return RedirectToAction("List");
-            }
+            } 
             return View();
         }
 

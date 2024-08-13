@@ -5,7 +5,9 @@ namespace Web.Application.Interfaces.Services
 {
     public interface IPageContentService
     {
-        Task<bool> DeletePageContentAsync(int id);
+		public Task<PageContentToViewModel?> AddPageContentAsync(PageContentCreateToViewModel model);
+		Task<List<PageContentToViewModel>> GetAllPageContentAsync();
+		Task<bool> DeletePageContentAsync(int id);
         Task<PageContentEditToViewModel?> GetPageContentAsync(int id);
         Task<PageContentToViewModel?> UpdatePageContentAsync(PageContentEditToViewModel model);
        

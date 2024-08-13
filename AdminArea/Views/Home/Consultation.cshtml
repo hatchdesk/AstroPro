@@ -4,6 +4,8 @@
 
 	ViewData["Title"] = "Home";
 }
+
+
 <div class="row mx-5 mt-2">
 			<div class="col-lg-12 col-md-12 col-sm-12" >
 				<ol class="breadcrumb">
@@ -17,19 +19,42 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="text-center fw-bold " style="color:darkred">Contact Us</h1>
-				<p class="text-center mt-3 fw-lighter " style="color:darkred">Any question or remarks? Just write us a message!</p>
+				<p class="text-center mt-3 fw-bold " style="color:darkred">Any question or remarks? Just write us a message!</p>
 			</div>
 		</div>
 		<div class="row d-flex justify-content-center align-items-start">
 			<div class="col-lg-6 col-md-12 col-sm-12">
 				<form  method="post" asp-action="SendEmail" asp-controller="Consultation">
 					<div class="row">
-						<div class="form-group mt-3 col-lg-12 col-md-12 col-sm-12">
+						<div class="form-group mt-3 col-lg-12 col-md-12 col-sm-12">			
 							<div class="input-wrapper">
-								<label style="color:darkred"  class="form-label fw-bold">Category</label>
-	 							<select class="form-control" asp-for="ConsultationToModel!.ServiceId" asp-items="@(ViewBag.Services)">
-									 <option> - - - - - - Plesae Select Your Category - - - - - - </option>
-								 </select>
+								<label style="color:darkred" class="form-label fw-bold">Choose a Category</label>
+								  <select class="form-control p-2" name="category" value="category">
+									@if (ViewBag.Services != null)
+									{
+										string selectedService = ViewBag.SelectedService?.ToLower().Replace(" ", "") ?? string.Empty;
+
+										foreach (var item in ViewBag.Services)
+										{
+								
+											string itemText = item.Text?.ToLower().Replace(" ", "") ?? string.Empty;
+
+											if (itemText == selectedService)
+											{
+												<option value="@item.Value" selected>@item.Text</option>
+											}
+											else
+											{
+												<option value="@item.Value">@item.Text</option>
+											}
+										}
+									}
+									else
+									{
+									
+										<option disabled>No services available</option>
+									}
+								</select>
 							</div>
 							<span asp-validation-for="ConsultationToModel!.ServiceId" style="color:red"></span>
 						</div>
@@ -90,7 +115,7 @@
 						<div class="g-recaptcha" data-sitekey="6Lfr5iIqAAAAAOmcn7I9pVNFcbBTNdcI8ijU6DcH"  data-callback="onCaptchaSuccess"></div>
 						<input type="hidden" id="CaptchaResponse" name="CaptchaResponse" />
 						<div>
-							<button type="submit" class="btn btn-outline-danger ms-3" style="background-color: darkred; color: white;">Send Message</button>
+							<button type="submit" class="btn btn-outline-danger ms-3 fw-bold fs-5" style="background-color: darkred; color: white;">Send Message</button>
 						</div>
 					</div>
 				</form>

@@ -1,0 +1,59 @@
+﻿@using Web.Application.ViewModels.Admin.PageContent,
+
+@model PageContentCreateToViewModel;
+
+@{
+    ViewBag.Title = "Create PageContent";
+}
+
+<div class="row page-titles mx-5 mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="PageContent" asp-action="List" class="text-decoration-none" style="color:darkred">PageContent </a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)" class="text-decoration-none" style="color:darkred">Create</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-12">
+            <div class="card my-5 ">
+                <div class="card-body">
+                    <h4 class="card-title text-center" style="color:darkRed">Add PageContent</h4>
+                    <div class="basic-form">
+                        <form method="post" asp-controller="PageContent" asp-action="Create">
+                            <div class="form-row">
+                              
+                                <div class="form-group mb-3">
+                                    <label class="form-label  fw-bold" asp-for="Tag"></label>
+                                    <textarea asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></textarea>
+                                    <span asp-validation-for="Tag" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label  fw-bold">Content</label>
+                                    <input type="text" class="form-control " asp-for="Content" placeholder="Enter Your Content" />
+                                    <span asp-validation-for="Content" style="color:red"></span>
+                                </div>
+
+                                <button type="submit" class="btn btn-dark mt-2" style="background-color:darkRed">Add</button>
+                            </div>
+                        </form>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+

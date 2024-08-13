@@ -10,8 +10,6 @@ namespace Web.Application.ViewModels.Admin.Page
         public PageToViewModel? PageModel { get; set; }
         public List<ServiceToViewModel> ServiceToModel { get; set; } = new List<ServiceToViewModel>();
         public List<ArticleToViewModel> ArticleToModel { get; set; } = new List<ArticleToViewModel>();
-        public ConsultationSendToViewModel ?ConsultationToModel { get; set; }
-
-        //public CaptchaResponseToViewModel ? CaptchaResponse { get; set; }
+        public ConsultationSendToViewModel ?ConsultationToModel { get; set; }  
     }
 }

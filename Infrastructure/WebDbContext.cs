@@ -15,6 +15,5 @@ namespace Web.Infrastructure
         public DbSet<Page> Pages { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<PageContent> PageContents { get; set; }
-
-    }
+	}
 }

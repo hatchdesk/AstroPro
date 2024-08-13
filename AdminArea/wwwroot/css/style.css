@@ -11,21 +11,37 @@
 }
 
 
+
+
 .font-600 {
     font-weight: 600 !important;
     color: rgb(83 9 3) !important;
 }
 
+.navbar-nav .nav-link {
+    margin-right:10px;
+    color: black !important; 
+    font-weight:700;
+}
+
+    .navbar-nav .nav-link:hover {
+        /*color: #ede2df !important;*/
+        background-color: white !important;
+        border-radius:5px;
+    }
+
+
+     
 .brand {
     color: #ffea00;
     text-align: start;
     vertical-align: middle;
     line-height: 100px;
     font-weight: bolder;
-    font-size: 50px;
+    font-size: 30px;
     cursor: pointer;
-    margin:unset;
-    padding:unset;
+    margin: unset;
+    padding: unset;
 }
 
 .top-section {
@@ -41,9 +57,7 @@
 .icon-style {
     color: #ffec00;
     padding: 15px;
-    /* border: 2px solid white; */
-    /* border-radius: 50%; */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); */
+   
     transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
@@ -64,9 +78,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-menu li a:hover {
-    color: White;
-}
 
 .custom-card {
     border-radius: 15px;
@@ -171,6 +182,7 @@ body {
 .card-text{
     min-height:50px;
 }
+
 
 .container {
     max-width: 1200px;
@@ -343,25 +355,25 @@ body {
         pointer-events: none; 
     }
 
-
-.carousel {
-    position: relative; 
+.btn{
+    position:relative;
 }
 
 .consultation-btn {
-    position:fixed;
-    right: -30px; 
-    top:80%;
+    position:absolute;
+    right: 20px; 
+    top:90%;
+    font-size:26px;
     transform: translateY(-50%);
     z-index: 10; 
-    padding: 5px 10px;
+    padding: 10px 10px;
     background-color: #dc3545; 
     color: #fff; 
     border: none;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    border-radius:50px;
+    border-radius:10px;
     transition: background-color 0.6s; 
-    transform:rotate(90deg)
+   
 }
 
     .consultation-btn:hover {
@@ -370,7 +382,7 @@ body {
 
 
 
-.carousel-item{
+.homebanner{
     position:relative;
     height:70vh;
 }
@@ -379,12 +391,11 @@ body {
 .text-container {
     position: absolute;
     top: 25%;
-    left: 20%;
+    left: 38%;
     transform: translate(-50%, -50%);
-    text-align: center;
     color: red;
     z-index: 10;
-    min-width: 470px;
+    min-width: 945px;
 }
 .custom-height {
     height: 100%;
@@ -399,10 +410,12 @@ body {
 
 .text-link{
    text-decoration:none;
-   color:white
+   color:white;
+   width:700px;
+   font-weight:300;
 }
 
-  
+
 
 @media (min-width: 576px) {
     .service-icon {

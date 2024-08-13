@@ -91,10 +91,11 @@ namespace Web.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Tag = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PageId = table.Column<int>(type: "int", nullable: false),
+					PageId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
+
                 },
                 constraints: table =>
                 {
