@@ -13,7 +13,7 @@ namespace Web.Controllers
     public class ConsultationController : Controller
     {
         private readonly IConsultationService _consultationService;
-        private readonly IServiceService _serviceService;
+        private readonly IServiceService _serviceService; 
 		private readonly IArticleService _articleService;
 
         public ConsultationController(IConsultationService consultationService, IServiceService serviceService , IArticleService articleService)

@@ -33,7 +33,7 @@ namespace Web.Application.Services
                     {
                         mailMessage.From = new MailAddress(_settings.Username);
                         mailMessage.To.Add(adminEmail);
-                        mailMessage.Subject = subject;
+                        mailMessage.Subject = subject; 
                         mailMessage.Body = body;
                         mailMessage.IsBodyHtml = true;
 

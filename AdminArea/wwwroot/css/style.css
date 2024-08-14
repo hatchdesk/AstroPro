@@ -2,6 +2,7 @@
     background-image: url('@Url.Content("~/Image/bg.jpg")');
     background-size: cover;
     background-position: center;
+    overflow-x: hidden;
 }
 
 
@@ -11,7 +12,23 @@
 }
 
 
+.carousel-inner {
+    overflow: hidden; /* Prevent overflow in carousels */
+}
 
+.carousel-item {
+    width: 100%; 
+}
+
+.container-fluid, .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto; 
+}
 
 .font-600 {
     font-weight: 600 !important;
@@ -24,14 +41,12 @@
     font-weight:700;
 }
 
-    .navbar-nav .nav-link:hover {
-        /*color: #ede2df !important;*/
+.navbar-nav .nav-link:hover {
+       
         background-color: white !important;
         border-radius:5px;
-    }
-
-
-     
+ }
+   
 .brand {
     color: #ffea00;
     text-align: start;
@@ -48,8 +63,6 @@
     background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%);
 }
 
-
-
 .icon-wrap {
     min-width: 155px;
 }
@@ -57,14 +70,13 @@
 .icon-style {
     color: #ffec00;
     padding: 15px;
-   
     transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
-    .icon-style:hover {
+.icon-style:hover {
         transform: scale(1.1);
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-    }
+ }
 
 .icon-text {
     color: white;
@@ -93,9 +105,9 @@
     border: 2px solid #711604;
 }
 
-    .custom-search-input::placeholder {
+.custom-search-input::placeholder {
         color: #711604;
-    }
+}
 
 .custom-search-btn {
     background-color: #b11c1c;
@@ -105,33 +117,27 @@
     padding: 1px 20px 1px 20px;
 }
 
-    
-
 .carousel-control-prev,
 .carousel-control-next {
     top: 50%;
-    bottom: auto; /* Ensure bottom is not set */
+    bottom: auto;
 }
 
 .custom-height {
-    height: 450px; /* Adjust the height as needed */
-    object-fit: cover; /* Ensure the image covers the entire container */
+    height: 450px; 
+    object-fit: cover; 
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    border-radius: 50%; /* Circular shape */
-    padding: 10px; /* Padding around the icons */
+    border-radius: 50%; 
+    padding: 10px; 
 }
-
 
 .bg-orange {
     background-color: orangered;
 }
 
-body {
-    background-color: #f8f9fa;
-}
 
 .header {
     text-align: center;
@@ -163,9 +169,8 @@ body {
     background-color: #de2e0a;
 }
 
-.card {
-    height: 100%;
-}
+
+
 
 .card-body {
     min-height:200px;
@@ -198,17 +203,17 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-    .card-custom:hover {
+.card-custom:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
+}
 
 .img-custom {
     height: 200px;
     object-fit: cover;
 }
 .truncate {
-    width: 150px; /* Adjust the width as needed */
+    width: 150px; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -245,9 +250,9 @@ body {
     transition: transform 0.3s ease;
 }
 
-    .service-card:hover {
+.service-card:hover {
         transform: scale(1.05);
-    }
+}
 
 
 .card {
@@ -259,13 +264,10 @@ body {
     border-radius: 0.5rem; /* Rounds the corners of the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
     transition: transform 0.3s ease-in-out; /* Smooth transition for shadow on hover */
-    border-radius:unset;
+    border-radius: unset;
+    max-width: 100%;
 }
 
-
-
-
-  
 .card-truncate {
     display: -webkit-box; /* For multi-line truncation */
     -webkit-box-orient: vertical; /* Vertical box orientation */
@@ -308,10 +310,9 @@ body {
     bottom: 0;
     height: auto;
 }
-
-    footer ul li a {
+ footer ul li a {
         text-decoration: none;
-    }
+ }
 
 .consult-bg{
     background:linear-gradient(270deg , yellow, red);
@@ -327,14 +328,15 @@ body {
     display: block;
 }
 
-    .required-label::after {
+.required-label::after {
         content: "*";
         color: red;
         position: absolute;
         top: 0;
          left:45px;
         font-weight: bold;
-    }
+ }
+
 .input-wrapper {
     position: relative;
     display: inline-block;
