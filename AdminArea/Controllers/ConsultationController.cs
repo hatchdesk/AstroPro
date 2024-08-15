@@ -41,28 +41,34 @@ namespace Web.Controllers
 		{
 			if (!ModelState.IsValid)
 			{
-				return View("Consultation", pageParentModel.ConsultationToModel);
+                ModelState.AddModelError("", "please verify captcha !");
+                return RedirectToAction( "Page" ,  "Home", new { name = "consultation"});
 			}
 
 			if (string.IsNullOrEmpty(CaptchaResponse))
 			{
 				ModelState.AddModelError("", "CAPTCHA response is missing.");
-				return View("Consultation", pageParentModel.ConsultationToModel);
-			}
+                return RedirectToAction("Page", "Home", new { name = "consultation" });
+            }
 
 			if (!await VerifyCaptcha(CaptchaResponse))
 			{
 				ModelState.AddModelError("", "CAPTCHA verification failed. Please try again.");
-				return View("Consultation", pageParentModel.ConsultationToModel);
-			}
+                return RedirectToAction("Page", "Home", new { name = "consultation" });
+            }
 			var consultationModel = pageParentModel.ConsultationToModel;
+            var consultmodel = pageParentModel.ServiceToModel;
+          
+           
 			if (consultationModel != null)
 			{
-				string subject = "Request Consultation";
+
+               
+                string subject = "Request Consultation";
 				string body = $@"
             <h3>Consultation Request Details</h3>
             <ul>
-                <li><strong>Category:</strong> {consultationModel.ServiceName}</li>
+                <li><strong>Category:</strong> {consultationModel!.ServiceName}</li>
                 <li><strong>Name:</strong> {consultationModel.Name}</li>
                 <li><strong>Email:</strong> {consultationModel.Email}</li>
                 <li><strong>Phone:</strong> {consultationModel.Phone}</li>
@@ -84,8 +90,8 @@ namespace Web.Controllers
 					ModelState.AddModelError("", "An error occurred while sending the email. Please try again later.");
 				}
 			}
-			return View("Consultation", pageParentModel.ConsultationToModel);
-		}
+            return RedirectToAction("Page", "Home", new { name = "consultation" });
+        }
 
 
 		private async Task<bool> VerifyCaptcha(string captchaResponse)

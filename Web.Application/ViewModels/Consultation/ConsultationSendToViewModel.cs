@@ -21,7 +21,7 @@ namespace Web.Application.ViewModels.Consultation
 
         [Required(ErrorMessage = "Date of Birth is Required")]
         [DataType(DataType.Date)]
-        public DateFormat DateOfBirth { get; set; }
+        public DateOnly DateOfBirth { get; set; }
 
 		[Required(ErrorMessage = "Time of Birth is Required")]
 		[DataType(DataType.Time)]
