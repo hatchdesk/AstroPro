@@ -1,17 +1,19 @@
-﻿
+﻿@using Web.Application.ViewModels.Admin.PageContent
+
 @model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
     ViewData["Title"] = "Home";
+    var homePageContents = Model?.PageModel?.Contents != null ? Model.PageModel.Contents : new List<PageContentToViewModel>();
 }
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         @{
             int index = 0;
         }
-        @foreach (var pageContent in Model.PageModel!.Contents!.Where(c => c.Tag.StartsWith("Home_Banner")))
+        @foreach (var pageContent in homePageContents.Where(c => c.Tag.StartsWith("Home_Banner")))
         {
-            var service = Model.ServiceToModel[index];
+            var service = Model?.ServiceToModel[index];
             index++;
             <div class="carousel-item homebanner @(pageContent.Tag == "Home_Banner1" ? "active" : "")">
                 <img src="@pageContent.Content" class="d-block w-100 custom-height" alt="Slide">
