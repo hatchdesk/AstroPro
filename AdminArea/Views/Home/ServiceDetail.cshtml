@@ -2,34 +2,23 @@
 
 
 @{
-    Layout = null;
+  
     ViewData["Title"] = "Detail";
 
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Page</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-
+<div class="container-fluid">
     @foreach(var service in Model.ServiceToModel)
     {
         <div class="row">
-            <div class="header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, red, yellow);">
-                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService ="@service.Title.Replace(" ","")" class="btn btn-danger consultation-btn2 "> Book Consultation</a>
+            <div class="header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, yellow, red);">
+                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService ="@service.Title.Replace(" ","")" class="btn btn-danger consultation-btn2"> Book Consultation</a>
                 <h1>@service.Title</h1>
-                <p>@service.Content</p>
+                <p class="px-5 mb-3">@service.Content</p>
             </div>
         </div>
         
 
-        <div class="horoscope-info">
+        <div class="horoscope-info p-3">
             <div class="container">
                  <div class="float-end">
                                 <ol class="breadcrumb">
@@ -54,28 +43,6 @@
                 <p>Consulting horoscopes is believed to help individuals make informed decisions, understand their strengths and weaknesses, and navigate life's challenges with greater awareness.</p>
             </div>
         </div>
-    }
-  <footer style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <ul class="d-flex justify-content-center align-items-center gap-5 list-unstyled text-decoration-none mt-2 footer-menu">
-                        <li>
-                            <a class="text-white" asp-controller="Home" asp-action="Page" asp-route-name="About Us">About</a>
-                        </li>
-                        <li >
-                            <a class=" text-white" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Contact</a>
-                        </li>
-                    </ul>
-            </div>
-            <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                        <p>&copy; 2024  @Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault(). All rights reserved.</p>
-                    </div>
-            </div>
-              </div>
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+    }  
+    </div>
+

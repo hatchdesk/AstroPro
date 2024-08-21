@@ -1,13 +1,8 @@
 ﻿body {
-    background-image: url('@Url.Content("~/Image/bg.jpg")');
+ /*   background-image: url('@Url.Content("~/Image/bg.jpg")');
     background-size: cover;
     background-position: center;
-    overflow-x: hidden;
-}
-
-
-.nav-link-container {
-    border: 1px solid !important;
+    overflow-x: hidden;*/q
     background: none !important;
 }
 
@@ -15,6 +10,36 @@
 .carousel-inner {
     overflow: hidden; /* Prevent overflow in carousels */
 }
+
+/* Ensure the carousel container is positioned relative for positioning arrows correctly */
+#servicesCarousel {
+    position: relative;
+}
+
+/* Style the carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Adjust width of the controls */
+    height: 50px; /* Adjust height of the controls */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+}
+
+.carousel-control-prev {
+    left: 10px; 
+}
+
+.carousel-control-next {
+    right: 10px; 
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px; 
+    height: 30px; 
+}
+
+
 
 .carousel-item {
     width: 100%; 
@@ -25,10 +50,7 @@
     padding-right: 0;
 }
 
-.img-fluid {
-    max-width: 100%;
-    height: auto; 
-}
+
 
 .font-600 {
     font-weight: 600 !important;
@@ -144,7 +166,7 @@
     background-color: #343a40;
     color: white;
     position: relative;
-    padding: 20px 0px;
+    padding: 16px;
    
 }
 
@@ -189,9 +211,7 @@
 }
 
 
-.container {
-    max-width: 1200px;
-}
+
 
 .card-img-top {
     height: 300px;
@@ -301,14 +321,15 @@
 }
 
 .main{
-    min-height:100vh;
+    height:auto;
 }
 
 .footer {
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: auto;
+    position:absolute;
+    bottom:0;
+ 
+
 }
  footer ul li a {
         text-decoration: none;
@@ -404,10 +425,26 @@
     object-fit: cover;
 }
 
+.carousel-outer{
+    position:relative;
+}
+
+
+.custom-image-height {
+    max-height: 500px; /* Limits the height to prevent stretching */
+    object-fit: cover;
+    width: 600px; /* Ensures the image covers the area without stretching */
+}
+
+.image-height{
+    width:100%;
+    height:100%;
+}
+
 .text-link1 {
     text-decoration: none;
     color: white;
-    font-size:60px;
+    font-size: 60px;
 }
 
 .text-link{
@@ -417,9 +454,13 @@
    font-weight:300;
 }
 
+.text-light{
+    text-align:justify;
+}
 
 
-@media (min-width: 576px) {
+
+@media (max-width: 576px) {
     .service-icon {
         font-size: 12px; 
     }
@@ -430,7 +471,37 @@
     .service-title {
         font-size: 10px;
     }
+    .text-light{
+      color:red;
+      margin-top:10px;
+    }
+
+    .consultation-btn{
+        font-size:30px;
+    }
+
+
+
+
+
+    .text-link1 {
+        position: relative;
+        left: -6px;
+        min-width: 60px;
+        border: aqua
+    }
+
+    .text-link{
+        font-size:32px;
+        position:relative;
+        left:130px;
+      
+    }
+
+    
 }
+
+
 
 @media (min-width: 768px) {
     .service-icon {
@@ -443,6 +514,7 @@
         font-size: 14px;
     }
 }
+
 
 @media (min-width: 992px) {
     .service-icon {

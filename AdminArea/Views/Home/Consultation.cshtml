@@ -17,13 +17,13 @@
 <div class="Container-fluid">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 				<h1 class="text-center fw-bold " style="color:darkred">Contact Us</h1>
 				<p class="text-center mt-3 fw-bold " style="color:darkred">Any question or remarks? Just write us a message!</p>
 			</div>
 		</div>
-		<div class="row d-flex justify-content-center align-items-start">
-			<div class="col-lg-6 col-md-12 col-sm-12">
+		<div class="row p-3 d-flex justify-content-center align-items-start">
+			<div class="col-lg-6 col-md-12 col-sm-12 col-12">
 				<form  method="post" asp-action="SendEmail" asp-controller="Consultation">
 					<div class="row">
 						<div class="form-group mt-3 col-lg-12 col-md-12 col-sm-12">			
@@ -111,11 +111,11 @@
 						<textarea class="form-control rounded-4 p-3 astrisk" asp-for="ConsultationToModel!.AnyInformation" rows="4" placeholder="Enter Your Any Information"></textarea>
 					</div>
 	
-					<div class="mt-3 form-group col-lg-12 d-flex mb-5 justify-content-start align-items-center">
+					<div class="mt-3 form-group col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-wrap mb-5 justify-content-start align-items-center">
 						<div class="g-recaptcha" data-sitekey="6Lfr5iIqAAAAAOmcn7I9pVNFcbBTNdcI8ijU6DcH"  data-callback="onCaptchaSuccess"></div>
 						<input type="hidden" id="CaptchaResponse" name="CaptchaResponse" />
 						<div>
-							<button type="submit" class="btn btn-outline-danger ms-3 fw-bold fs-5" style="background-color: darkred; color: white;">Send Message</button>
+							<button type="submit" class="btn btn-outline-danger ms-3 fw-bold fs-5 mt-2" style="background-color: darkred; color: white;">Send Message</button>
 						</div>
 					</div>
 				</form>

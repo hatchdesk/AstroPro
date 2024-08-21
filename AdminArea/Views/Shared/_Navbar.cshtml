@@ -1,35 +1,64 @@
 ﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
-<section class="top-section">
-    <div class="container-fluid row">
-         <div class="row align-items-center d-flex flex-wrap justify-content-center">
-            <div class="col-lg-4 col-md-2 col-sm-12 text-start">
-                <a class="nav-link d-flex align-items-center justify-content-center" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="\Astrology (1).png" style="width: 120px; height: 120px;" alt="logo" />
-                    <p class="brand">
-                        @Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()
-                    </p>
-                </a>
-            </div>
-			<div class="col-lg-8 col-md-10 col-sm-none">
-				@if (Model != null && Model.ServiceToModel != null)
-				{
-					<div class="d-none d-sm-flex justify-content-end align-items-center">
-						@foreach (var service in Model.ServiceToModel)
-						{
-							<div class="p-2 bd-highlight text-center icon-wrap">
-								<a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
-									@Html.Raw(service.Icon)
-								</a>
-								<span class="d-block icon-text service-title">@service.Title</span>
-							</div>
-						}
-					</div>
-				}
-			</div> 
-        </div> 
+<section class="top-section container-fluid">
+    <div class="row align-items-center d-flex flex-wrap justify-content-center">
+        <div class="col-lg-4 col-md-2 col-sm-12 text-start">
+            <a class="nav-link d-flex align-items-center justify-content-center" asp-area="" asp-controller="Home" asp-action="Index">
+                <img src="\Astrology (1).png" style="width: 120px; height: 120px;" alt="logo" />
+                <p class="brand">
+                    @Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()
+                </p>
+            </a>
+        </div>
+
+        <!-- Carousel container visible only on medium and larger screens -->
+        <div class="col-lg-8 col-md-10 d-none d-md-block">
+            @if (Model != null && Model.ServiceToModel != null && Model.ServiceToModel.Any())
+            {
+                <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        @{
+                            int itemsPerSlide = 4;
+                            int totalServices = Model.ServiceToModel.Count;
+                            int numberOfSlides = (int)Math.Ceiling(totalServices / (double)itemsPerSlide);
+                        }
+                        @for (int slideIndex = 0; slideIndex < numberOfSlides; slideIndex++)
+                        {
+                            <div class="carousel-item @(slideIndex == 0 ? "active" : "")">
+                                <div class="row g-3">
+                                    @for (int i = slideIndex * itemsPerSlide; i < Math.Min((slideIndex + 1) * itemsPerSlide, totalServices); i++)
+                                    {
+                                        var service = Model.ServiceToModel[i];
+                                        <div class="col-6 col-md-3">
+                                            <div class="d-flex flex-column align-items-center">
+                                                <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
+                                                    @Html.Raw(service.Icon)
+                                                </a>
+                                                <span class="d-block icon-text service-title mt-2">@service.Title</span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            }
+        </div>
+
+  
     </div>
 </section>
+
+
 <nav class="navbar navbar-expand-lg navbar-light navbar-custom" style="background-image: linear-gradient(45deg, red, yellow);">
     <div class="container-fluid">
         <!-- Navbar toggle button for mobile -->

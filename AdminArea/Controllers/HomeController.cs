@@ -86,6 +86,16 @@ namespace AdminArea.Controllers
         [Route("/Article/Detail/{id}")]
 		public async Task<IActionResult> Detail(int id)
 		{
+
+            var pageViewModel = await _articleService.GetHomePage();
+            var HomeView = new PageParentModel()
+            {
+                ArticleToModel = pageViewModel!.ArticleToModel,
+                ServiceToModel = pageViewModel!.ServiceToModel,
+                PageModel = pageViewModel.PageModel,
+               
+            };
+     
             var article = await _articleService.GetArticle(id);
 
             if (article == null)
@@ -106,6 +116,13 @@ namespace AdminArea.Controllers
         [Route("/Service/Detail/{id}")]
         public async Task<IActionResult> ServiceDetail(int id)
         {
+            var pageViewModel = await _articleService.GetHomePage();
+            var HomeView = new PageParentModel()
+            {
+                ServiceToModel = pageViewModel!.ServiceToModel,
+                PageModel = pageViewModel.PageModel,
+            };
+
             var service = await _serviceService.GetServiceAsync(id);
 
             if (service == null)
@@ -115,10 +132,12 @@ namespace AdminArea.Controllers
 
             var model = new PageParentModel()
             {
-                ServiceToModel = new List<ServiceToViewModel> { service }
+                ServiceToModel = new List<ServiceToViewModel> { service },
+               
             };
 
             return View(model);
         }
+
     }
 }
