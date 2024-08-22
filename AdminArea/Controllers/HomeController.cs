@@ -5,6 +5,7 @@ using Web.Application.ViewModels.Admin.Articles;
 using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Admin.Service;
 using Web.Application.ViewModels.Consultation;
+using Web.Domian.Entities;
 
 
 namespace AdminArea.Controllers
@@ -86,15 +87,7 @@ namespace AdminArea.Controllers
         [Route("/Article/Detail/{id}")]
 		public async Task<IActionResult> Detail(int id)
 		{
-
-            var pageViewModel = await _articleService.GetHomePage();
-            var HomeView = new PageParentModel()
-            {
-                ArticleToModel = pageViewModel!.ArticleToModel,
-                ServiceToModel = pageViewModel!.ServiceToModel,
-                PageModel = pageViewModel.PageModel,
-               
-            };
+            var services = await _serviceService.GetAllServiceAsync();
      
             var article = await _articleService.GetArticle(id);
 
@@ -103,25 +96,25 @@ namespace AdminArea.Controllers
                 return NotFound();
             }
 
-            var model = new PageParentModel()
+            var pageViewModel = await _articleService.GetHomePage();
+
+            var HomeView = new PageParentModel()
             {
-                ArticleToModel = new List<ArticleToViewModel> { article }
+                ArticleToModel = new List<ArticleToViewModel> { article },
+                ServiceToModel = services,
+                PageModel = pageViewModel!.PageModel,
             };
 
-            return View(model);
+            return View(HomeView);
         }
+               
 
 
         [HttpGet]
         [Route("/Service/Detail/{id}")]
         public async Task<IActionResult> ServiceDetail(int id)
         {
-            var pageViewModel = await _articleService.GetHomePage();
-            var HomeView = new PageParentModel()
-            {
-                ServiceToModel = pageViewModel!.ServiceToModel,
-                PageModel = pageViewModel.PageModel,
-            };
+            var services = await _serviceService.GetAllServiceAsync();
 
             var service = await _serviceService.GetServiceAsync(id);
 
@@ -130,13 +123,14 @@ namespace AdminArea.Controllers
                 return NotFound();
             }
 
-            var model = new PageParentModel()
+            var pageViewModel = await _articleService.GetHomePage();
+            var HomeView = new PageParentModel()
             {
                 ServiceToModel = new List<ServiceToViewModel> { service },
-               
+                PageModel = pageViewModel!.PageModel,
             };
 
-            return View(model);
+            return View(HomeView);
         }
 
     }

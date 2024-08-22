@@ -6,18 +6,31 @@
     ViewData["Title"] = "Home";
     var homePageContents = Model?.PageModel?.Contents != null ? Model.PageModel.Contents : new List<PageContentToViewModel>();
 }
+
+
 <div class="row carousel-outer">
-    <div id="carouselExampleControls" class="carousel slide col-12" data-bs-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide col-12">
         <div class="carousel-inner">
             @{
                 int index = 0;
             }
-            @foreach (var pageContent in homePageContents.Where(c => c.Tag.StartsWith("Home_Banner")))
+            @foreach(var service in Model!.ServiceToModel)
             {
-                var service = Model?.ServiceToModel[index];
-                index++;
-                <div class="carousel-item homebanner @(pageContent.Tag == "Home_Banner1" ? "active" : "")">
-                    <img src="@pageContent.Content" class="d-block w-100 custom-height" alt="Slide">
+                //For every service
+                string defaultImageUrl = "Image/default-image.jpg";
+                var contents = homePageContents.Where(c => c.Tag.Contains("Home_Banner")).ToList();
+                var pageContent = new PageContentToViewModel();
+                try
+                {
+                    pageContent = contents[index];
+                }
+                catch
+                {
+                }
+                string imageUrl = string.IsNullOrEmpty(pageContent.Content) ? defaultImageUrl : pageContent.Content;
+
+                <div class="carousel-item homebanner @(index == 1 ? "active" : "")">
+                    <img src="@imageUrl" class="d-block w-100 custom-height" alt="Slide">
                     <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService="@service!.Title.Replace(" ", "")" class="btn btn-danger consultation-btn fw-bold">Book Consultation</a>
 
                     <div class="text-container text-center text-sm-start">
@@ -30,7 +43,10 @@
                         }
                     </div>
                 </div>
+
+                index++;
             }
+        
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,6 +58,7 @@
         </button>
     </div>
 </div>
+
 
 
 <div class="container-fluid  p-3 mx-auto" style="background-image: linear-gradient(45deg, red, yellow);">
@@ -66,6 +83,7 @@
 
 
   <div class="container-fluid mx-auto ">
+    @* Service carosual section *@
     <div class="row p-3" style="background-image: linear-gradient(45deg, red, yellow);">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between align-items-center ">
             <div>
@@ -83,13 +101,13 @@
         <section class="container mt-3">
             <div class="row p-3">
                 <div class="col-12">
-                    <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+                    <div id="carouselExampleIndicators1" class="carousel slide">
                         <div class="carousel-inner">
-                            @for (int i = 0; i < Model!.ServiceToModel.Count(); i += 4)
+                            @for (int i = 0; i < Model.ServiceToModel.Count; i += 4)
                             {
                                 <div class="carousel-item @(i == 0 ? "active" : "")">
                                     <div class="row">
-                                        @for (int j = i; j < i + 4 && j < Model.ServiceToModel.Count(); j++)
+                                        @for (int j = i; j < i + 4 && j < Model.ServiceToModel.Count; j++)
                                         {
                                             var service = Model.ServiceToModel[j];
                                             <div class="col-sm-6 col-md-3 mb-3">
@@ -125,6 +143,7 @@
         </section>
     </div>
 
+
     @* Article carosual section *@
     <div class="row p-3" style="background-image: linear-gradient(45deg, red, yellow)" ;>
            <div class="col-lg-12 col-md-12 col-sm-12 col-12 d-flex justify-content-between align-items-center">
@@ -143,7 +162,7 @@
            <section class="my-3 pb-5 container">
             <div class="row p-3">
             <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleIndicators2" class="carousel slide" >
                     <div class="carousel-inner">
                         @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
                         {
@@ -158,7 +177,7 @@
                                                 <div class="card-body ">
                                                     <h4 class="card-title cardTitle-truncate">@article.Title</h4>
                                                     <p class="card-text card-truncate">@article.Content</p>
-                                                    <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger">Read More</a>
+                                                     <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger">Read More</a> 
                                                 </div>
                                             </div>
                                         </div>

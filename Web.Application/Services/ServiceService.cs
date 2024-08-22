@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces;
 using Web.Application.Interfaces.Repositories;
 using Web.Application.Interfaces.Services;
+using Web.Application.ViewModels.Admin.Articles;
 using Web.Application.ViewModels.Admin.Page;
+using Web.Application.ViewModels.Admin.PageContent;
 using Web.Application.ViewModels.Admin.Service;
 using Web.Domian.Entities;
 
@@ -17,11 +19,15 @@ namespace Web.Application.Services
     public class ServiceService : IServiceService
     {
         private readonly IServiceRepository _serviceRepository;
+        private readonly IArticleRepository _articleRepository;
+        private readonly IPageRepository _pageRepository;
         private readonly IUnitOfWork _unitOfWork;
-        public ServiceService(IServiceRepository  serviceRepository , IUnitOfWork unitOfWork)
+        public ServiceService(IServiceRepository  serviceRepository , IUnitOfWork unitOfWork , IArticleRepository articleRepository , IPageRepository pageRepository)
         {
             _serviceRepository = serviceRepository;
             _unitOfWork = unitOfWork;
+            _articleRepository = articleRepository;
+            _pageRepository = pageRepository;
 
             
         }
@@ -72,6 +78,8 @@ namespace Web.Application.Services
                 Content = services.Content,
             };
         }
+
+        
 
         public async Task<bool> DeleteServiceAsync(int id)
         {

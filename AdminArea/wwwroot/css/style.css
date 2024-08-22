@@ -2,7 +2,7 @@
  /*   background-image: url('@Url.Content("~/Image/bg.jpg")');
     background-size: cover;
     background-position: center;
-    overflow-x: hidden;*/q
+    overflow-x: hidden;*/
     background: none !important;
 }
 
@@ -425,9 +425,6 @@
     object-fit: cover;
 }
 
-.carousel-outer{
-    position:relative;
-}
 
 
 .custom-image-height {
@@ -457,6 +454,7 @@
 .text-light{
     text-align:justify;
 }
+
 
 
 
@@ -524,7 +522,7 @@
         font-size: 18px;
     }
     .service-title {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 

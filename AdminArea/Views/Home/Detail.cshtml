@@ -9,17 +9,18 @@
 <div class="container-fluid">
     @foreach (var article in Model.ArticleToModel)
     {
-                <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                        <div class="header" style="background-image: linear-gradient(45deg, red, yellow);">
-                        <a asp-controller="Home" asp-action="page" asp-route-name="Consultation" class="atricle btn btn-danger consultation-btn"> Book Consultation</a>
+           <div class="row">
+            <div class=" header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, red, yellow);">
+                
+                        
+                        <a asp-controller="Home" asp-action="page" asp-route-name="Consultation" class="atricle btn btn-danger consultation-btn2"> Book Consultation</a>
                             <h1>Article of @article.Category</h1>
                             <p class="lead">@article.Title</p>
-                        </div>
+                       
             </div>
         </div>
-        <div class="container-fluid p-3">
-            <div class="container mt-5">
+        <div class="container-fluid p-3 mb-3">
+            <div class="container my-5">
                         <div class="article-item">
                             <div class="float-end">
                                 <ol class="breadcrumb">
@@ -37,9 +38,7 @@
 
                         </div>
                     </div>
-                </div>
-       
-        
+        </div>
     }
     </div>
    

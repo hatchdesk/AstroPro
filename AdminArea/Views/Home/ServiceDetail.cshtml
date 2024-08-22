@@ -1,17 +1,20 @@
-﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+﻿
+@using Web.Application.ViewModels.Admin.PageContent
 
+@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
   
     ViewData["Title"] = "Detail";
+    
 
 }
 <div class="container-fluid">
-    @foreach(var service in Model.ServiceToModel)
+    @foreach(var service in Model!.ServiceToModel)
     {
         <div class="row">
-            <div class="header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, yellow, red);">
-                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService ="@service.Title.Replace(" ","")" class="btn btn-danger consultation-btn2"> Book Consultation</a>
+            <div class="header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, red, yellow);">
+                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService ="@service.Title.Replace(" ","")" class="btn btn-danger consultation-btn2 mb-3"> Book Consultation</a>
                 <h1>@service.Title</h1>
                 <p class="px-5 mb-3">@service.Content</p>
             </div>

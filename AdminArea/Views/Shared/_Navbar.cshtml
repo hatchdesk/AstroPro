@@ -2,7 +2,7 @@
 
 <section class="top-section container-fluid">
     <div class="row align-items-center d-flex flex-wrap justify-content-center">
-        <div class="col-lg-4 col-md-2 col-sm-12 text-start">
+        <div class="col-lg-4 col-md-2 col-sm-12 text-start ">
             <a class="nav-link d-flex align-items-center justify-content-center" asp-area="" asp-controller="Home" asp-action="Index">
                 <img src="\Astrology (1).png" style="width: 120px; height: 120px;" alt="logo" />
                 <p class="brand">
@@ -15,46 +15,22 @@
         <div class="col-lg-8 col-md-10 d-none d-md-block">
             @if (Model != null && Model.ServiceToModel != null && Model.ServiceToModel.Any())
             {
-                <div id="servicesCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        @{
-                            int itemsPerSlide = 4;
-                            int totalServices = Model.ServiceToModel.Count;
-                            int numberOfSlides = (int)Math.Ceiling(totalServices / (double)itemsPerSlide);
-                        }
-                        @for (int slideIndex = 0; slideIndex < numberOfSlides; slideIndex++)
-                        {
-                            <div class="carousel-item @(slideIndex == 0 ? "active" : "")">
-                                <div class="row g-3">
-                                    @for (int i = slideIndex * itemsPerSlide; i < Math.Min((slideIndex + 1) * itemsPerSlide, totalServices); i++)
-                                    {
-                                        var service = Model.ServiceToModel[i];
-                                        <div class="col-6 col-md-3">
-                                            <div class="d-flex flex-column align-items-center">
-                                                <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
-                                                    @Html.Raw(service.Icon)
-                                                </a>
-                                                <span class="d-block icon-text service-title mt-2">@service.Title</span>
-                                            </div>
-                                        </div>
-                                    }
-                                </div>
+                <div class="row">
+                    @for (int i = 0; i < Model.ServiceToModel.Count; i++)
+                    {
+                        var service = Model.ServiceToModel[i];
+                        <div class="col-5 col-md-2 ">
+                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
+                                    @Html.Raw(service.Icon)
+                                </a>
+                                <span class="d-block icon-text service-title mt-2">@service.Title</span>
                             </div>
-                        }
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#servicesCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#servicesCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                        </div>
+                    }
                 </div>
             }
         </div>
-
-  
     </div>
 </section>
 
