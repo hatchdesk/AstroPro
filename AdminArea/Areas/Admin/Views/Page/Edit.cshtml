@@ -25,13 +25,13 @@
                 <form method="post" asp-controller="Page" asp-action="Edit" >
                                 <div class="form-row">
                                     <div class="form-group mb-3">
-                                        <label class="form-label  fw-bold">Name</label>
-                                        <input type="text" class="form-control " asp-for="Name" placeholder="Enter Your Name" />
+                                    <label class="form-label  fw-bold required">Name</label>
+                                    <input type="text" class="form-control" asp-for="Name" placeholder="Enter Your Name" />
                                         <span asp-validation-for="Name" style="color:red"></span>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label  class="form-label  fw-bold" asp-for="Tag"></label>
-                                        <textarea asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></textarea>
+                                    <label class="form-label  fw-bold required" asp-for="Tag"></label>
+                                        <input asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></input>
                                         <span asp-validation-for="Tag" class="text-danger"></span>
                                     </div>
                                     <table class="table table-fixed table-striped table-bordered mt-4">
@@ -55,30 +55,14 @@
                                                    
                                                     <td class="other-column">
                                                         <!-- Button trigger for Edit modal -->
-                                                        <a data-bs-toggle="modal" data-bs-target="#editModal@(item.Id)" title="Edit" class="ms-2">
-                                                            <i class="fa fa-pencil color-muted m-r-5"></i>
+                                                        <a style="cursor:pointer" asp-route-id="@item.Id" asp-controller="PageContent" asp-action="Edit"  title="Edit">
+                                                            <i class="fa fa-pencil color-muted fs-5"></i>
                                                         </a>
-                                                        <!-- Edit Modal -->
-                                                        <div class="modal fade" id="editModal@(item.Id)" tabindex="-1" aria-labelledby="editModalLabel@(item.Id)" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <p class="text-start">Are you sure you want to Edit this data?</p>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <a role="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
-                                                                        <a role="button" class="btn btn-primary" asp-route-id="@item.Id" asp-controller="PageContent" asp-action="Edit">Edit</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                
 
                                                         <!-- Button trigger for Delete modal -->
-                                                        <a data-bs-toggle="modal" data-bs-target="#deleteModal@(item.Id)" title="Delete" class="ms-2">
-                                                            <i class="fa fa-close color-muted mr-2"></i>
+                                                        <a data-bs-toggle="modal" data-bs-target="#deleteModal@(item.Id)" title="Delete" class="ms-5">
+                                                            <i class="fa fa-close color-muted fs-5"></i>
                                                         </a>
                                                         <!-- Delete Modal -->
                                                         <div class="modal fade" id="deleteModal@(item.Id)" tabindex="-1" aria-labelledby="deleteModalLabel@(item.Id)" aria-hidden="true">
@@ -105,7 +89,10 @@
                                     </table>
                                     </div>
 
-                            <button type="submit" class="btn btn-dark text-center mt-2" style="background-color:darkRed">Save</button>
+                            <div class="float-end mt-3">
+                                <a type="submit" asp-area="Admin" asp-controller="Page" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
+                                <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
+                            </div>
                 </form>
             </div>
         </div>

@@ -32,10 +32,11 @@ namespace AdminArea.Controllers
             var pageViewModel = await _articleService.GetHomePage();
             var HomeView = new PageParentModel()
             {
-                ArticleToModel = pageViewModel!.ArticleToModel,
-              ServiceToModel = pageViewModel!.ServiceToModel,
-              PageModel = pageViewModel.PageModel,
-              ConsultationToModel = pageViewModel.ConsultationToModel,
+                 ArticleToModel = pageViewModel!.ArticleToModel,
+                  ServiceToModel = pageViewModel!.ServiceToModel,
+                  Services = pageViewModel!.Services,
+                  PageModel = pageViewModel.PageModel,
+                  ConsultationToModel = pageViewModel.ConsultationToModel,
             };
             return View(HomeView);
         }
@@ -44,6 +45,7 @@ namespace AdminArea.Controllers
         [HttpGet("Home/{name}")]
         public async Task<IActionResult> Page(string name , string selectedService)
         {
+            ViewBag.PageName = name;
             if(name.ToLower() == "index")
             {
                 return RedirectToAction("Index");
@@ -70,8 +72,22 @@ namespace AdminArea.Controllers
 
                 page.ConsultationToModel = new ConsultationSendToViewModel();
                 page.ServiceToModel = services;
+                page.Services = services;
                
                 return View("Consultation", page);
+            } else if(name.ToLower() == "articles"){
+                var services = await _serviceService.GetAllServiceAsync();
+                var articles = await _pageService.GetPageByNameAsync(name);
+
+                if (articles == null)
+                {
+                    return NotFound();
+                }
+                articles.ArticleToModel = articles.ArticleToModel;
+                articles.ServiceToModel = services;
+                articles.Services = services;
+
+                return View("Articles", articles);
             }
             var pageViewModel = await _pageService.GetPageByNameAsync(name);
             if (pageViewModel == null)
@@ -100,6 +116,7 @@ namespace AdminArea.Controllers
 
             var HomeView = new PageParentModel()
             {
+                Services = services,
                 ArticleToModel = new List<ArticleToViewModel> { article },
                 ServiceToModel = services,
                 PageModel = pageViewModel!.PageModel,
@@ -108,17 +125,13 @@ namespace AdminArea.Controllers
             return View(HomeView);
         }
                
-
-
         [HttpGet]
         [Route("/Service/Detail/{id}")]
         public async Task<IActionResult> ServiceDetail(int id)
         {
             var services = await _serviceService.GetAllServiceAsync();
-
-            var service = await _serviceService.GetServiceAsync(id);
-
-            if (service == null)
+            var selectedServices = services.Where(s=>s.Id == id).ToList();
+            if (selectedServices == null)
             {
                 return NotFound();
             }
@@ -126,7 +139,8 @@ namespace AdminArea.Controllers
             var pageViewModel = await _articleService.GetHomePage();
             var HomeView = new PageParentModel()
             {
-                ServiceToModel = new List<ServiceToViewModel> { service },
+                Services = services,
+                ServiceToModel = selectedServices,
                 PageModel = pageViewModel!.PageModel,
             };
 

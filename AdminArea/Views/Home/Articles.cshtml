@@ -1,0 +1,26 @@
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+@{
+
+    ViewData["Title"] = "Articles";
+    ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
+}
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row">
+            @foreach (var article in Model!.ArticleToModel)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card custom-card">
+                        <img class="img-fluid card-image" alt="100%x280" src="~/@article.ImageUrl" style="width:100%; max-height:250px">
+                        <div class="card-body p-4 ">
+                            <h4 class="card-title cardTitle-truncate">@article.Title</h4>
+                            <div class="card-text card-truncate ">@Html.Raw(article.Content)</div>
+                            <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger mt-3">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

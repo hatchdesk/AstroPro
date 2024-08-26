@@ -4,6 +4,7 @@
 
 @{
     ViewData["Title"] = "Home";
+    ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
     var homePageContents = Model?.PageModel?.Contents != null ? Model.PageModel.Contents : new List<PageContentToViewModel>();
 }
 
@@ -38,7 +39,7 @@
                         {
                             <a asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="text-decoration-none">
                                 <h3 class="fw-bold text-link1">@service.Title</h3>
-                                <h6 class="fs-5 fw-light text-link">@service.Content</h6>
+                                <div class="fs-5 fw-light text-link">@Html.Raw(service.Content)</div>
                             </a>
                         }
                     </div>
@@ -118,8 +119,8 @@
                                                         </div>
                                                         <div>
                                                             <h5 class="card-title cardTitle-truncate">@service.Title</h5>
-                                                            <p class="card-text card-truncate">@service.Content</p>
-                                                            <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger">Learn More</a>
+                                                            <div class="card-text card-truncate">@Html.Raw(service.Content)</div>
+                                                            <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger mt-2">Learn More</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -172,12 +173,12 @@
                                     {
                                         var article = Model.ArticleToModel[j];
                                         <div class="col-md-4 mb-3">
-                                            <div class="card custom-card">
+                                                <div class="card custom-card">
                                                 <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl" style="width:100%; max-height:250px">
-                                                <div class="card-body ">
+                                                    <div class="card-body p-4 ">
                                                     <h4 class="card-title cardTitle-truncate">@article.Title</h4>
-                                                    <p class="card-text card-truncate">@article.Content</p>
-                                                     <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger">Read More</a> 
+                                                        <div class="card-text card-truncate ">@Html.Raw(article.Content)</div>
+                                                     <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger mt-3">Read More</a> 
                                                 </div>
                                             </div>
                                         </div>

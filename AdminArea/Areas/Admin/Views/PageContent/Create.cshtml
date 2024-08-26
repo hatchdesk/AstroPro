@@ -25,17 +25,20 @@
                             <div class="form-row">
                               
                                 <div class="form-group mb-3">
-                                    <label class="form-label  fw-bold" asp-for="Tag"></label>
-                                    <textarea asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></textarea>
+                                    <label class="form-label required fw-bold" asp-for="Tag"></label>
+                                    <input  asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></input>
                                     <span asp-validation-for="Tag" class="text-danger"></span>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label class="form-label  fw-bold">Content</label>
-                                    <input type="text" class="form-control " asp-for="Content" placeholder="Enter Your Content" />
+                                    <label class="form-label required  fw-bold">Content</label>
+                                    <textarea id="tiny" type="text" class="form-control " asp-for="Content" placeholder="Enter Your Content" ></textarea>
                                     <span asp-validation-for="Content" style="color:red"></span>
                                 </div>
 
-                                <button type="submit" class="btn btn-dark mt-2" style="background-color:darkRed">Add</button>
+                                <div class="float-end mt-3">
+                                    <a type="submit" asp-area="Admin" asp-controller="PageContent" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
+                                    <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
+                                </div>
                             </div>
                         </form>
                     </div> 

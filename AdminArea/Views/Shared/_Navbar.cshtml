@@ -13,16 +13,16 @@
 
         <!-- Carousel container visible only on medium and larger screens -->
         <div class="col-lg-8 col-md-10 d-none d-md-block">
-            @if (Model != null && Model.ServiceToModel != null && Model.ServiceToModel.Any())
+            @if (Model != null && Model.Services != null && Model.Services.Any())
             {
                 <div class="row">
-                    @for (int i = 0; i < Model.ServiceToModel.Count; i++)
+                    @for (int i = 0; i < Model?.Services.Count; i++)
                     {
-                        var service = Model.ServiceToModel[i];
+                        var service = Model?.Services[i];
                         <div class="col-5 col-md-2 ">
                             <div class="d-flex flex-column align-items-center justify-content-center">
                                 <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
-                                    @Html.Raw(service.Icon)
+                                    @Html.Raw(service!.Icon)
                                 </a>
                                 <span class="d-block icon-text service-title mt-2">@service.Title</span>
                             </div>
@@ -45,10 +45,13 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                @* @Html.Action("NavigationMenu", "Home") *@
+              @*    @Html.Action("NavigationMenu", "Home")  *@
 
-                <li class="nav-item">
+                 <li class="nav-item">
                     <a class="nav-link menu-text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-text" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Articles">Articles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="AboutUs">About Us</a>
@@ -61,7 +64,7 @@
                         <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light custom-search-btn" type="submit">Search</button>
                     </form>
-                </li>
+                </li> 
             </ul>
         </div>
     </div>

@@ -24,17 +24,20 @@
                 <form method="post" asp-controller="Page" asp-action="Create" >
                                 <div class="form-row">
                                     <div class="form-group mb-3">
-                                        <label class="form-label  fw-bold">Name</label>
+                                    <label class="form-label  fw-bold required">Name</label>
                                         <input type="text" class="form-control " asp-for="Name" placeholder="Enter Your Name" />
                                         <span asp-validation-for="Name" style="color:red"></span>
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label  class="form-label  fw-bold" asp-for="Tag"></label>
-                                        <textarea asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></textarea>
+                                    <label class="form-label  fw-bold required" asp-for="Tag"></label>
+                                        <input asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></input>
                                         <span asp-validation-for="Tag" class="text-danger"></span>
                                     </div>
 
-                                <button type="submit" class="btn btn-dark mt-2" style="background-color:darkRed">Add</button>
+                                <div class="float-end mt-3">
+                                    <a type="submit" asp-area="Admin" asp-controller="Page" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
+                                    <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
+                                </div>
                            </div>
                 </form>
             </div>

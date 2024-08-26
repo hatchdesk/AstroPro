@@ -115,7 +115,8 @@
 
 .custom-card {
     border-radius: 15px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-out;
+    cursor:pointer;
 }
 
 .custom-card:hover {
@@ -232,14 +233,14 @@
     height: 200px;
     object-fit: cover;
 }
-.truncate {
+/*.truncate {
     width: 150px; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: inline-block;
     vertical-align: middle;
-}
+}*/
 
 
 .table-fixed {
@@ -283,7 +284,7 @@
     border: 1px solid #ddd; /* Adds a light border */
     border-radius: 0.5rem; /* Rounds the corners of the card */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+    transition: transform 0.2s ease-in; /* Smooth transition for shadow on hover */
     border-radius: unset;
     max-width: 100%;
 }
@@ -453,6 +454,12 @@
 
 .text-light{
     text-align:justify;
+}
+
+.required::after{
+    content:" *";
+    color:red;
+    font-size:22px;
 }
 
 

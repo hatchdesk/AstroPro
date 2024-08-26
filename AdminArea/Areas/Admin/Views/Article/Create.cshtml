@@ -23,34 +23,38 @@
                     <h4 class="card-title text-center" style="color:darkRed">Add Article</h4>
                     <div class="basic-form">
                         <form method="post" asp-controller="Article" asp-action="Create" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label class="form-label fw-bold">Title</label>
+                            <div class="form-group mt-3">
+                                <label class="form-label fw-bold required">Title</label>
                                 <input type="text" class="form-control" asp-for="Title" placeholder="Enter Your Title" />
                                 <span asp-validation-for="Title" style="color:red"></span>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label fw-bold">Content</label>
-                                <textarea class="form-control" asp-for="Content" placeholder="Enter Your Content" rows="5"></textarea>
+                            <div class="form-group mt-3">
+                                <label class="form-label fw-bold required">Content</label>
+                                <textarea id="tiny" class="form-control" asp-for="Content" placeholder="Enter Your Content" rows="5"></textarea>
                                 <span asp-validation-for="Content" style="color:red"></span>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label fw-bold">IsPublished</label>
-                                <input asp-for="IsPublished" type="checkbox" class="form-check-input border-2" />
-                                <span asp-validation-for="IsPublished" style="color:red" class="text-danger"></span>
+                            <div class="form-group mt-3">
+                                <label class="form-label fw-bold">Are you sure you want to publish this article?</label>
+                                <input asp-for="IsPublished" type="checkbox" class="form-check-input border-2 ms-3 border border-black" />
+                                
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label class="form-label fw-bold">Category</label>
                                 <select asp-for="Category" asp-items="Html.GetEnumSelectList<ArticleCategory>()">
                                     <option selected="selected" value="">Please select</option>
                                 </select>
-                                <span asp-validation-for="Category" class="text-danger"></span>
+                              
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mt-3">
                                 <label class="form-label fw-bold">Image</label>
                                 <input asp-for="Image" type="file" class="form-control" />
                                 @* <span asp-validation-for="Image" style="color:red" class="text-danger"></span> *@
                             </div>
-                            <button type="submit" class="btn btn-dark mt-2" style="background-color:darkRed">Add</button>
+                            <div class="float-end mt-3">
+                                <a type="submit" asp-area="Admin" asp-controller="Article" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
+                                <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
+                            </div>
+                           
                         </form>
                     </div>
                 </div>

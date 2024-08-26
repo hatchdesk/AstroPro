@@ -151,6 +151,7 @@ namespace Web.Application.Services
             return new PageParentModel
             {
                 ServiceToModel = serviceToViewModels,
+                Services = serviceToViewModels,
                 ArticleToModel = Articles,
                 PageModel = pageToViewModel
             };

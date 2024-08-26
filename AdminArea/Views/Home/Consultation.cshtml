@@ -2,7 +2,8 @@
 
 @{
 
-	ViewData["Title"] = "Home";
+	ViewData["Title"] = "Consultation";
+	ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
 }
 
 

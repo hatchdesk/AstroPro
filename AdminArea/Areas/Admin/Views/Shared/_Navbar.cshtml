@@ -1,6 +1,6 @@
 ﻿<nav class="navbar navbar-expand-lg navbar-light" style="background-image: linear-gradient(90deg, red, yellow);">
     <div class="container-fluid">
-        <a class="navbar-brand text-white fw-bold" asp-area="Admin" asp-controller="AdminHome" asp-action="Index">Astro Pro</a>
+        <a class="navbar-brand text-white fw-bold fs-3" asp-area="Admin" asp-controller="AdminHome" asp-action="Index">AstroTalk</a>
 
         <!-- Menu burger icon for mobile and tablet -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,18 +8,18 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 fs-5">
                 <li class="nav-item">
-                <a class="nav-link text-white" asp-controller="Article" asp-action="List" asp-area="Admin">Articles</a>
+                    <a class="text-white  text-decoration-none ms-5 " asp-controller="Article" asp-action="List" asp-area="Admin">Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" asp-area="Admin" asp-controller="Page" asp-action="List">Pages</a>
+                    <a class=" text-white  text-decoration-none ms-5" asp-area="Admin" asp-controller="Page" asp-action="List">Pages</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link text-white" asp-area="Admin" asp-controller="Service" asp-action="List">Services</a>
+                    <a class=" text-white  text-decoration-none ms-5" asp-area="Admin" asp-controller="Service" asp-action="List">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" asp-area="Admin" asp-controller="PageContent" asp-action="List">PageContents</a>
+                    <a class=" text-white  text-decoration-none ms-5" asp-area="Admin" asp-controller="PageContent" asp-action="List">PageContents</a>
                 </li>
             </ul>
 
@@ -27,13 +27,13 @@
                 @if (User!.Identity!.IsAuthenticated)
                 {
                     <li class="nav-item">
-                        <a type="button" class="text-center text-decoration-none" asp-area="Admin" asp-controller="Account" asp-action="Logout" style="color:darkred">Log Out</a>
+                        <a type="button" class="text-center text-decoration-none fs-5 mr-5" asp-area="Admin" asp-controller="Account" asp-action="Logout" style="color:darkred">Log Out</a>
                     </li>
                 }
                 else
                 {
                     <li class="nav-item">
-                        <a type="button" class="text-center text-decoration-none" asp-area="Admin" asp-controller="Account" asp-action="SignIn" style="color:darkred">Log In</a>
+                        <a type="button" class="text-center text-decoration-none text-white mr-5" asp-area="Admin" asp-controller="Account" asp-action="SignIn" style="color:darkred">Log In</a>
 
                     </li>
                 }

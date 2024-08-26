@@ -1,6 +1,9 @@
-﻿@{
-  
-    ViewData["Title"] = "Success";
+﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+
+@{
+
+    ViewData["Title"] = "success";
+    ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
 }
 
 <div class="row mx-5 mt-2">

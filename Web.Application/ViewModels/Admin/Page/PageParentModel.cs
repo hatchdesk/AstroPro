@@ -7,8 +7,9 @@ namespace Web.Application.ViewModels.Admin.Page
 {
     public class PageParentModel
     {
+        public List<ServiceToViewModel>? Services { get; set; }
         public PageToViewModel? PageModel { get; set; }
-        public List<ServiceToViewModel> ServiceToModel { get; set; } = new List<ServiceToViewModel>();
+        public List<ServiceToViewModel> ServiceToModel { get; set; } = new List<ServiceToViewModel>(); //selected Service
         public List<ArticleToViewModel> ArticleToModel { get; set; } = new List<ArticleToViewModel>();
         public ConsultationSendToViewModel ?ConsultationToModel { get; set; }  
     }

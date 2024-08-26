@@ -28,7 +28,6 @@ namespace AdminArea.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Route("Admin/login")]
         [AllowAnonymous]
         public async Task<IActionResult> SignIn(LogInToCreateViewModel model)
         {

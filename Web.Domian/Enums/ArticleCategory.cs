@@ -6,6 +6,7 @@
         Horsescope = 2,
         kundli = 3,
         Muhurat = 4,
-        CareerConsultation = 5
+        CareerConsultation = 5,
+        Other = 6
     }
 }
