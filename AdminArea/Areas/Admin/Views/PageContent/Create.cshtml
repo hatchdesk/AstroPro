@@ -21,24 +21,22 @@
                 <div class="card-body">
                     <h4 class="card-title text-center" style="color:darkRed">Add PageContent</h4>
                     <div class="basic-form">
-                        <form method="post" asp-controller="PageContent" asp-action="Create">
+                        <form method="post" asp-controller="PageContent" asp-action="Create" enctype="multipart/form-data">
                             <div class="form-row">
-                              
                                 <div class="form-group mb-3">
-                                    <label class="form-label required fw-bold" asp-for="Tag"></label>
-                                    <input  asp-for="Tag" class="form-control" placeholder="Enter Your Tag Here"></input>
-                                    <span asp-validation-for="Tag" class="text-danger"></span>
+                                    <label class="form-label required fw-bold">Tag</label>
+                                    <input type="text" class="form-control" asp-for="Tag" placeholder="Enter Your Title" />
+                                    <span asp-validation-for="Tag" style="color:red"></span>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label class="form-label required  fw-bold">Content</label>
-                                    <textarea id="tiny" type="text" class="form-control " asp-for="Content" placeholder="Enter Your Content" ></textarea>
+                                    <label class="form-label required fw-bold">Content</label>
+                                    <textarea id="tiny" type="text" class="form-control" asp-for="Content" placeholder="Enter Your Content"></textarea>
                                     <span asp-validation-for="Content" style="color:red"></span>
                                 </div>
-
-                                <div class="float-end mt-3">
-                                    <a type="submit" asp-area="Admin" asp-controller="PageContent" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
-                                    <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
-                                </div>
+                            </div>
+                            <div class="float-end mt-3">
+                                <a type="submit" asp-area="Admin" asp-controller="PageContent" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
+                                <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
                             </div>
                         </form>
                     </div> 

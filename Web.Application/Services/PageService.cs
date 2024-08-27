@@ -144,6 +144,7 @@ namespace Web.Application.Services
                     Tag = page.Tag,
                     Contents = pageContents ?? new List<PageContentToViewModel>(),
                 },
+               Services = serviceToViewModels,
                 ServiceToModel = serviceToViewModels,
                 ArticleToModel =  Articles
             };

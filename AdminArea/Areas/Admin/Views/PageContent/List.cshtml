@@ -19,7 +19,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center">
         <h1 style="color:darkRed">PageContents</h1>
-        <a type="button" class="btn btn-primary text-center" asp-controller="Page" asp-action="Create" style="background-color:darkRed">Add PageContents</a>
+        <a type="button" class="btn btn-primary text-center" asp-controller="PageContent" asp-action="Create" style="background-color:darkRed">Add PageContents</a>
     </div>
     <table class="table table-fixed table-striped table-bordered mt-4">
         <thead>
@@ -37,7 +37,7 @@
                     <td class="id-column">@pages.Id</td>
                    
                     <td class="other-column"><span class="truncate">@pages.Tag</span></td>
-                    <td class="other-column">@pages.Content</td>
+                    <td class="other-column">@Html.Raw(pages.Content)</td>
                   
                     <td class="other-column">
                         <!-- Button trigger for Edit modal -->

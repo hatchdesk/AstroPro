@@ -10,7 +10,6 @@
                 </p>
             </a>
         </div>
-
         <!-- Carousel container visible only on medium and larger screens -->
         <div class="col-lg-8 col-md-10 d-none d-md-block">
             @if (Model != null && Model.Services != null && Model.Services.Any())
@@ -44,6 +43,7 @@
 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarNav">
+            <a  class="ms-5" href="https://x.com/thevedicvision "><i class="fa-brands fa-x-twitter fa-2x icon-style"></i></a>
             <ul class="navbar-nav ms-auto">
               @*    @Html.Action("NavigationMenu", "Home")  *@
 
@@ -54,17 +54,12 @@
                     <a class="nav-link menu-text" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Articles">Articles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="AboutUs">About Us</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="AboutMe">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Consultation</a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Book consultation</a>
                 </li>
-                <li class="nav-item">
-                    <form class="d-flex">
-                        <input class="form-control me-2 custom-search-input" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light custom-search-btn" type="submit">Search</button>
-                    </form>
-                </li> 
+              
             </ul>
         </div>
     </div>
