@@ -96,7 +96,7 @@ namespace Web.Controllers
 
 		private async Task<bool> VerifyCaptcha(string captchaResponse)
         {
-            var secretKey = "6Lfr5iIqAAAAAIyZwXKvllbhnNQAfgqTDNqJkp6c";
+            var secretKey = "6LcsEzEqAAAAAKbY5Kn5OOHljSVodI4vCN6EArqV";
             try
             {
                 using var httpClient = new HttpClient();
