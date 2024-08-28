@@ -70,7 +70,7 @@ namespace AdminArea.Controllers
                     return NotFound();    
                 }
 
-                page.ConsultationToModel = new ConsultationSendToViewModel();
+                page.ConsultationToModel = new ConsultationSendToViewModel() { DateOfBirth = DateOnly.FromDateTime(DateTime.Now)};
                 page.ServiceToModel = services;
                 page.Services = services;
                
