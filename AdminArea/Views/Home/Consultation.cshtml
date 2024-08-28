@@ -20,7 +20,7 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 				<h1 class="text-center fw-bold " style="color:black">Contact Us</h1>
-				<p class="text-center mt-3 fw-bold " style="color:black">Your trust is our commitment; privacy and confidentiality assured.</p>
+				<p class="text-center mt-3 fs-4" style="color:black">Your trust is our commitment; privacy and confidentiality assured.</p>
 			</div>
 		</div>
 		<div class="row p-3 d-flex justify-content-center align-items-start">
@@ -113,7 +113,7 @@
 					</div>
 	
 					<div class="mt-3 form-group col-lg-12 col-md-12 col-sm-12 col-12 d-flex flex-wrap mb-5 justify-content-start align-items-center">
-						<div class="g-recaptcha" data-sitekey="6Lfr5iIqAAAAAOmcn7I9pVNFcbBTNdcI8ijU6DcH"  data-callback="onCaptchaSuccess"></div>
+						<div class="g-recaptcha" data-sitekey="6LcsEzEqAAAAAFdp_5NtiPd07-Hy6aiqjiDNHQ-n" data-callback="onCaptchaSuccess"></div>
 						<input type="hidden" id="CaptchaResponse" name="CaptchaResponse" />
 						<div>
 							<button type="submit" class="btn btn-outline-danger ms-3 fw-bold fs-5 mt-2" style="background-color: darkred; color: white;">Send Message</button>
@@ -125,7 +125,7 @@
 				<div class="rounded p-5 consult-bg mb-3">
 					<div class="writeus color size">
 						<h1 style="font-size: 28px; font-weight: bold" class="text-white">
-							@Model.PageModel?.Contents?.Where(c => c.Tag == "Consultation_SubTitle1").Select(c => c.Content).FirstOrDefault()</h1>
+							@Model!.PageModel?.Contents?.Where(c => c.Tag == "Consultation_SubTitle1").Select(c => c.Content).FirstOrDefault()</h1>
 						<p class="text-white" style="font-size: 18px; color: black; margin-top: 15px">
 							@Model.PageModel?.Contents?.Where(c => c.Tag == "Consultation_Advertising").Select(c => c.Content).FirstOrDefault()
 						</p>

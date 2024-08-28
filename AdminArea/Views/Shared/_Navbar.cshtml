@@ -43,11 +43,10 @@
 
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="navbarNav">
-            <a  class="ms-5" href="https://x.com/thevedicvision "><i class="fa-brands fa-x-twitter fa-2x icon-style"></i></a>
             <ul class="navbar-nav ms-auto">
               @*    @Html.Action("NavigationMenu", "Home")  *@
 
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link menu-text" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 </li>
                 <li class="nav-item">
@@ -57,9 +56,11 @@
                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="AboutMe">About Me</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Book consultation</a>
+                    <a class="nav-link btn-consult" asp-area="" asp-controller="Home" asp-action="Page" asp-route-name="Consultation">Book consultations</a>
                 </li>
-              
+                <li>
+                    <a class="ms-5" href="https://x.com/thevedicvision "><i class="fa-brands fa-x-twitter fa-2x social-link-twitter"></i></a>
+                </li>
             </ul>
         </div>
     </div>

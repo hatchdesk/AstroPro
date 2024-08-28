@@ -23,4 +23,549 @@ body {
     background-position: center;*/
     margin-bottom:60px;
 }
- 
+
+body {
+    /*   background-image: url('@Url.Content("~/Image/bg.jpg")');
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;*/
+    background: none !important;
+}
+
+
+.carousel-inner {
+    overflow: hidden; /* Prevent overflow in carousels */
+}
+
+/* Ensure the carousel container is positioned relative for positioning arrows correctly */
+#servicesCarousel {
+    position: relative;
+}
+
+/* Style the carousel controls */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Adjust width of the controls */
+    height: 50px; /* Adjust height of the controls */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+.carousel-item {
+    width: 100%;
+}
+
+.container-fluid, .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+
+.font-600 {
+    font-weight: 600 !important;
+    color: rgb(83 9 3) !important;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 10px;
+    color: black !important;
+    font-weight: 500;
+}
+
+    .navbar-nav .nav-link:hover {
+        background-color: white;
+        border-radius: 5px;
+    }
+.social-link-twitter{
+    color:black !important;
+    text-decoration:none!important;
+}
+.brand {
+    color: #ffea00;
+    text-align: start;
+    vertical-align: middle;
+    line-height: 100px;
+    font-weight: bolder;
+    font-size: 30px;
+    cursor: pointer;
+    margin: unset;
+    padding: unset;
+}
+
+.top-section {
+    background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%);
+}
+
+.icon-wrap {
+    min-width: 155px;
+}
+
+.icon-style {
+    color: #ffec00;
+    padding: 15px;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+    .icon-style:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+
+.icon-text {
+    color: white;
+    margin-top: 10px;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgb(4, 0, 0);
+}
+
+
+.navbar-custom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.custom-card {
+    border-radius: 15px;
+    transition: transform 0.3s ease-out;
+    cursor: pointer;
+}
+
+    .custom-card:hover {
+        transform: scale(1.1);
+    }
+
+.custom-search-input {
+    color: #711604;
+    border: 2px solid #711604;
+}
+
+    .custom-search-input::placeholder {
+        color: #711604;
+    }
+
+.custom-search-btn {
+    background-color: #b11c1c;
+    color: #fff;
+    border: 1px solid #a0190f;
+    border-radius: 5px;
+    padding: 1px 20px 1px 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: 50%;
+    bottom: auto;
+}
+
+.custom-height {
+    height: 450px;
+    object-fit: cover;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.bg-orange {
+    background-color: orangered;
+}
+
+
+.header {
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    position: relative;
+    padding: 16px;
+}
+
+.abc {
+    text-decoration: none;
+}
+
+.content {
+    padding: 20px;
+}
+
+.logo {
+    width: 150px;
+}
+
+.header .btn {
+    position: absolute;
+    right: 20px;
+    top: 81%;
+    transform: translateY(-50%);
+    background-color: #de2e0a;
+}
+
+
+
+
+.card-body {
+    min-height: 200px;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.card-body-About {
+    min-height: 150px;
+}
+
+.card-text {
+    min-height: 50px;
+}
+
+
+
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+.card-custom {
+    height: 100%;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+    .card-custom:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+.img-custom {
+    height: 200px;
+    object-fit: cover;
+}
+/*.truncate {
+    width: 150px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    vertical-align: middle;
+}*/
+
+
+.table-fixed {
+    table-layout: fixed;
+    width: 100%;
+}
+
+    .table-fixed th, .table-fixed td {
+        height: 70px;
+        text-align: center;
+        vertical-align: middle;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+        .table-fixed th.id-column, .table-fixed td.id-column {
+            width: 6%;
+        }
+
+        .table-fixed th.other-column, .table-fixed td.other-column {
+            width: 24%;
+        }
+
+
+/* Custom CSS for hover effect */
+.service-card {
+    transition: transform 0.3s ease;
+}
+
+    .service-card:hover {
+        transform: scale(1.05);
+    }
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures the card stretches to fill available space */
+    overflow: hidden; /* Prevents overflow */
+    border: 1px solid #ddd; /* Adds a light border */
+    border-radius: 0.5rem; /* Rounds the corners of the card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    transition: transform 0.2s ease-in; /* Smooth transition for shadow on hover */
+    border-radius: unset;
+    max-width: 100%;
+}
+
+.card-truncate {
+    display: -webkit-box; /* For multi-line truncation */
+    -webkit-box-orient: vertical; /* Vertical box orientation */
+    -webkit-line-clamp: 3; /* Limits text to 3 lines */
+    overflow: hidden; /* Hides overflow content */
+    text-overflow: ellipsis; /* Adds ellipsis (...) for overflowing text */
+    line-height: 1.5;
+    min-height: 60px; /* Adjust line height for better spacing */
+}
+
+.cardTitle-truncate {
+    display: -webkit-box; /* For multi-line truncation */
+    -webkit-box-orient: vertical; /* Vertical box orientation */
+    -webkit-line-clamp: 2;
+    overflow: hidden; /* Hides overflow content */
+    text-overflow: ellipsis;
+    min-height: 50px;
+}
+
+.backGround-Color {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+.card-image {
+    height: 200px;
+    width: 100%;
+}
+
+.carousel-icon {
+    text-align: right;
+}
+
+.main {
+    height: auto;
+}
+
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+footer ul li a {
+    text-decoration: none;
+}
+
+.consult-bg {
+    background: linear-gradient(270deg, yellow, red);
+}
+
+
+.text-content {
+    text-align: justify;
+}
+
+.required-label {
+    position: relative;
+    display: block;
+}
+
+    .required-label::after {
+        content: "*";
+        color: red;
+        position: absolute;
+        top: 0;
+        left: 45px;
+        font-weight: bold;
+    }
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+    .input-wrapper .form-control {
+        padding-right: 30px;
+    }
+
+    .input-wrapper .asterisk {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        color: red;
+        font-weight: bold;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+.btn {
+    position: relative;
+}
+
+.consultation-btn {
+    position: absolute;
+    right: 20px;
+    top: 90%;
+    font-size: 26px;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 10px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: background-color 0.6s;
+}
+
+    .consultation-btn:hover {
+        background-color: #c82333;
+    }
+
+
+
+.homebanner {
+    position: relative;
+    height: 70vh;
+}
+
+
+.text-container {
+    position: absolute;
+    top: 25%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    color: red;
+    z-index: 10;
+    min-width: 945px;
+}
+
+.custom-height {
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.custom-image-height {
+    max-height: 500px; /* Limits the height to prevent stretching */
+    object-fit: cover;
+    width: 600px; /* Ensures the image covers the area without stretching */
+}
+
+.image-height {
+    width: 100%;
+    height: 100%;
+}
+
+.text-link1 {
+    text-decoration: none;
+    color: white;
+    font-size: 60px;
+}
+
+.text-link {
+    text-decoration: none;
+    color: white;
+    width: 700px;
+    font-weight: 300;
+}
+
+.text-light {
+    text-align: justify;
+}
+
+.required::after {
+    content: " *";
+    color: red;
+    font-size: 22px;
+}
+
+
+
+
+@media (max-width: 576px) {
+    .service-icon {
+        font-size: 12px;
+    }
+
+    .consultation-btn {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .service-title {
+        font-size: 10px;
+    }
+
+    .text-light {
+        color: red;
+        margin-top: 10px;
+    }
+
+    .consultation-btn {
+        font-size: 30px;
+    }
+
+
+
+
+
+    .text-link1 {
+        position: relative;
+        left: -6px;
+        min-width: 60px;
+        border: aqua
+    }
+
+    .text-link {
+        font-size: 32px;
+        position: relative;
+        left: 130px;
+    }
+}
+
+
+
+@media (min-width: 768px) {
+    .service-icon {
+        font-size: 16px;
+    }
+
+    .consultation-btn {
+        font-size: 16px;
+    }
+
+    .service-title {
+        font-size: 14px;
+    }
+}
+
+
+@media (min-width: 992px) {
+    .service-icon {
+        font-size: 20px;
+    }
+
+    .consultation-btn {
+        font-size: 18px;
+    }
+
+    .service-title {
+        font-size: 14px;
+    }
+}
+.btn-consult {
+    background-color: white !important;
+    border-radius: 5px;
+}
+    .btn-consult:hover {
+        background-color: #ba1c15 !important;
+        color:#fff !important;
+    }
