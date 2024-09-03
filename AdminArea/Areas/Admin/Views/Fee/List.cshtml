@@ -1,0 +1,79 @@
+﻿@using Web.Application.ViewModels.Admin.Fee
+@model IEnumerable<FeeToViewModel>
+
+@{
+    ViewBag.Title = "Articles";
+}
+
+<div class="row page-titles mx-5 mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="AdminHome" asp-action="Index" style="color:darkRed" class="text-decoration-none">Home</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)" style="color:darkRed" class="text-decoration-none">List</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 style="color:darkRed">Fees</h1>
+        <a type="button" class="btn btn-primary text-center" asp-controller="Fee" asp-action="Create" style="background-color:darkRed">Add Fees</a>
+    </div>
+    <table class="table table-fixed table-striped table-bordered mt-4">
+        <thead>
+            <tr>
+                <th class="id-column">Id</th>
+                <th class="other-column">ServiceName</th>
+                <th class="other-column">Amount</th>
+                <th class="other-column">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+                <tr>
+                    <td class="id-column">@article.Id</td>
+                    <td class="other-column">@article.ServiceName</td>
+                    <td class="other-column">@article.Amount</td>
+              
+                    <td class="other-column">
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <!-- Button trigger for Edit modal -->
+                            <a style="cursor:pointer" asp-route-id="@article.Id" asp-controller="Fee" asp-action="Edit" title="Edit">
+                                <i class="fa fa-pencil color-muted fs-5"></i>
+                            </a>
+
+
+                            <!-- Button trigger for Delete modal -->
+                            <a style="cursor:pointer" data-bs-toggle="modal" data-bs-target="#deleteModal@(article.Id)" title="Delete" class="ms-5">
+                                <i class="fa fa-close color-muted fs-5"></i>
+                            </a>
+                            <!-- Delete Modal -->
+                            <div class="modal fade" id="deleteModal@(article.Id)" tabindex="-1" aria-labelledby="deleteModalLabel@(article.Id)" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-start">Are you sure you want to delete this data?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a role="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
+                                            <a role="button" class="btn btn-primary" asp-route-id="@article.Id" asp-controller="Article" asp-action="Delete">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Info Button -->
+                            <a type="button" asp-area="Admin" asp-controller="Fee" asp-action="Detail" asp-route-ServiceName="@article.ServiceName"  title="Info" class="ms-5">
+                                <i class="fa fa-info color-muted fs-5"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
