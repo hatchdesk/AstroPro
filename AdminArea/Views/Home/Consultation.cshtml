@@ -23,14 +23,14 @@
 				<p class="text-center mt-3 fs-4" style="color:black">Your trust is our commitment; privacy and confidentiality assured.</p>
 			</div>
 		</div>
-		<div class="row p-3 d-flex justify-content-center align-items-start">
+		<div class="row p-5 d-flex justify-content-center align-items-start mt-5">
 			<div class="col-lg-6 col-md-12 col-sm-12 col-12">
 				<form  method="post" asp-action="SendEmail" asp-controller="Consultation">
 					<div class="row">
-						<div class="form-group mt-3 col-lg-12 col-md-12 col-sm-12">			
+						<div class="form-group mt-3 col-lg-6 col-md-12 col-sm-12">			
 							<div class="input-wrapper">
 								<label style="color:black" class="form-label fw-bold">Choose a Category</label>
-								  <select class="form-control p-2" name="category" value="category" asp-for="ConsultationToModel!.ServiceId">
+								  <select  id ="DropDownFees" class="form-control p-2" name="category" value="category" asp-for="ConsultationToModel!.ServiceId">
 									@if (ViewBag.Services != null)
 									{
 										string selectedService = ViewBag.SelectedService?.ToLower().Replace(" ", "") ?? string.Empty;
@@ -59,9 +59,7 @@
 							</div>
 							<span asp-validation-for="ConsultationToModel!.ServiceId" style="color:red"></span>
 						</div>
-					</div>
-					<div class="row">
-						<div class="form-group mt-3 col-lg-12 col-md-12 col-sm-12">
+						<div class="form-group mt-3 col-lg-6 col-md-12 col-sm-12">
 							<div class="input-wrapper">
 								<label style="color:black" class="form-label fw-bold">Name</label>
 								<input type="text" asp-for="ConsultationToModel!.Name" class="form-control corner-radius p-2" placeholder="Enter Name" id="name">
@@ -69,6 +67,7 @@
 							<span asp-validation-for="ConsultationToModel!.Name" style="color:red"></span>
 						</div>
 					</div>
+				
 					<div class="row">
 						<div class="form-group mt-3 col-lg-6 col-md-6 col-sm-6">
 							<div class="input-wrapper">
@@ -121,9 +120,9 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-lg-6 col-md-12 col-sm-12 mt-5">
-				<div class="rounded p-5 consult-bg mb-3">
-					<div class="writeus color size">
+			<div class="col-lg-6 col-md-12 col-sm-12 mb-5">
+				<div class="rounded consult-bg  p-2 mb-3 text-white">
+					@* <div class="writeus color size">
 						<h1 style="font-size: 28px; font-weight: bold" class="text-white">
 							@Model!.PageModel?.Contents?.Where(c => c.Tag == "Consultation_SubTitle1").Select(c => c.Content).FirstOrDefault()</h1>
 						<p class="text-white" style="font-size: 18px; color: black; margin-top: 15px">
@@ -152,7 +151,9 @@
 						<div class="instagram ms-3 fs-3">
 							<a class="text-white" href="https://www.instagram.com/yourstarstell/"><i class="fa-brands fa-instagram"></i></a>
 						</div>
-					</div>
+					</div> *@
+					<p class="p-3 text-light">@Html.Raw(Model!.PageModel?.Contents?.Where(c => c.Tag == "Contact").Select(c => c.Content).FirstOrDefault())</h1></p>
+
 
 				</div>
 			</div>

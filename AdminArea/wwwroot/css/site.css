@@ -12,24 +12,18 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+
+body{
+    position:relative;
+    width:100%;
+    overflow-x:hidden;
 }
 
-body {
-/*    background-image: url('/Image/bg.jpg'); 
-    background-size: cover;
-    background-position: center;*/
-    margin-bottom:60px;
-}
-
-body {
-    /*   background-image: url('@Url.Content("~/Image/bg.jpg")');
-    background-size: cover;
-    background-position: center;
-    overflow-x: hidden;*/
-    background: none !important;
+.main {
+    position: relative;
+  height:auto;
+   
+   
 }
 
 
@@ -76,17 +70,26 @@ body {
     padding-right: 0;
 }
 
-
+.top-header{
+    text-decoration:none;
+}
 
 .font-600 {
     font-weight: 600 !important;
     color: rgb(83 9 3) !important;
+}
+.navbar-nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .navbar-nav .nav-link {
     margin-right: 10px;
     color: black !important;
     font-weight: 500;
+    padding: 0px;
+    margin: 0px;
 }
 
     .navbar-nav .nav-link:hover {
@@ -97,17 +100,7 @@ body {
     color:black !important;
     text-decoration:none!important;
 }
-.brand {
-    color: #ffea00;
-    text-align: start;
-    vertical-align: middle;
-    line-height: 100px;
-    font-weight: bolder;
-    font-size: 30px;
-    cursor: pointer;
-    margin: unset;
-    padding: unset;
-}
+
 
 .top-section {
     background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%);
@@ -259,14 +252,7 @@ body {
     height: 200px;
     object-fit: cover;
 }
-/*.truncate {
-    width: 150px; 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: inline-block;
-    vertical-align: middle;
-}*/
+
 
 
 .table-fixed {
@@ -347,17 +333,14 @@ body {
     text-align: right;
 }
 
-.main {
-    height: auto;
-}
 
-.footer {
-    width: 100%;
+.Upperfooter {
+   width:100%;
     position: absolute;
-    bottom: 0;
+ 
 }
 
-footer ul li a {
+.Upperfooter ul li a {
     text-decoration: none;
 }
 
@@ -487,7 +470,34 @@ footer ul li a {
     font-size: 22px;
 }
 
+/* General style for the icons */
+a i {
+    transition: color 0.3s ease;
+}
 
+/* Twitter icon color */
+.twitter-icon {
+    color: black; /* Twitter brand color */
+}
+
+/* Facebook icon color */
+.facebook-icon {
+    color: #1877F2; 
+}
+
+/* Instagram icon color */
+.instagram-icon {
+    color: #E1306C; 
+}
+
+/* Hover effects for icons */
+a i:hover {
+    opacity: 0.8;
+}
+
+.services, .articles , .abouts{
+    --bs-gutter-x: 0px 0px 0px 0px !important;
+}
 
 
 @media (max-width: 576px) {

@@ -10,87 +10,44 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item list-unstyled text-decoration-none"><a class="text-decoration-none" style="color:darkred" asp-controller="Home" asp-action="index">Home</a></li>
-                    <li class="breadcrumb-item active"><a class="text-decoration-none" style="color:darkred" href="javascript:void(0)">About Us</a></li>
+                    <li class="breadcrumb-item active"><a class="text-decoration-none" style="color:darkred" href="javascript:void(0)">About Me</a></li>
                 </ol>
             </div>
         </div>
-        <div class="row">
+        <div class="row abouts">
             <div class="col-lg-12 col-md-12 col-sm-12">
-                <h2 class="card-title mb-3">
-                    @Model!.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Title1").Select(c => c.Content).FirstOrDefault()
-                </h2>
-                <div class="mt-3">
-                    <img src="@Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Imag1").Select(c => c.Content).FirstOrDefault()" class="img-fluid" alt="Image" style="width:100%;  height:250px" />
-                </div>
-                <div class="mt-4 text-justify">
-                    <p class="fs-5">
-                        @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_SubTitle1").Select(c => c.Content).FirstOrDefault()
-                    </p>
-                    <p class="fs-5">
-                        @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_SubTitle2").Select(c => c.Content).FirstOrDefault()
-                    </p>
-                </div>
-                <div class="mt-3 text-justify">
-                    <p class="fs-5">
-                        @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Title3").Select(c => c.Content).FirstOrDefault()
-                    </p>
-                    <p class="fs-5">
-                        @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Subtitle3").Select(c => c.Content).FirstOrDefault()
-                    </p>
-                </div>
+                <p class=" mb-3">
+                    @Html.Raw(Model!.PageModel?.Contents?.Where(c => c.Tag == "AboutMe").Select(c => c.Content).FirstOrDefault() ?? string.Empty)
+                </p>
             </div>
-          @*   <div class="col-lg-4 col-md-12 col-sm-12 " >
-                <h2 class="card-title mb-3">
-                    @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Title2").Select(c => c.Content).FirstOrDefault()
-                </h2>
-                <div>
-                    <div class="row mb-3 text-justify">
-                        <div class="col-3 col-md-4 col-lg-3">
-                            <img src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/happy_customers_56x56.png" class="rounded-circle bg-danger d-flex" alt="Customers" />
-                        </div>
-                        <div class="col-9 col-md-8 col-lg-9">
-                            <strong class="fs-4">3 Cr.</strong><br />
-                            <span class="text-muted fs-6">Happy Customers</span>
-                        </div>
+
+            @* <div class="row">
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="mt-3">
+                        <img src="@Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Imag1").Select(c => c.Content).FirstOrDefault()" class="img-fluid" alt="Image" style="width:100%;  height:250px" />
                     </div>
-                    <div class="row mb-3 text-justify">
-                        <div class="col-3 col-md-4 col-lg-3">
-                            <img src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/trusted_56x56.png" class="rounded-circle bg-danger d-flex" alt="Professionals" />
-                        </div>
-                        <div class="col-9 col-md-8 col-lg-9">
-                            <strong class="fs-4">2000+</strong><br />
-                            <span class="text-muted fs-6">Trusted Professionals</span>
-                        </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="mt-2 text-justify">
+                        <p class="fs-6">
+                            @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_SubTitle1").Select(c => c.Content).FirstOrDefault()
+                        </p>
+                        <p class="fs-6">
+                            @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_SubTitle2").Select(c => c.Content).FirstOrDefault()
+                        </p>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-3 col-md-4 col-lg-3">
-                            <img src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/languages_56x56.png" class="rounded-circle bg-orange d-flex" alt="Languages" />
-                        </div>
-                        <div class="col-9 col-md-8 col-lg-9">
-                            <strong class="fs-4">11+</strong><br />
-                            <span class="text-muted fs-6">Languages</span>
-                        </div>
+                    <div class="mt-3 text-justify">
+                        <p class="fs-6">
+                            @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Title3").Select(c => c.Content).FirstOrDefault()
+                        </p>
+                        <p class="fs-6">
+                            @Model.PageModel?.Contents?.Where(c => c.Tag == "AboutUs_Subtitle3").Select(c => c.Content).FirstOrDefault()
+                        </p>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-3 col-md-4 col-lg-3">
-                            <img src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/locations_56x56.png" class="rounded-circle bg-danger d-flex" alt="Countries" />
-                        </div>
-                        <div class="col-9 col-md-8 col-lg-9">
-                            <strong class="fs-4">85</strong><br />
-                            <span class="text-muted fs-6">Countries</span>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 col-md-4 col-lg-3">
-                            <img src="https://images.astroyogi.com/astroyogi2017/english/images/infopages/experience_56x56.png" class="rounded-circle bg-orange d-flex" alt="Experience" />
-                        </div>
-                        <div class="col-9 col-md-8 col-lg-9">
-                            <strong class="fs-4">22 Years</strong><br />
-                            <span class="text-muted fs-6">Experience</span>
-                        </div>
-                    </div>
-                </div> *@
-            </div>
+                </div>
+               
+             
+            </div> *@
         </div>
     </div>
 </div>
@@ -129,7 +86,7 @@
                                                         </div>
                                                         <div>
                                                             <h5 class="card-title cardTitle-truncate">@service.Title</h5>
-                                                            <p class="card-text card-truncate">@service.Content</p>
+                                                            <div class="card-text card-truncate">@Html.Raw(service.Content)</div>
                                                             <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger">Learn More</a>
                                                         </div>
                                                     </div>

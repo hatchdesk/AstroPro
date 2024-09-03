@@ -91,43 +91,6 @@ namespace AdminArea.Areas.Admin.Controllers
             return View(model);
         }
 
-        //private string UploadedFile(PageContentCreateToViewModel model)
-        //{
-
-        //    string uniqueFileName = "Image/default-logo.png";
-
-        //    if (model.brandlogo != null)
-        //    {
-        //        var ext = Path.GetExtension(model.brandlogo.FileName).ToLowerInvariant();
-        //        var size = model.brandlogo.Length;
-
-        //        if (ext == ".png" || ext == ".jpg" || ext == ".jpeg")
-        //        {
-        //            if (size <= 1000000)
-        //            {
-        //                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Image");
-        //                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.brandlogo.FileName;
-        //                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-        //                using (var fileStream = new FileStream(filePath, FileMode.Create))
-        //                {
-        //                    model.brandlogo.CopyTo(fileStream);
-        //                }
-        //                uniqueFileName = "Image/" + uniqueFileName;
-        //            }
-        //            else
-        //            {
-        //                TempData["SizeError"] = "Image must be less than 1MB";
-        //                uniqueFileName = "default-image.jpg";
-        //            }
-        //        }
-        //        else
-        //        {
-        //            TempData["ExtError"] = "Only jpg, jpeg and png images are allowed";
-        //            uniqueFileName = "default-image.jpg";
-        //        }
-        //    }
-        //    return uniqueFileName;
-        //}
 
     }
 }
