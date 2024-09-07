@@ -298,7 +298,7 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
     transition: transform 0.2s ease-in; /* Smooth transition for shadow on hover */
     border-radius: unset;
-    max-width: 100%;
+    max-width: 95%;
 }
 
 .card-truncate {
