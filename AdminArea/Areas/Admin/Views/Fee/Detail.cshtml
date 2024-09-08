@@ -1,0 +1,22 @@
+﻿@using Web.Application.ViewModels.Admin.Fee
+@model FeeToViewModel
+
+<div class="container">
+    <h2>Fee Details</h2>
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>@Model.Id</td>
+            </tr>
+            <tr>
+                <th>Service Name</th>
+                <td>@Model.ServiceName</td>
+            </tr>
+            <tr>
+                <th>Fee Amount</th>
+                <td>₹@Model.Amount</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
