@@ -13,21 +13,22 @@
     {
         <div class="row services">
             <div class="header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, red, yellow);">
-                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService ="@service.Title.Replace(" ","")" class="btn btn-danger consultation-btn2 mb-3"> Book Consultation</a>
-                <h1>@service.Title</h1>
-                <p class="px-5 mb-3">@Html.Raw(service.Content)</p>
+                <a asp-controller="Home" asp-action="page" asp-route-name="Consultation" class="atricle btn btn-danger consultation-btn2"> Book Consultation</a>
+                <h1>Article of @service.Title</h1>
+                <p class="lead">@Html.Raw(service.Content)</p>
+
             </div>
         </div>
         
 
         <div class="horoscope-info p-3">
             <div class="container">
-                 <div class="float-end">
+               
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item list-unstyled text-decoration-none"><a class="text-decoration-none" style="color:darkred" -controller="Home" asp-action="index">Home</a></li>
                                       <li class="breadcrumb-item active"><a class="text-decoration-none" style="color:darkred" href="javascript:void(0)">Service</a></li>
                                 </ol>
-                   </div>
+                
                 <h2 class="mt-3">What is @service.Title ?</h2>
                 <p>The @service.Title is a chart or diagram representing the positions of the Sun, Moon, planets, astrological aspects, and sensitive angles at the time of an event, such as a person's birth. It is used in astrology to forecast events and interpret personality traits and characteristics based on celestial positions.</p>
                 <p>@service.Title are often personalized based on an individual's birth date, time, and place, and they provide insights into various aspects of life, including relationships, career, health, and finances.</p>

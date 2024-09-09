@@ -135,8 +135,8 @@ body{
 
 
 .custom-card {
-    border-radius: 15px;
-    transition: transform 0.3s ease-out;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
     cursor: pointer;
 }
 
@@ -203,10 +203,10 @@ body{
     width: 150px;
 }
 
-.header .btn {
+.header .consultation-btn2 {
     position: absolute;
     right: 20px;
-    top: 81%;
+    bottom: -10px;
     transform: translateY(-50%);
     background-color: #de2e0a;
 }
@@ -363,7 +363,7 @@ body{
         color: red;
         position: absolute;
         top: 0;
-        left: 45px;
+        left: 40px;
         font-weight: bold;
     }
 
@@ -505,7 +505,7 @@ a i:hover {
         font-size: 12px;
     }
 
-    .consultation-btn {
+    .consult-button {
         font-size: 12px;
         text-align: center;
     }
@@ -519,41 +519,88 @@ a i:hover {
         margin-top: 10px;
     }
 
-    .consultation-btn {
-        font-size: 30px;
-    }
-
-
-
-
-
     .text-link1 {
-        position: relative;
-        left: -6px;
-        min-width: 60px;
-        border: aqua
+        font-size: 39px;
+        position: absolute;
+        left: -16px;
+        top: 31px;
+    }
     }
 
-    .text-link {
-        font-size: 32px;
+
+.text-link {
+    font-size: 20px;
+    top: 70px;
+    position: relative;
+    left: -17px;
+    width: 336px;
+    text-align: justify;
+}
+
+
+    .homebanner {
         position: relative;
-        left: 130px;
     }
+
+    .text-container {
+        position: absolute;
+        left:500px;
+    }
+
+
+    .repo-footer {
+        margin-top: 8px;
+    }
+
+
+
+    .header {
+        position: relative;
+        padding: 20px;
+        min-height: 140px;
+    }
+
+    .consultation-btn2 {
+        margin-bottom: -5px;
+    }
+
+    .services, .articles, .abouts {
+        --bs-gutter-x: 0px 0px 0px 0px !important;
+    }
+
+   
 }
 
 
 
-@media (min-width: 768px) {
+
+@media (max-width: 768px) {
     .service-icon {
         font-size: 16px;
     }
 
-    .consultation-btn {
+    .consult-button {
         font-size: 16px;
     }
 
     .service-title {
         font-size: 14px;
+    }
+
+    .homebanner{
+        position:relative;
+    }
+
+    .text-container {
+        position: absolute;
+        left: 500px;
+    }
+
+    .repo-header{
+        text-align:center;
+    }
+    .services, .articles, .abouts {
+        --bs-gutter-x: 0px 0px 0px 0px !important;
     }
 }
 
@@ -563,19 +610,27 @@ a i:hover {
         font-size: 20px;
     }
 
-    .consultation-btn {
+    .consult-button {
         font-size: 18px;
     }
 
     .service-title {
         font-size: 14px;
     }
-}
-.btn-consult {
+
+     .btn-consult {
     background-color: white !important;
     border-radius: 5px;
+    padding:10px;
 }
     .btn-consult:hover {
         background-color: #ba1c15 !important;
         color:#fff !important;
     }
+
+    .services, .articles, .abouts {
+        --bs-gutter-x: 0px 0px 0px 0px !important;
+    }
+  }
+
+

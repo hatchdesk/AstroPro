@@ -24,7 +24,6 @@
                 <th class="id-column">Id</th>
                 <th class="other-column">ServiceName</th>
                 <th class="other-column">Amount</th>
-             
                 <th class="other-column">Action</th>
             </tr>
         </thead>
@@ -68,7 +67,10 @@
                                 </div>
                             </div>
 
-                        
+                            <!-- Info Button -->
+                            <a type="button" asp-area="Admin" asp-controller="fee" asp-action="CalculateFee" asp-route-id="@article.Id" title="Info" class="ms-5">
+                                <i class="fa fa-info color-muted fs-5"></i>
+                            </a>
                         </div>
                     </td>
                 </tr>

@@ -1,7 +1,7 @@
 ﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 <section class="top-section container-fluid">
-    <div class="row align-items-center d-flex flex-wrap justify-content-center m-0">
+    <div class="row align-items-center d-flex flex-wrap justify-content-center m-0 text-center">
         <div class="col-lg-4 col-md-2 col-sm-12 text-start ">
             <a class="d-flex align-items-center justify-content-center top-header" asp-area="" asp-controller="Home" asp-action="Index">
                 <img src="\Astrology (1).png" style="width: 90px; height: 90px;" alt="logo" />
@@ -11,14 +11,14 @@
             </a>
         </div>
         <!-- Carousel container visible only on medium and larger screens -->
-        <div class="col-lg-8 col-md-10 d-none d-md-block">
+        <div class="col-lg-8 col-md-10 d-none d-md-block d-flex align-items-center justify-content-center repo-header">
             @if (Model != null && Model.Services != null && Model.Services.Any())
             {
-                <div class="row">
+                <div class="row ">
                     @for (int i = 0; i < Model?.Services.Count; i++)
                     {
                         var service = Model?.Services[i];
-                        <div class="col-5 col-md-2 ">
+                        <div class="col-5 col-md-2  ">
                             <div class="d-flex flex-column align-items-center justify-content-center">
                                 <a class="abc service-icon" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id">
                                     @Html.Raw(service!.Icon)

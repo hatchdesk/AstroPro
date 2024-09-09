@@ -32,14 +32,16 @@
 
                 <div class="carousel-item homebanner @(index == 1 ? "active" : "")">
                     <img src="@imageUrl" class="d-block w-100 custom-height" alt="Slide">
-                    <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService="@service!.Title.Replace(" ", "")" class="btn btn-danger consultation-btn fw-bold">Book Consultation</a>
+                 <div class="consult-button">
+                        <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService="@service!.Title.Replace(" ", "")" class="btn btn-danger consultation-btn fw-bold">Book Consultation</a>
+                 </div>
 
-                    <div class="text-container text-center text-sm-start">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-container text-center text-sm-start mt-3">
                         @if (service != null)
                         {
-                            <a asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="text-decoration-none">
+                            <a asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="text-decoration-none mt-3">
                                 <h3 class="fw-bold text-link1">@service.Title</h3>
-                                <div class="fs-5 fw-light text-link">@Html.Raw(service.Content)</div>
+                                <div class=" fw-light text-link">@Html.Raw(service.Content)</div>
                             </a>
                         }
                     </div>
@@ -83,14 +85,14 @@
 </div>
 
 
-<div class="container-fluid mx-auto">
+<div class="container-fluid">
     <!-- Article Carousel Section -->
-    <div class="row mt-3 p-3 articles" style="background-image: linear-gradient(45deg, red, yellow);">
-        <div class="col-12 d-flex justify-content-between align-items-center">
+    <div class="row mt-3 p-1 articles" style="background-image: linear-gradient(45deg, red, yellow);">
+        <div class="col-12 d-flex justify-content-between align-items-center mb-3">
             <h3 class="text-light fw-bold">
                 @Html.Raw(Model.PageModel?.Contents?.Where(c => c.Tag == "Home_ArticleHeading").Select(c => c.Content).FirstOrDefault())
             </h3>
-            <div class="me-5">
+            <div>
                 <a class="btn btn-danger me-1" href="#carouselExampleIndicators2" data-bs-slide="prev">
                     <i class="fa fa-arrow-left"></i>
                 </a>
@@ -99,103 +101,105 @@
                 </a>
             </div>
         </div>
-        <div class="row p-3 articles">
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide">
-                    <div class="carousel-inner">
-                        @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
-                        {
-                            <div class="carousel-item @(i == 0 ? "active" : "")">
-                                <div class="row">
-                                    @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
-                                    {
-                                        var article = Model.ArticleToModel[j];
-                                        <div class="col-md-4 mb-3">
-                                            <div class="card custom-card">
-                                                <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl" style="width: 100%; max-height: 250px;">
-                                                <div class="card-body">
-                                                    <h4 class="card-title cardTitle-truncate">@article.Title</h4>
-                                                    <div class="card-text card-truncate">@Html.Raw(article.Content)</div>
-                                                    <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger mt-3">Read More</a>
-                                                </div>
+        <div class="col-12">
+            <div id="carouselExampleIndicators2" class="carousel slide">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="row justify-content-center">
+                                @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
+                                {
+                                    var article = Model.ArticleToModel[j];
+                                    <div class="col-lg-4 col-md-6 col-sm-12 mb-3 d-flex justify-content-center align-items-center">
+                                        <div class="card custom-card">
+                                            <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl">
+                                            <div class="card-body">
+                                                <h4 class="card-title cardTitle-truncate">@article.Title</h4>
+                                                <div class="card-text card-truncate">@Html.Raw(article.Content)</div>
+                                                <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger mt-3">Read More</a>
                                             </div>
                                         </div>
-                                    }
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Service Carousel Section -->
-    <div class="row mt-3 p-5 services" style="background-image: linear-gradient(45deg, red, yellow);">
-        <div class="col-12 d-flex justify-content-between align-items-center">
-            <h3 class="text-light fw-bold fs-3">Services</h3>
-            <div class="me-5">
-                <a class="btn btn-danger me-1" href="#carouselExampleIndicators1" data-bs-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-danger me-1" href="#carouselExampleIndicators1" data-bs-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
-            </div>
-        </div>
-        <div class="container mt-3">
-            <div class="row p-3 mb-5 services">
-                <div class="col-12">
-                    <div id="carouselExampleIndicators1" class="carousel slide">
-                        <div class="carousel-inner">
-                            @for (int i = 0; i < Model.ServiceToModel.Count; i += 4)
-                            {
-                                <div class="carousel-item @(i == 0 ? "active" : "")">
-                                    <div class="row">
-                                        @for (int j = i; j < i + 4 && j < Model.ServiceToModel.Count; j++)
-                                        {
-                                            var service = Model.ServiceToModel[j];
-                                            <div class="col-sm-6 col-md-3 mb-3">
-                                                <div class="card h-100 custom-card rounded-3">
-                                                    <div class="card-body text-center d-flex flex-column justify-content-between">
-                                                        <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
-                                                            @Html.Raw(service.Icon)
-                                                        </div>
-                                                        <div>
-                                                            <h5 class="card-title cardTitle-truncate">@service.Title</h5>
-                                                            <div class="card-text card-truncate">@Html.Raw(service.Content)</div>
-                                                            <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger mt-2">Learn More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        }
                                     </div>
-                                </div>
-                            }
+                                }
+                            </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                    }
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="container-fluid">
+    <!-- service Carousel Section -->
+    <div class="row mt-3 p-1 articles" style="background-image: linear-gradient(45deg, red, yellow);">
+        <div class="col-12 d-flex justify-content-between align-items-center mb-3">
+            <h3 class="text-light fw-bold">
+                @Html.Raw(Model.PageModel?.Contents?.Where(c => c.Tag == "Home_ArticleHeading").Select(c => c.Content).FirstOrDefault())
+            </h3>
+            <div>
+                <a class="btn btn-danger me-1" href="#carouselExampleIndicators2" data-bs-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-danger me-1" href="#carouselExampleIndicators2" data-bs-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="col-12">
+            <div id="carouselExampleIndicators2" class="carousel slide">
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.ServiceToModel.Count; i += 4)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="row">
+                                @for (int j = i; j < i + 4 && j < Model.ServiceToModel.Count; j++)
+                                {
+                                    var service = Model.ServiceToModel[j];
+                                    <div class="col-lg-3 col-md-6 col-sm-12 mb-3 d-flex justify-content-center align-items-center">
+                                        <div class="card h-100 custom-card rounded-3">
+                                            <div class="card-body text-center d-flex flex-column justify-content-between">
+                                                <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
+                                                    @Html.Raw(service.Icon)
+                                                </div>
+                                                <div>
+                                                    <h5 class="card-title cardTitle-truncate">@service.Title</h5>
+                                                    <div class="card-text card-truncate">@Html.Raw(service.Content)</div>
+                                                    <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger mt-2">Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
 
 
 
