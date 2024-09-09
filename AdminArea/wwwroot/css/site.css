@@ -451,13 +451,20 @@ body{
     text-decoration: none;
     color: white;
     font-size: 60px;
+    position: absolute;
+    top: 1px;
+    left: -11px;
 }
 
 .text-link {
     text-decoration: none;
     color: white;
+    font-size: 20px;
+    top: 70px;
+    position: relative;
+    left: -17px;
     width: 700px;
-    font-weight: 300;
+    text-align: justify;
 }
 
 .text-light {
@@ -525,7 +532,7 @@ a i:hover {
         left: -16px;
         top: 31px;
     }
-    }
+    
 
 
 .text-link {
