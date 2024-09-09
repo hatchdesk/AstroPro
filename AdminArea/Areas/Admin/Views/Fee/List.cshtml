@@ -24,6 +24,7 @@
                 <th class="id-column">Id</th>
                 <th class="other-column">ServiceName</th>
                 <th class="other-column">Amount</th>
+             
                 <th class="other-column">Action</th>
             </tr>
         </thead>
@@ -34,6 +35,7 @@
                     <td class="id-column">@article.Id</td>
                     <td class="other-column">@article.ServiceName</td>
                     <td class="other-column">@article.Amount</td>
+                  
               
                     <td class="other-column">
 
@@ -60,16 +62,13 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a role="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
-                                            <a role="button" class="btn btn-primary" asp-route-id="@article.Id" asp-controller="Article" asp-action="Delete">Delete</a>
+                                            <a role="button" class="btn btn-primary" asp-route-id="@article.Id" asp-controller="Fee" asp-action="Delete">Delete</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Info Button -->
-                            <a type="button" asp-area="Admin" asp-controller="Fee" asp-action="Detail" asp-route-ServiceName="@article.ServiceName"  title="Info" class="ms-5">
-                                <i class="fa fa-info color-muted fs-5"></i>
-                            </a>
+                        
                         </div>
                     </td>
                 </tr>

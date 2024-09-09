@@ -12,12 +12,9 @@ namespace Web.Application.ViewModels.Admin.Fee
 
         public int Id { get; set; }
 
-        [Required]
-        [Display(Name = "Muhurta Name")]
         public string? ServiceName { get; set; }
 
-        [Required]
-        [Display(Name = "Fee Amount")]
         public decimal Amount { get; set; }
+  
     }
 }

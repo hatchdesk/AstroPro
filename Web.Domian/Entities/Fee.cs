@@ -16,5 +16,7 @@ namespace Web.Domian.Entities
 
         public decimal Amount { get; set; }
 
+        public string ? Text { get; set; }
+
     }
 }

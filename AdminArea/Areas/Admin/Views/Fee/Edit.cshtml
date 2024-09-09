@@ -1,0 +1,61 @@
+﻿@using Web.Application.ViewModels.Admin.Fee
+@model FeeEditToViewModel
+
+@{
+    ViewBag.Title = "Create Page";
+}
+
+<div class="row page-titles mx-5 mt-2">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Page" asp-action="List" class="text-decoration-none" style="color:darkred">Fee </a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)" class="text-decoration-none" style="color:darkred">Edit</a></li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-xl-8 offset-xl-2 col-lg-10 offset-lg-1 col-md-10 offset-md-1 col-sm-12">
+            <div class="card my-5 ">
+                <div class="card-body">
+                    <h4 class="card-title text-center" style="color:darkRed">Edit Fee</h4>
+                    <div class="basic-form">
+                        <form method="post" asp-controller="Fee" asp-action="Edit">
+                            <div class="form-row">
+                                <div class="form-group mb-3">
+                                    <label class="form-label  fw-bold required">Amount</label>
+                                    <input type="Number" class="form-control " asp-for="Amount" placeholder="Enter Your Amount" />
+                                    <span asp-validation-for="Amount" style="color:red"></span>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label  fw-bold required" asp-for="ServiceName">ServiceName</label>
+                                    <input asp-for="ServiceName" class="form-control" placeholder="Enter Your ServiceName"></input>
+                                    <span asp-validation-for="ServiceName" class="text-danger"></span>
+                                </div>
+                             
+
+                                <div class="float-end mt-3">
+                                    <a type="submit" asp-area="Admin" asp-controller="Page" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>
+                                    <button type="submit" class="btn btn-dark " style="background-color:darkRed">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+
+

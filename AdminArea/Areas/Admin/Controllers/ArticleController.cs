@@ -39,6 +39,22 @@ namespace AdminArea.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(ArticleToCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string imageUrl = UploadedFile(model);
+                model.ImageUrl = imageUrl;
+                var article = await _articleService.AddArticleAsync(model);
+                if (article != null)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -56,21 +72,7 @@ namespace AdminArea.Areas.Admin.Controllers
             return View(article);
 		}
 
-        [HttpPost]
-        public async Task<IActionResult> Create(ArticleToCreateViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                string imageUrl = UploadedFile(model);
-                model.ImageUrl = imageUrl;
-                var article = await _articleService.AddArticleAsync(model);
-                if (article != null)
-                {
-                    return RedirectToAction("List");
-                }
-            }
-            return View(model);
-        }
+    
 
         [HttpGet]
         public async Task<IActionResult> Edit(int Id)
