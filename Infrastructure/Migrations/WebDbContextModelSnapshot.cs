@@ -103,7 +103,6 @@ namespace Web.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ServiceName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -189,6 +188,11 @@ namespace Web.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("FeeText")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Icon")
                         .HasColumnType("nvarchar(max)");

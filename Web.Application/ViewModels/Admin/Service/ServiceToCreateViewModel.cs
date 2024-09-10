@@ -12,6 +12,9 @@ namespace Web.Application.ViewModels.Admin.Service
 
         [Required(ErrorMessage = "Content is Required")]
         public string Content { get; set; } = string.Empty;
-    }
+
+		[Required(ErrorMessage = "Content is Required")]
+		public string FeeText { get; set; } = string.Empty;
+	}
 
 }

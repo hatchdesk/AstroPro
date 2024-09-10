@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Web.Application.Interfaces.Services;
+using Web.Application.Services;
 using Web.Application.ViewModels.Admin.Page;
 using Web.Application.ViewModels.Admin.Service;
 
@@ -32,7 +33,19 @@ namespace AdminArea.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
+		[HttpGet]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetServiceConsultationFee(int? serviceId)
+		{
+			var service = await _serviceService.GetServiceAsync(serviceId??2);
+			if (service == null)
+			{
+				return Json(new { Amount = 0 });
+			}
+			return Json(new {Amount = service.FeeText});
+		}
+
+		[HttpPost]
         public async Task<IActionResult> Create(ServiceToCreateViewModel model)
         {
             if (ModelState.IsValid)
@@ -57,6 +70,7 @@ namespace AdminArea.Areas.Admin.Controllers
                     Id = EditedService.Id,
                     Title = EditedService.Title,
                     Content = EditedService.Content,
+                    FeeText = EditedService.FeeText,
                     Icon = EditedService.Icon
 
                 };
@@ -90,9 +104,6 @@ namespace AdminArea.Areas.Admin.Controllers
             }
             return View();
         }
-
-
-      
 
     }
 }

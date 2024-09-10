@@ -9,6 +9,8 @@ namespace Web.Domian.Entities
 
         [MaxLength(500)]
         public string Title { get; set; }= string.Empty;
-        public string Content { get; set; } = string.Empty;
+		[MaxLength(500)]
+		public string FeeText { get; set; } = string.Empty;
+		public string Content { get; set; } = string.Empty;
     }
 }

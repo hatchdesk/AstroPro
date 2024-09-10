@@ -73,7 +73,8 @@ namespace Web.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Icon = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+					FeeText = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+					Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)

@@ -112,7 +112,7 @@ body{
 
 .icon-style {
     color: #ffec00;
-    padding: 15px;
+ 
     transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
 }
 
@@ -345,7 +345,7 @@ body{
 }
 
 .consult-bg {
-    background: linear-gradient(270deg, yellow, red);
+    background: linear-gradient(270deg, #e11e1e, #711604);
 }
 
 
@@ -506,6 +506,19 @@ a i:hover {
     --bs-gutter-x: 0px 0px 0px 0px !important;
 }
 
+.btn-consult {
+    background-color: #ba1c15;
+    border-radius: 5px;
+    padding: 12px;
+    color: white;
+}
+
+    .btn-consult:hover {
+        background-color: #a11a14 !important; /* Ensure hover color overrides the default */
+       
+    }
+
+
 
 @media (max-width: 576px) {
     .service-icon {
@@ -625,16 +638,7 @@ a i:hover {
         font-size: 14px;
     }
 
-     .btn-consult {
-    background-color: white !important;
-    border-radius: 5px;
-    padding:10px;
-}
-    .btn-consult:hover {
-        background-color: #ba1c15 !important;
-        color:#fff !important;
-    }
-
+ 
     .services, .articles, .abouts {
         --bs-gutter-x: 0px 0px 0px 0px !important;
     }

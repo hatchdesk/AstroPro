@@ -28,11 +28,11 @@
                                         <input type="text" class="form-control " asp-for="Title" placeholder="Enter Your Name" />
                                         <span asp-validation-for="Title" style="color:red"></span>
                                     </div>
-                                <div class="form-group mb-3">
-                                    <label class="form-label required  fw-bold">Fee</label>
-                                    <input type="text" id="Fee" class="form-control"  placeholder="Enter Your Fee" />
-                                </div>
 
+                                   <div class="form-group mb-3">
+                                    <label class="form-label required  fw-bold">Fee</label>
+                                    <input type="text" id="Fee" class="form-control" asp-for="FeeText" placeholder="Enter Your FeeText" />
+                                   </div>
 
                                     <div class="form-group mb-3">
                                     <label class="form-label  required fw-bold" asp-for="Content">Content</label>

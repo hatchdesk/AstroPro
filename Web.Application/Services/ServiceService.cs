@@ -37,6 +37,7 @@ namespace Web.Application.Services
             var objServices = new Service()
             {
                 Title = model.Title,
+                FeeText = model.FeeText,
                 Content = model.Content,
                 Icon = model.Icon,
             };
@@ -59,6 +60,7 @@ namespace Web.Application.Services
             return services.Select(x => new ServiceToViewModel
             {
                 Id = x.Id,
+                FeeText = x.FeeText,
                 Icon = x.Icon,
                 Title = x.Title,
                 Content = x.Content,
@@ -74,13 +76,11 @@ namespace Web.Application.Services
             {
                 Id = services.Id,
                 Icon = services.Icon,
+                FeeText = services.FeeText,
                 Title = services.Title,
                 Content = services.Content,
             };
         }
-
-        
-
         public async Task<bool> DeleteServiceAsync(int id)
         {
             var services = await _serviceRepository.DeleteAsync(id);
@@ -105,6 +105,7 @@ namespace Web.Application.Services
             Updated.Title = model.Title;
             Updated.Content = model.Content;
             Updated.Icon = model.Icon;
+            Updated.FeeText = model.FeeText;
 
               _serviceRepository.UpdateAsync(Updated);
             await _unitOfWork.SaveChangesAsync();
@@ -115,6 +116,7 @@ namespace Web.Application.Services
                 Title = Updated.Title,
                 Content = Updated.Content,
                 Icon = Updated.Icon,
+                FeeText = Updated.FeeText,
             };
         }
 

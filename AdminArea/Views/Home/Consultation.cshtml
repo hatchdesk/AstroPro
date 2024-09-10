@@ -59,10 +59,9 @@
 							</div>
 							<span asp-validation-for="ConsultationToModel!.ServiceId" style="color:red"></span>
 						</div>
-					<div id="feesBox" class="mt-3" style="display:none;  padding: 5px 5px ; background-color:#ed8e77; text-align:center">
+					<div id="feesBox" class="mt-3" style="display:none;  padding: 5px 5px ; background-color: rgb(241, 226, 174);">
 							<div class="p-2 d-flex justify-content-center align-items-center flex-column">
-								<p style="color:black; " class=" fw-light text-white">This is a paid Service</p>
-								<p id="feesAmount" class="m-0 fw-light text-white"> Rate : ₹0</p>
+							<p id="feesAmount" class="m-0 fw-bold text-dark"></p>
 							</div>
 						</div>
 						<div class="form-group mt-3 col-lg-6 col-md-12 col-sm-12">
@@ -146,14 +145,13 @@
 				document.getElementById('feesBox').style.display = 'block';
 				$.ajax({
 					type: "GET",
-					url: "@Url.Action("CalculateFee", "Fee", new { area = "Admin" })",
+					url: "@Url.Action("GetServiceConsultationFee", "Service", new { area = "Admin" })",
 					async: false,
 					success: function (fee) {
-					
-						document.getElementById('feesAmount').innerHTML = `Rate (INR) : ₹${fee.amount}`;
+						document.getElementById('feesAmount').innerHTML = `Consultation Fee: ${fee.amount}`;
 					},
 					error: function (req, status, error) {
-						console.log(error);
+						console.log(error); 
 					}
 				});
 			}

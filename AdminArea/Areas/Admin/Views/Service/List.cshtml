@@ -26,6 +26,7 @@
                 <tr>
                     <th class="id-column">Id</th>
                     <th class="other-column">Title</th>
+                <th class="other-column">FeeText</th>
                     <th class="other-column">Content</th>
                     <th class="other-column">Icon</th>
                     <th class="other-column">Action</th>
@@ -37,6 +38,7 @@
                     <tr>
                         <td class="id-column">@services.Id</td>
                         <td class="other-column">@services.Title</td>
+                    <td class="other-column">@services.FeeText</td>
                         <td class="other-column"><div class="truncate">@Html.Raw(services.Content)</div></td>
                         <td class="other-column">@services.Icon</td>
                         <td class="other-column">

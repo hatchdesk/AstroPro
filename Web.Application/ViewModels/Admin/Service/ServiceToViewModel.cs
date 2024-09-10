@@ -12,6 +12,7 @@ namespace Web.Application.ViewModels.Admin.Service
         public int Id { get; set; }
         public string? Icon { get; set; }
         public string Title { get; set; } = string.Empty;
-        public string Content { get; set; } = string.Empty;
+		public string FeeText { get; set; } = string.Empty;
+		public string Content { get; set; } = string.Empty;
     }
 }
