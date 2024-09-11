@@ -56,7 +56,7 @@ namespace AdminArea.Areas.Admin.Controllers
             var pageContent = await _pageContentService.DeletePageContentAsync(id);
             if (pageContent)
             {
-                return RedirectToAction("List", "Page");
+                return RedirectToAction("List", "PageContent");
                
             }
             return View();
