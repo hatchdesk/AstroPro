@@ -138,27 +138,31 @@
 	}
 
 	<script>
-		document.getElementById('DropDownCategory').addEventListener('change', function (e) {
-			var selectedCategory = this.value;
-			if (selectedCategory == "2") {
-				// Show the fees box
-				document.getElementById('feesBox').style.display = 'block';
-				$.ajax({
-					type: "GET",
-					url: "@Url.Action("GetServiceConsultationFee", "Service", new { area = "Admin" })",
-					async: false,
-					success: function (fee) {
-						document.getElementById('feesAmount').innerHTML = `Consultation Fee: ${fee.amount}`;
-					},
-					error: function (req, status, error) {
-						console.log(error); 
-					}
-				});
-			}
-			else {
-				// Show the fees box
-				document.getElementById('feesBox').style.display = 'none';
-			}	
+	
+		$(document).ready(function () {
+			$('#DropDownCategory').change(function (e) {
+				var selectedCategory = this.value;
+				if (selectedCategory == "2") {
+					// Show the fees box
+					document.getElementById('feesBox').style.display = 'block';
+					$.ajax({
+						type: "GET",
+						url: "@Url.Action("GetServiceConsultationFee", "Service", new { area = "Admin" })",
+						async: false,
+						success: function (fee) {
+							document.getElementById('feesAmount').innerHTML = `Consultation Fee: ${fee.amount}`;
+						},
+						error: function (req, status, error) {
+							console.log(error);
+						}
+					});
+				}
+				else {
+					// Show the fees box
+					document.getElementById('feesBox').style.display = 'none';
+				}
+			});
+			$('#DropDownCategory').trigger("change");
 		});
 	</script>
 }

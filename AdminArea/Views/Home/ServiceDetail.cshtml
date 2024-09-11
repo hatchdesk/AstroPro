@@ -14,7 +14,7 @@
         <div class="row services">
             <div class="header col-lg-12 col-md-12 col-sm-12" style="background: linear-gradient(45deg, red, yellow);">
 
-                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService="@service.Title.Replace(" ","")" class="article btn btn-danger consultation-btn2">Let's Consult</a>
+                <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService="@service.Title.Replace(" ","")" class="article btn btn-danger consultation-btn2">Book Consultation</a>
                 <h1>@service.Title</h1>
                 <p class="lead">@Html.Raw(service.Content)</p>
             </div>
