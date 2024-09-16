@@ -3,7 +3,7 @@
  <footer  class="Upperfooter" style="background-image: linear-gradient(180deg, #e11e1e 0%, #711604 100%); color: white;">
     <div class="container">
         <div class="row p-2 d-flex justify-content-center align-items-center">
-            <div class="col-lg-4 col-md-12 col-sm-12">
+            <div class="col-lg-3 col-md-12 col-sm-12">
                 <ul class="d-flex justify-content-center align-items-center gap-4 list-unstyled text-decoration-none footer-menu m-0">
                     <li>
                         <a class="text-decoration-none text-white" asp-controller="Home" asp-action="Page" asp-route-name="AboutMe">About Me</a>
@@ -19,11 +19,11 @@
               
             </div>
 
-            <div class="col-lg-4 col-md-12 col-sm-12 text-center">
-                <p class="m-0">&copy; 2024 @Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault(). All rights reserved.</p>
+            <div class="col-lg-6 col-md-12 col-sm-12 d-flex justify-content-center align-items-center">
+                <p class="m-0">&copy; 2024 @Html.Raw(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault()) All rights reserved.</p>
             </div>
 
-            <div class="col-lg-4 col-md-12 col-sm-12 gap-5 repo-footer">
+            <div class="col-lg-3 col-md-12 col-sm-12 gap-5 repo-footer">
                 <ul class="d-flex justify-content-center align-items-center list-unstyled m-0">
                     <li>
                         <a class=" text-decoration-none" href="https://x.com/thevedicvision">

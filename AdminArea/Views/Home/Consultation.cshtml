@@ -3,7 +3,7 @@
 @{
 
 	ViewData["Title"] = "Consultation";
-	ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
+	ViewData["Brandname"] = @Html.Raw(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
 }
 
 
@@ -27,7 +27,7 @@
 				<form method="post" asp-action="SendEmail" asp-controller="Consultation">
 					<div class="row">
 						<div class="form-group mt-3 col-lg-6 col-md-12 col-sm-12">
-							<div class="input-wrapper">
+							@* <div class="input-wrapper">
 							<label style="color:black" class="form-label fw-bold required">Choose a Category</label>
 								<select id="DropDownCategory" class="form-control p-2" name="category" value="category" asp-for="ConsultationToModel!.ServiceId">
 									@if (ViewBag.Services != null)
@@ -42,7 +42,7 @@
 											if (itemText == selectedService)
 											{
 
-												<option value="@item.Value" selected>@item.Text</option>
+											<option value="@item.Value" selected>@item.Text</option>
 											}
 											else
 											{
@@ -56,7 +56,38 @@
 										<option disabled>No services available</option>
 									}
 								</select>
-							</div>
+							</div> *@
+
+							<div class="input-wrapper">
+    <label style="color:black" class="form-label fw-bold required">Choose a Category</label>
+    <select id="DropDownCategory" class="form-control p-2" name="category" asp-for="ConsultationToModel!.ServiceId">
+        <option value="" selected)>---Select a Category---</option> 
+        @if (ViewBag.Services != null)
+        {
+         
+									string selectedService = ViewBag.SelectedService?.ToLower().Replace(" ", "") ?? string.Empty;
+
+            foreach (var item in ViewBag.Services)
+            {
+										string itemText = item.Text?.ToLower().Replace(" ", "") ?? string.Empty;
+
+										if (itemText == selectedService)
+										{
+
+											<option value="@item.Value" selected>@item.Text</option>
+										}
+										else
+										{
+											<option value="@item.Value">@item.Text</option>
+										}
+            }
+        }
+        else
+        {
+            <option disabled>No services available</option>
+        }
+    </select>
+</div>
 							<span asp-validation-for="ConsultationToModel!.ServiceId" style="color:red"></span>
 						</div>
 					<div id="feesBox" class="mt-3" style="display:none;  padding: 5px 5px ; background-color: rgb(241, 226, 174);">

@@ -12,7 +12,7 @@
         <div class="row articles">
             <div class=" header col-lg-12 col-md-12 col-sm-12" style="background-image: linear-gradient(45deg, red, yellow);">
                         <a asp-controller="Home" asp-action="page" asp-route-name="Consultation" class="atricle btn btn-danger consultation-btn2"> Book Consultation</a>
-                            <h1> @article.Category</h1>
+                      
                             <p class="lead">@article.Title</p>
                        
             </div>
@@ -20,20 +20,18 @@
         <div class="container-fluid p-3 mb-3">
             <div class="container my-5">
                         <div class="article-item">
-                         
-                                <ol class="breadcrumb">
+                            <ol class="breadcrumb">
                             <li class="breadcrumb-item list-unstyled "><a class="text-decoration-none" style="color:darkred" asp-controller="Home" asp-action="index">Home</a></li>
                             <li class="breadcrumb-item active"><a class="text-decoration-none" style="color:darkred" href="javascript:void(0)">Article</a></li>
                                 </ol>
                            
-                            <div>
-                                <img src="~/@article.ImageUrl" alt="Aries Horoscope" class="float-start me-3 mb-3" style="max-width: 200px;">
-                                <h3>What is @article.Category</h3>
+                            <div class="row">
+                             <div class="col-lg-12 d-flex justify-content-center align-items-center"> 
+                                 <img src="~/@article.ImageUrl" alt="Aries Horoscope" class=" me-3 mb-3 " style="max-width: 500px; height:250px"></div>
                                 <p class="text-content">
                                     @Html.Raw(article.Content)
                                 </p>
                             </div>
-
                         </div>
                     </div>
         </div>

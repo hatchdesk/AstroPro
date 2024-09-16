@@ -103,7 +103,7 @@
         </div>
         <div class="col-12">
             <div id="carouselExampleIndicators2" class="carousel slide">
-                <div class="carousel-inner">
+               @*  <div class="carousel-inner">
                     @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
                     {
                         <div class="carousel-item @(i == 0 ? "active" : "")">
@@ -125,7 +125,31 @@
                             </div>
                         </div>
                     }
+                </div> *@
+                <div class="carousel-inner">
+                    @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="row justify-content-center">
+                                @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
+                                {
+                                    var article = Model.ArticleToModel[j];
+                                    <div class="col-lg-4 col-md-6 col-sm-12 mb-3 d-flex justify-content-center align-items-center">
+                                        <a asp-action="Detail" asp-controller="Article" asp-route-id="@article.Id" class="card custom-card text-decoration-none text-black">
+                                            <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl">
+                                            <div class="card-body">
+                                                <h4 class="card-title cardTitle-truncate">@article.Title</h4>
+                                                <div class="card-text card-truncate">@Html.Raw(article.Content)</div>
+                                                <span class="btn btn-outline-danger mt-3">Read More</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
                 </div>
+
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
