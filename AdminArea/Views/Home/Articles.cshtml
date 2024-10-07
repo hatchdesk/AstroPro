@@ -1,8 +1,9 @@
-﻿@model Web.Application.ViewModels.Admin.Page.PageParentModel
+﻿@using Web
+@model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
     ViewData["Title"] = "Articles";
-    ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
+    ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
 }
 <div class="container-fluid py-5">
     <div class="container">

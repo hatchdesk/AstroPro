@@ -1,4 +1,5 @@
 ﻿
+@using Web
 @using Web.Application.ViewModels.Admin.PageContent
 
 @model Web.Application.ViewModels.Admin.Page.PageParentModel
@@ -6,7 +7,7 @@
 @{
 
     ViewData["Title"] = "ServiceDetail";
-    ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
+    ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
 }
 <div class="container-fluid">
     @foreach(var service in Model!.ServiceToModel)
