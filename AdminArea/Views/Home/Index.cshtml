@@ -5,7 +5,8 @@
 
 @{
     ViewData["Title"] = "Home";
-    ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
+    // ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
+    ViewData["Brandname"] = "Index";
     var homePageContents = Model?.PageModel?.Contents != null ? Model.PageModel.Contents : new List<PageContentToViewModel>();
 }
 
