@@ -1,10 +1,11 @@
-﻿@using Web.Application.ViewModels.Admin.PageContent
+﻿@using Web
+@using Web.Application.ViewModels.Admin.PageContent
 
 @model Web.Application.ViewModels.Admin.Page.PageParentModel
 
 @{
     ViewData["Title"] = "Home";
-    ViewData["Brandname"] = Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault();
+    ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
     var homePageContents = Model?.PageModel?.Contents != null ? Model.PageModel.Contents : new List<PageContentToViewModel>();
 }
 

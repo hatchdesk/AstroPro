@@ -5,9 +5,9 @@
         <div class="col-lg-4 col-md-2 col-sm-12 text-start ">
             <a class="d-flex align-items-center justify-content-center top-header" asp-area="" asp-controller="Home" asp-action="Index">
                 <img src="\Astrology (1).png" style="width: 90px; height: 90px;" alt="logo" />
-                <p class="fs-3 text-white m-0 p-0 fw-bold " style="cursor:pointer ; color:white">
+                <span class="fs-3 text-white m-0 p-0 fw-bold " style="cursor:pointer; color:white">
                     @Html.Raw(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault())
-                </p>
+                </span>
             </a>
         </div>
         <!-- Carousel container visible only on medium and larger screens -->
