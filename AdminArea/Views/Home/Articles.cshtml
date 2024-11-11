@@ -11,16 +11,19 @@
             @foreach (var article in Model!.ArticleToModel)
             {
                 <div class="col-md-4 mb-3 d-flex justify-content-center align-items-center">
-                    <div class="card custom-card ">
-                        <img class="img-fluid card-image" alt="100%x280" src="~/@article.ImageUrl" style="width:100%; max-height:250px">
-                        <div class="card-body p-4 ">
-                            <h4 class="card-title cardTitle-truncate">@article.Title</h4>
-                            <div class="card-text card-truncate ">@Html.Raw(article.Content)</div>
-                            <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger mt-3">Read More</a>
+                    <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="card-link text-decoration-none text-black">
+                        <div class="card custom-card">
+                            <img class="img-fluid card-image" alt="100%x280" src="~/@article.ImageUrl" style="width:100%; max-height:250px">
+                            <div class="card-body p-4">
+                                <h4 class="card-title cardTitle-truncate">@article.Title</h4>
+                                <div class="card-text card-truncate">@Html.Raw(article.Content)</div>
+                                <span class="btn btn-outline-danger mt-3">Read More</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             }
         </div>
     </div>
 </div>
+

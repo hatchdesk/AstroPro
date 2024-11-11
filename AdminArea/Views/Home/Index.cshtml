@@ -5,8 +5,8 @@
 
 @{
     ViewData["Title"] = "Home";
-    // ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
-    ViewData["Brandname"] = "Index";
+    ViewData["Brandname"] = CommonHelper.ExtractTextFromHtml(Model?.PageModel?.Contents?.Where(c => c.Tag == "Home_logoName").Select(c => c.Content).FirstOrDefault());
+    // ViewData["Brandname"] = "Index";
     var homePageContents = Model?.PageModel?.Contents != null ? Model.PageModel.Contents : new List<PageContentToViewModel>();
 }
 
@@ -95,39 +95,17 @@
                 @Html.Raw(Model.PageModel?.Contents?.Where(c => c.Tag == "Home_ArticleHeading").Select(c => c.Content).FirstOrDefault())
             </h3>
             <div>
-                <a class="btn btn-danger me-1" href="#carouselExampleIndicators2" data-bs-slide="prev">
+                <a class="btn btn-danger me-1" href="#carouselExampleIndicators1" data-bs-slide="prev">
                     <i class="fa fa-arrow-left"></i>
                 </a>
-                <a class="btn btn-danger me-1" href="#carouselExampleIndicators2" data-bs-slide="next">
+                <a class="btn btn-danger me-1" href="#carouselExampleIndicators1" data-bs-slide="next">
                     <i class="fa fa-arrow-right"></i>
                 </a>
             </div>
         </div>
         <div class="col-12">
-            <div id="carouselExampleIndicators2" class="carousel slide">
-               @*  <div class="carousel-inner">
-                    @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <div class="row justify-content-center">
-                                @for (int j = i; j < i + 3 && j < Model.ArticleToModel.Count(); j++)
-                                {
-                                    var article = Model.ArticleToModel[j];
-                                    <div class="col-lg-4 col-md-6 col-sm-12 mb-3 d-flex justify-content-center align-items-center">
-                                        <div class="card custom-card">
-                                            <img class="img-fluid card-image" alt="100%x280" src="@article.ImageUrl">
-                                            <div class="card-body">
-                                                <h4 class="card-title cardTitle-truncate">@article.Title</h4>
-                                                <div class="card-text card-truncate">@Html.Raw(article.Content)</div>
-                                                <a asp-action="Detail" asp-controller="Article" asp-route-Id="@article.Id" class="btn btn-outline-danger mt-3">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
-                        </div>
-                    }
-                </div> *@
+            <div id="carouselExampleIndicators1" class="carousel slide">
+             
                 <div class="carousel-inner">
                     @for (int i = 0; i < Model.ArticleToModel.Count(); i += 3)
                     {
@@ -193,13 +171,13 @@
                                 {
                                     var service = Model.ServiceToModel[j];
                                     <div class="col-lg-3 col-md-6 col-sm-12 mb-3 d-flex justify-content-center align-items-center">
-                                        <div class="card h-100 custom-card rounded-3">
+                                        <div class="card h-100 custom-card rounded-3 w-100">
                                             <div class="card-body text-center d-flex flex-column justify-content-between">
                                                 <div class="rounded-circle bg-orange d-flex justify-content-center align-items-center mb-3 mx-auto" style="width: 60px; height: 60px;">
                                                     @Html.Raw(service.Icon)
                                                 </div>
                                                 <div>
-                                                    <h5 class="card-title cardTitle-truncate">@service.Title</h5>
+                                                    <h5 class="card-title cardTitle-truncate w-100">@service.Title</h5>
                                                     <div class="card-text card-truncate">@Html.Raw(service.Content)</div>
                                                     <a type="button" asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="btn btn-outline-danger mt-2">Learn More</a>
                                                 </div>
