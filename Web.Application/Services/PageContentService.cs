@@ -23,7 +23,8 @@ namespace Web.Application.Services
                 Tag = model.Tag,
                 Content = model.Content,
                 PageId = model.PageId,
-            
+                Image = model.ImageUrl,
+
             };
 
              var added = await   _pageContentRepository.AddAsync(pageContents);
@@ -57,7 +58,8 @@ namespace Web.Application.Services
                 Id = x.Id,
                 Content = x.Content,
                 Tag = x.Tag,
-                 PageId = x.PageId, 
+                 PageId = x.PageId,
+                ImageUrl = x.Image,
             }).ToList();
            
 		}
@@ -74,6 +76,7 @@ namespace Web.Application.Services
                 Tag = contents.Tag,
                 Content = contents.Content,
                 PageId = contents.PageId,
+                ImageUrl = contents.Image,
 
             };
         }
@@ -88,6 +91,7 @@ namespace Web.Application.Services
 
             edited.Tag = model.Tag;
             edited.Content = model.Content;
+            edited.Image = model.ImageUrl;
 
             _pageContentRepository.UpdateAsync(edited);
             await _unitOfWork.SaveChangesAsync();
@@ -98,6 +102,7 @@ namespace Web.Application.Services
                 Tag = edited.Tag,
                 Content = edited.Content,
                 PageId = edited.PageId,
+                ImageUrl = edited.Image,
             };
         }
 

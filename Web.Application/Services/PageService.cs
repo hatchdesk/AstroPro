@@ -104,7 +104,8 @@ namespace Web.Application.Services
                 Id = x.Id,
                 Tag = x.Tag,
                 Content = x.Content,
-                PageId = x.PageId
+                PageId = x.PageId,
+              ImageUrl = x.Image,
             }).ToList();
             var homePage = await _pageRepository.GetByNameAsync("Home");
             var homeContents = homePage?.Contents?.Select(x => new PageContentToViewModel
@@ -112,7 +113,9 @@ namespace Web.Application.Services
                 Id = x.Id,
                 Tag = x.Tag,
                 Content = x.Content,
-                PageId = x.PageId
+                PageId = x.PageId,
+                ImageUrl = x.Image,
+
             }).ToList();
 
             pageContents?.AddRange(homeContents!);
@@ -142,11 +145,13 @@ namespace Web.Application.Services
                     Id = page.Id,
                     Name = page.Name,
                     Tag = page.Tag,
+                   
                     Contents = pageContents ?? new List<PageContentToViewModel>(),
                 },
                Services = serviceToViewModels,
                 ServiceToModel = serviceToViewModels,
                 ArticleToModel =  Articles
+                
             };
         }
         public async Task<PageToEditViewModel?> GetPageAsync(int id)
@@ -164,7 +169,8 @@ namespace Web.Application.Services
                 Id = x.Id,
                 Tag = x.Tag,
                 Content = x.Content,
-                PageId = x.PageId
+                PageId = x.PageId,
+                ImageUrl = x.Image,
             }).ToList();
 
          

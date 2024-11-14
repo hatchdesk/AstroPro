@@ -67,21 +67,23 @@ namespace Web.Application.Services
             }).ToList();
         }
 
-        public async Task<ServiceToViewModel?> GetServiceAsync(int id)
-        {
-            var services = await _serviceRepository.GetAsync(id);
-            if (services == null)
-                return null;
-            return new ServiceToViewModel()
-            {
-                Id = services.Id,
-                Icon = services.Icon,
-                FeeText = services.FeeText,
-                Title = services.Title,
-                Content = services.Content,
-            };
-        }
-        public async Task<bool> DeleteServiceAsync(int id)
+		public async Task<ServiceToViewModel?> GetServiceAsync(int id)
+		{
+			var service = await _serviceRepository.GetAsync(id); // Fetch service by ID
+			if (service == null)
+				return null;
+
+			return new ServiceToViewModel()
+			{
+				Id = service.Id,
+				Icon = service.Icon,
+				FeeText = service.FeeText,
+				Title = service.Title,
+				Content = service.Content,
+			};
+		}
+
+		public async Task<bool> DeleteServiceAsync(int id)
         {
             var services = await _serviceRepository.DeleteAsync(id);
             var savedServices = await _unitOfWork.SaveChangesAsync();

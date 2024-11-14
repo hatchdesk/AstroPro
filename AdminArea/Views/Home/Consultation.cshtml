@@ -28,48 +28,17 @@
 				<form method="post" asp-action="SendEmail" asp-controller="Consultation">
 					<div class="row">
 						<div class="form-group mt-3 col-lg-6 col-md-12 col-sm-12">
-							@* <div class="input-wrapper">
-							<label style="color:black" class="form-label fw-bold required">Choose a Category</label>
-								<select id="DropDownCategory" class="form-control p-2" name="category" value="category" asp-for="ConsultationToModel!.ServiceId">
-									@if (ViewBag.Services != null)
-									{
-										string selectedService = ViewBag.SelectedService?.ToLower().Replace(" ", "") ?? string.Empty;
-
-										foreach (var item in ViewBag.Services)
-										{
-
-											string itemText = item.Text?.ToLower().Replace(" ", "") ?? string.Empty;
-
-											if (itemText == selectedService)
-											{
-
-											<option value="@item.Value" selected>@item.Text</option>
-											}
-											else
-											{
-												<option value="@item.Value">@item.Text</option>
-											}
-										}
-									}
-									else
-									{
-
-										<option disabled>No services available</option>
-									}
-								</select>
-							</div> *@
-
 							<div class="input-wrapper">
-    <label style="color:black" class="form-label fw-bold required">Choose a Category</label>
-    <select id="DropDownCategory" class="form-control p-2" name="category" asp-for="ConsultationToModel!.ServiceId">
-        <option value="" selected)>---Select a Category---</option> 
-        @if (ViewBag.Services != null)
-        {
+                               <label style="color:black" class="form-label fw-bold required">Choose a Category</label>
+							<select id="DropDownCategory" class="form-control p-2" name="ConsultationToModel!.ServiceId" asp-for="ConsultationToModel!.ServiceId">
+                                    <option value="" selected)>---Select a Category---</option> 
+                                    @if (ViewBag.Services != null)
+                                    {
          
 									string selectedService = ViewBag.SelectedService?.ToLower().Replace(" ", "") ?? string.Empty;
 
-            foreach (var item in ViewBag.Services)
-            {
+                                      foreach (var item in ViewBag.Services)
+                                      {
 										string itemText = item.Text?.ToLower().Replace(" ", "") ?? string.Empty;
 
 										if (itemText == selectedService)
@@ -82,14 +51,15 @@
 											<option value="@item.Value">@item.Text</option>
 										}
             }
-        }
-        else
-        {
-            <option disabled>No services available</option>
-        }
-    </select>
-</div>
+                                       }
+                                       else
+                                       {
+                                           <option disabled>No services available</option>
+                                       }
+                                   </select>
+                               </div>
 							<span asp-validation-for="ConsultationToModel!.ServiceId" style="color:red"></span>
+						
 						</div>
 					<div id="feesBox" class="mt-3" style="display:none;  padding: 5px 5px ; background-color: rgb(241, 226, 174);">
 							<div class="p-2 d-flex justify-content-center align-items-center flex-column">
@@ -170,31 +140,32 @@
 	}
 
 	<script>
-	
 		$(document).ready(function () {
-			$('#DropDownCategory').change(function (e) {
-				var selectedCategory = this.value;
-				if (selectedCategory == "2") {
-					// Show the fees box
+			$('#DropDownCategory').change(function () {
+				var selectedServiceId = this.value; // Selected service ID ko get karein
+
+				if (selectedServiceId) {
 					document.getElementById('feesBox').style.display = 'block';
+
+					// AJAX request to get fee for selected service
 					$.ajax({
 						type: "GET",
 						url: "@Url.Action("GetServiceConsultationFee", "Service", new { area = "Admin" })",
-						async: false,
-						success: function (fee) {
-							document.getElementById('feesAmount').innerHTML = `Consultation Fee: ${fee.amount}`;
+						data: { serviceId: selectedServiceId }, // Send selected service ID
+						success: function (response) {
+							document.getElementById('feesAmount').innerHTML = `Consultation Fee: ${response.amount}`;
 						},
 						error: function (req, status, error) {
 							console.log(error);
 						}
 					});
-				}
-				else {
-					// Show the fees box
+				} else {
 					document.getElementById('feesBox').style.display = 'none';
 				}
 			});
+
 			$('#DropDownCategory').trigger("change");
 		});
 	</script>
+
 }

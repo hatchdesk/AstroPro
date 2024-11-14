@@ -25,7 +25,6 @@ namespace AdminArea.Areas.Admin.Controllers
 		{
 			var pageContents  = await _pageContentService.GetAllPageContentAsync();
             return View(pageContents);
-           
 			
 		}
 
@@ -40,7 +39,8 @@ namespace AdminArea.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                string imageUrl = UploadedFile(model);
+                model.ImageUrl = imageUrl;
                 var article = await _pageContentService.AddPageContentAsync(model);
                 if (article != null)
                 {
@@ -72,25 +72,112 @@ namespace AdminArea.Areas.Admin.Controllers
             }
 
             return View(pageContent);
-        }
+        } 
 
         [HttpPost]
         public async Task<IActionResult> Edit(PageContentEditToViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                if (model.Image != null)
+                {
+                    string imageUrl = UploadedFile(model);
+                    model.ImageUrl = imageUrl;
+                }
+                else
+                {
+                    var existingArticle = await _pageContentService.GetPageContentAsync(model.Id);
+                    if (existingArticle != null)
+                    {
+                        model.ImageUrl = existingArticle.ImageUrl;
+                    }
+                }
+                var edited = await _pageContentService.UpdatePageContentAsync(model);
+                if (edited != null)
+                {
+                    return RedirectToAction("List");
+                }
             }
-
-            var updatedContent = await _pageContentService.UpdatePageContentAsync(model);
-            if (updatedContent != null)
-            {
-                return RedirectToAction("Edit","Page" , new { Id = updatedContent.PageId });
-            }
-
             return View(model);
+
         }
 
+        private string UploadedFile(PageContentCreateToViewModel model)
+        {
+
+            string uniqueFileName = "Image/default-image.jpg";
+
+            if (model.Image != null)
+            {
+                var ext = Path.GetExtension(model.Image.FileName).ToLowerInvariant();
+                var size = model.Image.Length;
+
+                if (ext == ".png" || ext == ".jpg" || ext == ".jpeg")
+                {
+                    if (size <= 1000000)
+                    {
+                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Image");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.Image.CopyTo(fileStream);
+                        }
+                        uniqueFileName = "Image/" + uniqueFileName;
+                    }
+                    else
+                    {
+                        TempData["SizeError"] = "Image must be less than 1MB";
+                        uniqueFileName = "default-image.jpg";
+                    }
+                }
+                else
+                {
+                    TempData["ExtError"] = "Only jpg, jpeg and png images are allowed";
+                    uniqueFileName = "default-image.jpg";
+                }
+            }
+            return uniqueFileName;
+        }
+
+
+        private string UploadedFile(PageContentEditToViewModel model)
+        {
+            string defaultImagePath = "Image/default-image.jpg";
+            string uniqueFileName = defaultImagePath;
+
+            if (model.Image != null)
+            {
+                var ext = Path.GetExtension(model.Image.FileName).ToLowerInvariant();
+                var size = model.Image.Length;
+
+                if (ext == ".png" || ext == ".jpg" || ext == ".jpeg")
+                {
+                    if (size <= 1000000)
+                    {
+                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "Image");
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Image.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            model.Image.CopyTo(fileStream);
+                        }
+                        uniqueFileName = "Image/" + uniqueFileName;
+                    }
+                    else
+                    {
+                        TempData["SizeError"] = "Image must be less than 1MB";
+                        uniqueFileName = defaultImagePath;
+                    }
+                }
+                else
+                {
+                    TempData["ExtError"] = "Only jpg, jpeg and png images are allowed";
+                    uniqueFileName = defaultImagePath;
+                }
+            }
+            return uniqueFileName;
+        }
 
     }
 }

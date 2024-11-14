@@ -49,7 +49,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Article", b =>
@@ -88,7 +88,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Articles");
+                    b.ToTable("Articles", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Fee", b =>
@@ -103,11 +103,12 @@ namespace Web.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ServiceName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Fees");
+                    b.ToTable("Fees", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Page", b =>
@@ -137,7 +138,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pages");
+                    b.ToTable("Pages", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.PageContent", b =>
@@ -171,7 +172,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasIndex("PageId");
 
-                    b.ToTable("PageContents");
+                    b.ToTable("PageContents", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.Service", b =>
@@ -189,11 +190,6 @@ namespace Web.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FeeText")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
                     b.Property<string>("Icon")
                         .HasColumnType("nvarchar(max)");
 
@@ -210,7 +206,7 @@ namespace Web.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services");
+                    b.ToTable("Services", (string)null);
                 });
 
             modelBuilder.Entity("Web.Domian.Entities.PageContent", b =>

@@ -36,51 +36,119 @@ namespace Web.Controllers
 			return View(HomeView);
         }
 
-		[HttpPost]
+
+        [HttpPost]
+		//	public async Task<IActionResult> SendEmail(PageParentModel pageParentModel, string CaptchaResponse)
+		//{
+		//	if (!ModelState.IsValid)
+		//	{
+		//              ModelState.AddModelError("", "please verify captcha !");
+		//              return RedirectToAction( "Page" ,  "Home", new { name = "consultation"});
+		//	}
+
+		//	if (string.IsNullOrEmpty(CaptchaResponse))
+		//	{
+		//		ModelState.AddModelError("", "CAPTCHA response is missing.");
+		//              return RedirectToAction("Page", "Home", new { name = "consultation" });
+		//          }
+
+		//	if (!await VerifyCaptcha(CaptchaResponse))
+		//	{
+		//		ModelState.AddModelError("", "CAPTCHA verification failed. Please try again.");
+		//              return RedirectToAction("Page", "Home", new { name = "consultation" });
+		//          }
+		//	var consultationModel = pageParentModel.ConsultationToModel;
+		//          if (pageParentModel.Services == null)
+		//          {
+		//              var services = await _serviceService.GetAllServiceAsync();
+		//              pageParentModel.Services = services;
+		//          }
+
+
+		//          if (consultationModel != null)
+		//	{
+
+
+		//              string subject = "Request Consultation";
+		//		string body = $@"
+		//          <h3>Consultation Request Details</h3>
+		//          <ul>
+		//              <li><strong>Category:</strong> {consultationModel!.ServiceName}</li>
+		//              <li><strong>Name:</strong> {consultationModel.Name}</li>
+		//              <li><strong>Email:</strong> {consultationModel.Email}</li>
+		//              <li><strong>Phone:</strong> {consultationModel.Phone}</li>
+		//              <li><strong>Date of Birth:</strong> {consultationModel.DateOfBirth}</li>
+		//              <li><strong>Time of Birth:</strong> {consultationModel.TimeOfBirth}</li>
+		//              <li><strong>Place of Birth:</strong> {consultationModel.PlaceOfBirth}</li>
+		//          </ul>
+		//          <p><strong>Description:</strong><br/>{consultationModel.AnyInformation}</p>
+		//      ";
+
+		//		try
+		//		{
+		//			await _consultationService.SendEmailAsync(consultationModel.Email, subject, body);
+		//			return RedirectToAction("Success");
+		//		}
+		//		catch (Exception ex)
+		//		{
+		//			TempData["ErrorMessage"] = $"Error sending consultation request: {ex.Message}";
+		//			ModelState.AddModelError("", "An error occurred while sending the email. Please try again later.");
+		//		}
+		//	}
+		//          return RedirectToAction("Page", "Home", new { name = "consultation" });
+		//      }	
+
+
 		public async Task<IActionResult> SendEmail(PageParentModel pageParentModel, string CaptchaResponse)
 		{
+			// CAPTCHA validation
 			if (!ModelState.IsValid)
 			{
-                ModelState.AddModelError("", "please verify captcha !");
-                return RedirectToAction( "Page" ,  "Home", new { name = "consultation"});
+				ModelState.AddModelError("", "Please verify CAPTCHA!");
+				return RedirectToAction("Page", "Home", new { name = "consultation" });
 			}
 
 			if (string.IsNullOrEmpty(CaptchaResponse))
 			{
 				ModelState.AddModelError("", "CAPTCHA response is missing.");
-                return RedirectToAction("Page", "Home", new { name = "consultation" });
-            }
+				return RedirectToAction("Page", "Home", new { name = "consultation" });
+			}
 
 			if (!await VerifyCaptcha(CaptchaResponse))
 			{
 				ModelState.AddModelError("", "CAPTCHA verification failed. Please try again.");
-                return RedirectToAction("Page", "Home", new { name = "consultation" });
-            }
+				return RedirectToAction("Page", "Home", new { name = "consultation" });
+			}
+
 			var consultationModel = pageParentModel.ConsultationToModel;
-            var consultmodel = pageParentModel.ServiceToModel;
-          
-           
+			if (pageParentModel.Services == null || !pageParentModel.Services.Any())
+			{
+				pageParentModel.Services = await _serviceService.GetAllServiceAsync();
+			}
+
+			// Service name retrieve karna `ServiceId` ke basis par
+			var selectedServiceName = pageParentModel.Services?.FirstOrDefault(s => s.Id == consultationModel!.ServiceId)?.Title;
+
 			if (consultationModel != null)
 			{
-
-               
-                string subject = "Request Consultation";
+				string subject = "Request Consultation";
 				string body = $@"
-            <h3>Consultation Request Details</h3>
-            <ul>
-                <li><strong>Category:</strong> {consultationModel!.ServiceName}</li>
-                <li><strong>Name:</strong> {consultationModel.Name}</li>
-                <li><strong>Email:</strong> {consultationModel.Email}</li>
-                <li><strong>Phone:</strong> {consultationModel.Phone}</li>
-                <li><strong>Date of Birth:</strong> {consultationModel.DateOfBirth}</li>
-                <li><strong>Time of Birth:</strong> {consultationModel.TimeOfBirth}</li>
-                <li><strong>Place of Birth:</strong> {consultationModel.PlaceOfBirth}</li>
-            </ul>
-            <p><strong>Description:</strong><br/>{consultationModel.AnyInformation}</p>
+        <h3>Consultation Request Details</h3>
+        <ul>
+            <li><strong>Category:</strong> {selectedServiceName}</li>
+            <li><strong>Name:</strong> {consultationModel.Name}</li>
+            <li><strong>Email:</strong> {consultationModel.Email}</li>
+            <li><strong>Phone:</strong> {consultationModel.Phone}</li>
+            <li><strong>Date of Birth:</strong> {consultationModel.DateOfBirth}</li>
+            <li><strong>Time of Birth:</strong> {consultationModel.TimeOfBirth}</li>
+            <li><strong>Place of Birth:</strong> {consultationModel.PlaceOfBirth}</li>
+        </ul>
+        <p><strong>Description:</strong><br/>{consultationModel.AnyInformation}</p>
         ";
 
 				try
 				{
+					// Send email with the selected service details
 					await _consultationService.SendEmailAsync(consultationModel.Email, subject, body);
 					return RedirectToAction("Success");
 				}
@@ -90,8 +158,10 @@ namespace Web.Controllers
 					ModelState.AddModelError("", "An error occurred while sending the email. Please try again later.");
 				}
 			}
-            return RedirectToAction("Page", "Home", new { name = "consultation" });
-        }
+
+			return RedirectToAction("Page", "Home", new { name = "consultation" });
+		}
+
 
 
 		private async Task<bool> VerifyCaptcha(string captchaResponse)

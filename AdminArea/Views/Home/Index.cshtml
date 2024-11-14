@@ -11,7 +11,7 @@
 }
 
 
-<div class="row carousel-outer">
+@* <div class="row carousel-outer">
     <div id="carouselExampleControls" class="carousel slide col-12">
         <div class="carousel-inner">
             @{
@@ -62,8 +62,77 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-</div>
+</div> *@
 
+<div class="row carousel-outer">
+    <div id="carouselExampleControls" class="carousel slide col-12">
+        <div class="carousel-inner">
+            @{
+                int index = 0;
+            }
+            @foreach (var service in Model!.ServiceToModel)
+            {
+                //For every service
+                string defaultImageUrl = "Image/default-image.jpg";
+                var contents = homePageContents.Where(c => c.Tag.Contains("Home_Banner")).ToList();
+                var pageContent = new PageContentToViewModel();
+                try
+                {
+                    pageContent = contents[index];
+                }
+                catch
+                {
+                }
+
+                // Extract only URL from pageContent.Content if it contains HTML tags
+                string imageUrl = defaultImageUrl;
+                if (!string.IsNullOrEmpty(pageContent.Content))
+                {
+                    // Regex pattern to extract URL from src attribute of an img tag
+                    var imgTagPattern = @"<img\s+[^>]*src\s*=\s*[""']([^""']+)[""'][^>]*>";
+                    var match = System.Text.RegularExpressions.Regex.Match(pageContent.Content, imgTagPattern);
+
+                    if (match.Success)
+                    {
+                        imageUrl = match.Groups[1].Value; // Extracted URL from the img tag
+                    }
+                    else
+                    {
+                        imageUrl = pageContent.Content; // Use directly if it's a plain URL
+                    }
+                }
+
+                <div class="carousel-item homebanner @(index == 0 ? "active" : "")">
+                    <img src="@imageUrl" class="d-block w-100 custom-height" alt="Slide">
+                    <div class="consult-button">
+                        <a asp-controller="Home" asp-action="Page" asp-route-name="Consultation" asp-route-selectedService="@service!.Title.Replace(" ", "")" class="btn btn-danger consultation-btn fw-bold">Book Consultation</a>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-container text-center text-sm-start mt-3">
+                        @if (service != null)
+                        {
+                            <a asp-controller="Home" asp-action="ServiceDetail" asp-route-id="@service.Id" class="text-decoration-none mt-3">
+                                <h3 class="fw-bold text-link1">@service.Title</h3>
+                                <div class="fw-light text-link">@Html.Raw(service.Content)</div>
+                            </a>
+                        }
+                    </div>
+                </div>
+
+                index++;
+            }
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
 
 
 <div class="container-fluid  p-3 mx-auto" style="background-image: linear-gradient(45deg, red, yellow);">

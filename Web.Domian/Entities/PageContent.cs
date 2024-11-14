@@ -13,5 +13,6 @@ namespace Web.Domian.Entities
 
         [ForeignKey("PageId")]
         public virtual Page? Page { get; set; }
+        public string? Image { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace AdminArea.Controllers
 
 
         [HttpGet("Home/{name}")]
-        public async Task<IActionResult> Page(string name , string selectedService)
+        public async Task<IActionResult> Page(string name , string ? selectedService)
         {
             ViewBag.PageName = name;
             if(name.ToLower() == "index")
@@ -52,29 +52,32 @@ namespace AdminArea.Controllers
             }
             else if (name.ToLower() == "consultation")
             {
-				var services = await _serviceService.GetAllServiceAsync();
-				ViewBag.Services = services.Select(d => new SelectListItem()
-				{
-					Text = d.Title,
-					Value = d.Id.ToString()
-				});
-
-				if(selectedService != null)
+                var services = await _serviceService.GetAllServiceAsync();
+                ViewBag.Services = services.Select(d => new SelectListItem()
                 {
-					ViewBag.selectedService = selectedService;
-				}
-				var page = await _pageService.GetPageByNameAsync(name);
+                    Text = d.Title,
+                    Value = d.Id.ToString()
+                });
 
-                if(page == null)
+                if (selectedService != null)
                 {
-                    return NotFound();    
+                    ViewBag.selectedService = selectedService;
                 }
 
-                page.ConsultationToModel = new ConsultationSendToViewModel() { DateOfBirth = DateOnly.FromDateTime(DateTime.Now)};
+				var page = await _pageService.GetPageByNameAsync(name);
+
+                if (page == null)
+                {
+                    return NotFound();
+                }
+
+                page.ConsultationToModel = new ConsultationSendToViewModel() { DateOfBirth = DateOnly.FromDateTime(DateTime.Now) };
                 page.ServiceToModel = services;
                 page.Services = services;
-               
+
                 return View("Consultation", page);
+
+
             } else if(name.ToLower() == "articles"){
                 var services = await _serviceService.GetAllServiceAsync();
                 var articles = await _pageService.GetPageByNameAsync(name);

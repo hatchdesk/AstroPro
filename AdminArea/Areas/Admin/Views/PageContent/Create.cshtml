@@ -38,6 +38,11 @@
                                     <textarea id="tiny" type="text" class="form-control" asp-for="Content" placeholder="Enter Your Content"></textarea>
                                     <span asp-validation-for="Content" style="color:red"></span>
                                 </div>
+                                <div class="form-group mt-3">
+                                    <label class="form-label fw-bold">Image</label>
+                                    <input asp-for="Image" type="file" class="form-control" />
+
+                                </div>
                             </div>
                             <div class="float-end mt-3">
                                 <a type="submit" asp-area="Admin" asp-controller="PageContent" asp-action="List" class="btn btn-dark me-3 " style="background-color:black">cancel</a>

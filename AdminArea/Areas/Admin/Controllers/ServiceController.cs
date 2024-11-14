@@ -35,15 +35,22 @@ namespace AdminArea.Areas.Admin.Controllers
 
 		[HttpGet]
 		[AllowAnonymous]
+	
 		public async Task<IActionResult> GetServiceConsultationFee(int? serviceId)
 		{
-			var service = await _serviceService.GetServiceAsync(serviceId??2);
+			if (serviceId == null)
+			{
+				return Json(new { Amount = 0 });
+			}
+
+			var service = await _serviceService.GetServiceAsync(serviceId.Value); // Fetch specific service based on ID
 			if (service == null)
 			{
 				return Json(new { Amount = 0 });
 			}
-			return Json(new {Amount = service.FeeText});
+			return Json(new { Amount = service.FeeText });
 		}
+
 
 		[HttpPost]
         public async Task<IActionResult> Create(ServiceToCreateViewModel model)
